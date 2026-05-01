@@ -1,39 +1,97 @@
 import { useState } from "react";
+import cleaning from "../assets/history-works/20200806_212925.jpg";
+import img_concept01 from "../assets/history-works/img_concept01.jpg";
+import img_concept02 from "../assets/history-works/img_concept02.jpg";
+import img_menu01 from "../assets/history-works/img_menu01.jpg";
+import img_menu02 from "../assets/history-works/img_menu02.jpg";
+import img_menu03 from "../assets/history-works/img_menu03.jpg";
+import img_menu04 from "../assets/history-works/img_menu04.jpg";
+import img_menu05 from "../assets/history-works/img_menu05.jpg";
+import img_menu06 from "../assets/history-works/img_menu06.jpg";
+import img_menu09 from "../assets/history-works/img_menu09.jpg";
+import img_menu10 from "../assets/history-works/img_menu10.jpg";
+import img_menu11 from "../assets/history-works/img_menu11.jpg";
+import top_0sp from "../assets/history-works/top_01sp.jpg";
+import topsec02_01 from "../assets/history-works/topsec02_01.jpg";
+import topsec02_02 from "../assets/history-works/topsec02_02.jpg";
+import topsec02_03 from "../assets/history-works/topsec02_03.jpg";
 
 const SLIDES = [
   {
-    img: "https://images.pexels.com/photos/708440/pexels-photo-708440.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=800&w=450",
-    title: "Deep Cleaning",
-    role: "Residential Service",
-    desc: "Transform your home with our thorough deep cleaning solutions.",
+    img: cleaning,
   },
   {
-    img: "https://images.pexels.com/photos/3408744/pexels-photo-3408744.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=800&w=450",
-    title: "Disinfection",
-    role: "Commercial Service",
-    desc: "Professional-grade sanitization for businesses and offices.",
+    img: img_concept01,
   },
   {
-    img: "https://images.pexels.com/photos/1761279/pexels-photo-1761279.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=800&w=450",
-    title: "Junk Removal",
-    role: "Full Service",
-    desc: "Quick and eco-friendly removal of unwanted items.",
+    img: img_concept02,
   },
   {
-    img: "https://images.pexels.com/photos/1287145/pexels-photo-1287145.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=800&w=450",
-    title: "Organization",
-    role: "Specialized Service",
-    desc: "Expert organizing solutions for clutter-free spaces.",
+    img: img_menu01,
   },
   {
-    img: "https://images.pexels.com/photos/4108715/pexels-photo-4108715.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=800&w=450",
-    title: "Estate Cleanup",
-    role: "Premium Service",
-    desc: "Compassionate and thorough estate clearing services.",
+    img: img_menu02,
   },
+  {
+    img: img_menu03,
+  },
+  {
+    img: img_menu04,
+  },
+  {
+    img: img_menu05,
+  },
+  {
+    img: img_menu06,
+  },
+  {
+    img: img_menu09,
+  },
+  {
+    img: img_menu10,
+  },
+  {
+    img: img_menu11,
+  },
+  {
+    img: top_0sp,
+  },
+  {
+    img: topsec02_01,
+  },
+  {
+    img: topsec02_02,
+  },
+  {
+    img: topsec02_03,
+  },
+  // {
+  //   img: "https://images.pexels.com/photos/3408744/pexels-photo-3408744.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=800&w=450",
+  //   title: "消毒",
+  //   role: "商業サービス",
+  //   desc: "企業やオフィス向けのプロ仕様の消毒サービス。",
+  // },
+  // {
+  //   img: "https://images.pexels.com/photos/1761279/pexels-photo-1761279.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=800&w=450",
+  //   title: "不用品回収",
+  //   role: "フルサービス",
+  //   desc: "不要品の迅速かつ環境に優しい回収。",
+  // },
+  // {
+  //   img: "https://images.pexels.com/photos/1287145/pexels-photo-1287145.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=800&w=450",
+  //   title: "整理整頓",
+  //   role: "専門サービス",
+  //   desc: "散らかりのない空間のためのプロによる整理ソリューション。",
+  // },
+  // {
+  //   img: "https://images.pexels.com/photos/4108715/pexels-photo-4108715.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=800&w=450",
+  //   title: "遺品整理",
+  //   role: "プレミアムサービス",
+  //   desc: "思いやりのある徹底的な遺品整理サービス。",
+  // },
 ];
 
-// 5 positions: far-left, left, center, right, far-right
+// 5つのポジション: 左端、左、中央、右、右端
 const POSITIONS = [
   { translateX: -440, translateZ: -350, rotateY: 35, scale: 0.55, opacity: 0.4, zIndex: 1 },
   { translateX: -220, translateZ: -180, rotateY: 18, scale: 0.75, opacity: 0.7, zIndex: 2 },
@@ -45,7 +103,7 @@ const POSITIONS = [
 function getPosition(index, active, total) {
   const diff = ((index - active) % total + total) % total;
   const centered = diff > Math.floor(total / 2) ? diff - total : diff;
-  const posIdx = centered + 2; // map -2,-1,0,1,2 → 0,1,2,3,4
+  const posIdx = centered + 2; // -2,-1,0,1,2 → 0,1,2,3,4にマッピング
   if (posIdx < 0 || posIdx >= POSITIONS.length) return null;
   return POSITIONS[posIdx];
 }
@@ -160,7 +218,7 @@ const css = `
     display: block;
   }
 
-  /* Content overlay on active card */
+  /* アクティブカードのコンテンツオーバーレイ */
   .card-content {
     position: absolute;
     bottom: 0;
@@ -263,7 +321,7 @@ const css = `
     box-shadow: 0 0 12px rgba(249,115,22,0.5);
   }
 
-  /* Navigation hint */
+  /* ナビゲーションヒント */
   .nav-hint {
     color: rgba(255,255,255,0.3);
     font-size: 12px;
@@ -275,7 +333,7 @@ const css = `
     color: rgba(249,115,22,0.6);
   }
 
-  /* Responsive */
+  /* レスポンシブ */
   @media (max-width: 1024px) {
     .scene {
       height: 420px;
@@ -364,25 +422,25 @@ export default function Carousel() {
     <>
       <style>{css}</style>
       <div className="carousel-root">
-        {/* Section Header */}
+        {/* セクションヘッダー */}
         <div className="text-center mb-4">
           <span className="inline-flex items-center gap-2 bg-orange-500/10 border border-orange-500/20 text-orange-400 text-xs rounded-full px-4 py-1.5 mb-4">
             <span className="relative flex size-2">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-orange-400 opacity-75"></span>
               <span className="relative inline-flex rounded-full size-2 bg-orange-500"></span>
             </span>
-            Our Services
+            サービス一覧
           </span>
         </div>
 
         <h2 className="carousel-title">
-          <span className="carousel-title-gradient">Curated Services</span>
+          <span className="carousel-title-gradient">サービス</span>
         </h2>
-        <p className="carousel-subtitle">Professional care for every space</p>
+        <p className="carousel-subtitle">あらゆる空間にプロフェッショナルなケアを</p>
 
         <div style={{ position: "relative", display: "flex", alignItems: "center", width: "100%", maxWidth: "1200px" }}>
-          {/* Previous Button */}
-          <button className="nav-btn prev" onClick={prev} aria-label="Previous">
+          {/* 前へボタン */}
+          <button className="nav-btn prev" onClick={prev} aria-label="前へ">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
               <polyline points="15 18 9 12 15 6"></polyline>
             </svg>
@@ -408,43 +466,43 @@ export default function Carousel() {
                   onClick={() => setActive(i)}
                 >
                   <div className="card">
-                    <img src={slide.img} alt={slide.title} />
-                    {isActive && (
+                    <img src={slide.img} alt={slide.img} />
+                    {/* {isActive && (
                       <div className="card-content">
                         <h4>{slide.role}</h4>
                         <h3>{slide.title}</h3>
                         <p>{slide.desc}</p>
                       </div>
-                    )}
+                    )} */}
                   </div>
                 </div>
               );
             })}
           </div>
 
-          {/* Next Button */}
-          <button className="nav-btn next" onClick={next} aria-label="Next">
+          {/* 次へボタン */}
+          <button className="nav-btn next" onClick={next} aria-label="次へ">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
               <polyline points="9 18 15 12 9 6"></polyline>
             </svg>
           </button>
         </div>
 
-        {/* Pagination Dots */}
+        {/* ページネーションドット */}
         <div className="pagination">
           {SLIDES.map((_, i) => (
             <button
               key={i}
               className={`dot${i === active ? " is-active" : ""}`}
               onClick={() => setActive(i)}
-              aria-label={`Go to slide ${i + 1}`}
+              aria-label={`スライド ${i + 1} に移動`}
             />
           ))}
         </div>
 
-        {/* Navigation Hint */}
+        {/* ナビゲーションヒント */}
         <p className="nav-hint">
-          Use <span>arrows</span> or click <span>dots</span> to navigate • Click any card to select
+          <span>矢印</span>または<span>ドット</span>で操作 • カードをクリックして選択
         </p>
       </div>
     </>

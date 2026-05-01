@@ -5,35 +5,35 @@ export default function Footer() {
 
     const footerLinks = {
         services: [
-            { label: "Deep Cleaning", href: "#" },
-            { label: "Disinfection", href: "#" },
-            { label: "Junk Removal", href: "#" },
-            { label: "Organization", href: "#" },
-            { label: "Estate Cleanup", href: "#" },
+            { label: "徹底清掃", href: "#" },
+            { label: "消毒", href: "#" },
+            { label: "不用品回収", href: "#" },
+            { label: "整理整頓", href: "#" },
+            { label: "遺品整理", href: "#" },
         ],
         company: [
-            { label: "About Us", href: "#" },
-            { label: "Our Team", href: "#" },
-            { label: "Careers", href: "#" },
-            { label: "Blog", href: "#" },
+            { label: "会社概要", href: "#" },
+            { label: "スタッフ紹介", href: "#" },
+            { label: "採用情報", href: "#" },
+            { label: "ブログ", href: "#" },
         ],
         support: [
-            { label: "Contact Us", href: "#" },
-            { label: "FAQs", href: "#" },
-            { label: "Privacy Policy", href: "#" },
-            { label: "Terms of Service", href: "#" },
+            { label: "お問い合わせ", href: "#" },
+            { label: "よくある質問", href: "#" },
+            { label: "プライバシーポリシー", href: "#" },
+            { label: "利用規約", href: "#" },
         ],
     };
 
     return (
         <footer className="relative bg-gray-900 pt-16 sm:pt-20 lg:pt-24 overflow-hidden">
-            {/* Background decoration */}
+            {/* 背景の装飾 */}
             <div className="absolute inset-0 pointer-events-none">
                 <div className="absolute top-0 right-0 w-96 h-96 bg-orange-500/5 rounded-full filter blur-3xl"></div>
                 <div className="absolute bottom-0 left-0 w-96 h-96 bg-orange-600/5 rounded-full filter blur-3xl"></div>
             </div>
 
-            {/* Top wave divider */}
+            {/* 上部ウェーブ区切り */}
             <div className="absolute top-0 left-0 right-0">
                 <svg className="w-full h-12 text-white fill-current" viewBox="0 0 1440 48" xmlns="http://www.w3.org/2000/svg">
                     <path d="M0 48h1440V0c-196 28-392 20-588 18-196-2-392-8-588 2C68 28 0 48 0 48z" />
@@ -41,63 +41,53 @@ export default function Footer() {
             </div>
 
             <div className="relative container mx-auto px-4 sm:px-6 lg:px-8">
-                {/* Main Footer Content */}
+                {/* メインフッターコンテンツ */}
                 <div className="grid grid-cols-1 gap-12 sm:grid-cols-2 lg:grid-cols-5">
-                    {/* Brand Column */}
+                    {/* ブランドカラム */}
                     <div className="lg:col-span-2">
-                        {/* Logo */}
+                        {/* ロゴ */}
                         <a href="/" className="inline-flex items-center gap-2 mb-6">
                             <div className="flex items-center justify-center w-10 h-10 bg-gradient-to-br from-orange-500 to-orange-600 rounded-xl">
-                                <img src={logo} alt="logo" className="w-6 h-6 text-white" />
+                                <img src={logo} alt="ロゴ" className="w-6 h-6 text-white" />
                             </div>
-                            <span className="text-xl font-bold text-white">Ecoclean Mate</span>
+                            <span className="text-xl font-bold text-white">エコクリーン MATE 東京</span>
                         </a>
 
                         <p className="text-gray-400 mb-8 max-w-md leading-relaxed">
-                            Professional cleaning and organization services trusted by thousands.
-                            We make your spaces clean, healthy, and clutter-free.
+                            多くのお客様に信頼されているプロフェッショナルな清掃・整理サービス。
+                            お客様の空間を清潔で健康的、そして整頓された状態にいたします。
                         </p>
 
-                        {/* Newsletter */}
-                        <div className="mb-8">
-                            <h3 className="text-white font-semibold mb-4">Subscribe to our newsletter</h3>
-                            <div className="flex flex-col sm:flex-row gap-3">
-                                <input
-                                    type="email"
-                                    placeholder="Enter your email"
-                                    className="flex-1 px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-orange-500/50 focus:bg-white/10 transition-all duration-300"
-                                />
-                                <button className="px-6 py-3 bg-gradient-to-r from-orange-500 to-orange-600 text-white rounded-xl font-semibold hover:from-orange-600 hover:to-orange-700 transition-all duration-300 shadow-lg hover:shadow-orange-500/25">
-                                    Subscribe
-                                </button>
-                            </div>
-                        </div>
-
-                        {/* Social Links */}
+                        {/* ソーシャルリンク */}
                         <div className="flex items-center gap-4">
-                            {[
-                                { icon: "M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z", label: "Facebook" },
-                                { icon: "M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z", label: "Twitter" },
-                                { icon: "M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2zM4 6a2 2 0 100-4 2 2 0 000 4z", label: "LinkedIn" },
-                                { icon: "M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z", label: "GitHub" },
-                            ].map((social, index) => (
-                                <a
-                                    key={index}
-                                    href="#"
-                                    aria-label={social.label}
-                                    className="flex items-center justify-center w-10 h-10 rounded-xl bg-white/5 border border-white/10 text-gray-400 hover:text-orange-500 hover:border-orange-500/50 hover:bg-orange-500/10 transition-all duration-300"
-                                >
-                                    <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                                        <path d={social.icon} />
-                                    </svg>
-                                </a>
-                            ))}
+                            <a
+                                href="https://x.com/eco_clean_mate#CASE"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                aria-label="X（旧Twitter）"
+                                className="flex items-center justify-center w-10 h-10 rounded-xl bg-white/5 border border-white/10 text-gray-400 hover:text-orange-500 hover:border-orange-500/50 hover:bg-orange-500/10 transition-all duration-300"
+                            >
+                                <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+                                </svg>
+                            </a>
+                            <a
+                                href="https://page.line.me/759mdnmo?openQrModal=true"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                aria-label="LINE"
+                                className="flex items-center justify-center w-10 h-10 rounded-xl bg-white/5 border border-white/10 text-gray-400 hover:text-orange-500 hover:border-orange-500/50 hover:bg-orange-500/10 transition-all duration-300"
+                            >
+                                <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M19.365 9.863a.631.631 0 010 1.261H17.61v1.125h1.755a.63.63 0 110 1.259H16.98a.63.63 0 01-.627-.629V9.863a.63.63 0 01.629-.63h2.384zm-3.229 0a.631.631 0 010 1.261h-.631v1.125h.63a.63.63 0 110 1.259h-1.257a.63.63 0 01-.629-.629V9.863a.63.63 0 01.629-.63h1.258zm-3.618.042c.312 0 .59.185.703.455l1.01 2.412a.63.63 0 11-1.17.488l-.133-.324h-1.1l-.133.324a.63.63 0 11-1.17-.488l1.01-2.412a.737.737 0 01.703-.455zm-.343 1.83h.686l-.343-.847-.343.847zm-3.17-1.83a.63.63 0 01.63.629v2.455a.63.63 0 11-1.259 0v-2.455a.63.63 0 01.629-.629zm-3.144 0h1.257a.63.63 0 01.629.629v2.455a.63.63 0 11-1.259 0v-.629h-.627v.629a.63.63 0 11-1.259 0V9.863a.63.63 0 01.629-.629zm.627 1.26h-.627v.627h.627v-.627zm15.955-1.26a.63.63 0 01.63.629v2.455a.63.63 0 11-1.259 0v-.629H20.98v.629a.63.63 0 11-1.259 0V9.863a.63.63 0 01.629-.629zm.627 1.26h-.627v.627h.627v-.627z" />
+                                </svg>
+                            </a>
                         </div>
                     </div>
 
-                    {/* Services Links */}
+                    {/* サービスリンク */}
                     <div>
-                        <h3 className="text-white font-semibold text-sm uppercase tracking-wider mb-6">Services</h3>
+                        <h3 className="text-white font-semibold text-sm uppercase tracking-wider mb-6">サービス</h3>
                         <ul className="space-y-4">
                             {footerLinks.services.map((link, index) => (
                                 <li key={index}>
@@ -113,9 +103,9 @@ export default function Footer() {
                         </ul>
                     </div>
 
-                    {/* Company Links */}
+                    {/* 会社リンク */}
                     <div>
-                        <h3 className="text-white font-semibold text-sm uppercase tracking-wider mb-6">Company</h3>
+                        <h3 className="text-white font-semibold text-sm uppercase tracking-wider mb-6">会社情報</h3>
                         <ul className="space-y-4">
                             {footerLinks.company.map((link, index) => (
                                 <li key={index}>
@@ -131,9 +121,9 @@ export default function Footer() {
                         </ul>
                     </div>
 
-                    {/* Support Links */}
+                    {/* サポートリンク */}
                     <div>
-                        <h3 className="text-white font-semibold text-sm uppercase tracking-wider mb-6">Support</h3>
+                        <h3 className="text-white font-semibold text-sm uppercase tracking-wider mb-6">サポート</h3>
                         <ul className="space-y-4">
                             {footerLinks.support.map((link, index) => (
                                 <li key={index}>
@@ -150,18 +140,18 @@ export default function Footer() {
                     </div>
                 </div>
 
-                {/* Bottom Bar */}
+                {/* 下部バー */}
                 <div className="mt-16 pt-8 border-t border-white/10">
                     <div className="flex flex-col md:flex-row items-center justify-between gap-4">
                         <p className="text-gray-500 text-sm text-center md:text-left">
-                            © {currentYear} Ecoclean Mate. All rights reserved. Made with ❤️ for clean spaces.
+                            © {currentYear} Ecoclean Mate. All rights reserved. 清潔な空間のために❤️を込めて。
                         </p>
                         <div className="flex items-center gap-4">
-                            <a href="#" className="text-gray-500 hover:text-orange-500 transition-colors duration-300 text-sm">Privacy Policy</a>
+                            <a href="#" className="text-gray-500 hover:text-orange-500 transition-colors duration-300 text-sm">プライバシーポリシー</a>
                             <span className="text-gray-600">•</span>
-                            <a href="#" className="text-gray-500 hover:text-orange-500 transition-colors duration-300 text-sm">Terms of Service</a>
+                            <a href="#" className="text-gray-500 hover:text-orange-500 transition-colors duration-300 text-sm">利用規約</a>
                             <span className="text-gray-600">•</span>
-                            <a href="#" className="text-gray-500 hover:text-orange-500 transition-colors duration-300 text-sm">Cookie Policy</a>
+                            <a href="#" className="text-gray-500 hover:text-orange-500 transition-colors duration-300 text-sm">Cookieポリシー</a>
                         </div>
                     </div>
                 </div>
