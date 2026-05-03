@@ -8,7 +8,9 @@ import {
     STAIR_CLIMBING_FEE,
     TAX_RATE,
     EXTRA_SERVICES,
+    BASIC_FEE,
 } from "../features/calculator/calculatorConfig";
+import { generatePDF } from "../utils/generatePDF";
 
 // ---------------------------------------------------------------------------
 // Types
@@ -64,11 +66,12 @@ export interface Step7Data {
 }
 
 export interface Step8Data {
-    fullName: string;
+    lastName: string;
+    firstName: string;
+    phoneNumber: string;
     email: string;
-    phone: string;
-    address: string;
-    notes: string;
+    city: string;
+    building: string;
 }
 
 export interface CalculatorFormData {
@@ -90,6 +93,7 @@ interface PersistedState {
 
 export interface CostBreakdown {
     itemsSubtotal: number;
+    basicFee: number;
     stairFee: number;
     servicesTotal: number;
     subtotal: number;
@@ -109,7 +113,7 @@ const DEFAULT_FORM_DATA: CalculatorFormData = {
     step5: { currentEditItemId: null },
     step6: { selectedServices: [] },
     step7: {},
-    step8: { fullName: "", email: "", phone: "", address: "", notes: "" },
+    step8: { lastName: "", firstName: "", phoneNumber: "", email: "", city: "", building: "" },
 };
 
 // ---------------------------------------------------------------------------
@@ -244,10 +248,12 @@ export function useCalculator() {
     const calculateTotal = useCallback((): CostBreakdown => {
         const items = formData.step4.items;
         const itemsSubtotal = items.reduce((sum, item) => {
-            const price = parseFloat(item.unitPrice) || 0;
+            const price = parseInt(item.unitPrice.replace(/\./g, ""), 10) || 0;
             const qty = item.quantity || 1;
             return sum + price * qty;
         }, 0);
+
+        const basicFee = BASIC_FEE;
 
         const stairFee =
             !formData.step3.hasElevator && formData.step3.wantsStairHelp
@@ -259,11 +265,11 @@ export function useCalculator() {
             return sum + (service ? service.price : 0);
         }, 0);
 
-        const subtotal = itemsSubtotal + stairFee + servicesTotal;
+        const subtotal = itemsSubtotal + basicFee + stairFee + servicesTotal;
         const tax = Math.round(subtotal * TAX_RATE);
         const grandTotal = subtotal + tax;
 
-        return { itemsSubtotal, stairFee, servicesTotal, subtotal, tax, grandTotal };
+        return { itemsSubtotal, basicFee, stairFee, servicesTotal, subtotal, tax, grandTotal };
     }, [formData.step3, formData.step4.items, formData.step6.selectedServices]);
 
     // -------------------------------------------------------------------
@@ -316,9 +322,8 @@ export function useCalculator() {
     // -------------------------------------------------------------------
 
     const submit = useCallback(() => {
-        // TODO: Replace with real API call / PDF generation
-        console.log("Submitting calculator data:", formData);
-        console.log("Cost breakdown:", calculateTotal());
+        const totals = calculateTotal();
+        generatePDF(formData, totals);
         clearStorage();
         setIsSubmitted(true);
     }, [formData, calculateTotal]);

@@ -243,7 +243,7 @@ const Step1: React.FC<Props> = ({ data, onChange }) => {
 
                 <div className="bg-orange-50 border border-orange-200 rounded-lg p-4 space-y-3">
                     <p className="text-sm text-gray-700">
-                        At Ecoland, the total amount is calculated as follows:
+                        At Eco Clean Mate Tokyo, the total amount is calculated as follows:
                     </p>
 
                     <div className="bg-white rounded-lg p-3 border border-orange-100">

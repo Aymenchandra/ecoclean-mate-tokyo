@@ -53,7 +53,8 @@ export const STORAGE_KEY = "calculator_state";
 export const STORAGE_TTL_MS = 60 * 60 * 1000; // 1 hour
 
 // Fixed fees
-export const STAIR_CLIMBING_FEE = 5500;
+export const BASIC_FEE = 3000;
+export const STAIR_CLIMBING_FEE = 5000;
 export const TAX_RATE = 0.10;
 
 export const EXTRA_SERVICES = [

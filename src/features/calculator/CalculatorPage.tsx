@@ -8,10 +8,9 @@ import Step2 from "./steps/Step2";
 import Step3 from "./steps/Step3";
 import Step4 from "./steps/Step4";
 import Step5 from "./steps/Step5";
-// import Step5 from "./steps/Step5";
-// import Step6 from "./steps/Step6";
-// import Step7 from "./steps/Step7";
-// import Step8 from "./steps/Step8";
+import Step6 from "./steps/Step6";
+import Step7 from "./steps/Step7";
+import Step8 from "./steps/Step8";
 
 // ---------------------------------------------------------------------------
 // Success screen
@@ -30,17 +29,24 @@ const SuccessScreen: React.FC<{ onReset: () => void }> = ({ onReset }) => (
                 <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
             </svg>
         </div>
-        <h2 className="text-2xl font-bold text-gray-900">Estimate Submitted!</h2>
+        <h2 className="text-2xl font-bold text-gray-900">Estimate Downloaded!</h2>
         <p className="text-gray-500 max-w-xs">
-            Thank you. We've received your details and will be in touch shortly with
-            your custom cost estimate.
+            Your estimate PDF has been generated. We'll also send a copy to your email.
         </p>
-        <button
-            onClick={onReset}
-            className="mt-4 px-6 py-2.5 bg-orange-500 hover:bg-orange-600 text-white text-sm font-semibold rounded-lg transition-colors"
-        >
-            Start a new estimate
-        </button>
+        <div className="flex gap-3 pt-2">
+            <button
+                onClick={onReset}
+                className="px-6 py-2.5 bg-orange-500 hover:bg-orange-600 text-white text-sm font-semibold rounded-lg transition-colors"
+            >
+                New Estimate
+            </button>
+            <a
+                href="/"
+                className="px-6 py-2.5 border border-gray-300 text-gray-600 hover:bg-gray-50 text-sm font-semibold rounded-lg transition-colors"
+            >
+                Back to Home
+            </a>
+        </div>
     </div>
 );
 
@@ -94,27 +100,27 @@ const CalculatorPage: React.FC = () => {
                         onStep5Change={calc.updateStep5}
                     />
                 );
-            // case 6:
-            //     return (
-            //         <Step6
-            //             data={calc.formData.step6}
-            //             onChange={calc.updateStep6}
-            //         />
-            //     );
-            // case 7:
-            //     return (
-            //         <Step7
-            //             formData={calc.formData}
-            //             totals={calc.calculateTotal()}
-            //         />
-            //     );
-            // case 8:
-            //     return (
-            //         <Step8
-            //             data={calc.formData.step8}
-            //             onChange={calc.updateStep8}
-            //         />
-            //     );
+            case 6:
+                return (
+                    <Step6
+                        data={calc.formData.step6}
+                        onChange={calc.updateStep6}
+                    />
+                );
+            case 7:
+                return (
+                    <Step7
+                        formData={calc.formData}
+                        totals={calc.calculateTotal()}
+                    />
+                );
+            case 8:
+                return (
+                    <Step8
+                        data={calc.formData.step8}
+                        onChange={calc.updateStep8}
+                    />
+                );
             default:
                 return null;
         }
@@ -135,7 +141,7 @@ const CalculatorPage: React.FC = () => {
             {/* Minimal top bar */}
             <header className="w-full border-b border-gray-200 bg-white px-6 py-4 flex items-center justify-between">
                 <span className="font-bold text-orange-500 text-lg tracking-tight">
-                    Ecoland
+                    エコクリーン MATE 東京
                 </span>
 
                 <button
@@ -187,7 +193,7 @@ const CalculatorPage: React.FC = () => {
                                     onClick={calc.submit}
                                     className="px-6 py-2.5 bg-orange-500 hover:bg-orange-600 text-white text-sm font-semibold rounded-lg transition-colors"
                                 >
-                                    Submit & Download PDF →
+                                    Download Estimate PDF →
                                 </button>
                             ) : (
                                 <button

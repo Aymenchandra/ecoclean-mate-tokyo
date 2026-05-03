@@ -1,87 +1,177 @@
-// import React from "react";
-// import type { Step3Data } from "../../../hooks/useCalculator";
+// src/features/calculator/steps/Step8.tsx
 
-// interface Props {
-//     data: Step3Data;
-//     onChange: (data: Partial<Step3Data>) => void;
-// }
+import React from "react";
+import type { Step8Data } from "../../../hooks/useCalculator";
 
-// interface FieldProps {
-//     id: keyof Step3Data;
-//     label: string;
-//     type?: string;
-//     placeholder: string;
-//     value: string;
-//     onChange: (val: string) => void;
-// }
+interface Props {
+    data: Step8Data;
+    onChange: (data: Partial<Step8Data>) => void;
+}
 
-// const Field: React.FC<FieldProps> = ({
-//     id,
-//     label,
-//     type = "text",
-//     placeholder,
-//     value,
-//     onChange,
-// }) => (
-//     <div className="space-y-1.5">
-//         <label htmlFor={id} className="block text-sm font-medium text-gray-700">
-//             {label}
-//         </label>
-//         <input
-//             id={id}
-//             type={type}
-//             placeholder={placeholder}
-//             value={value}
-//             onChange={(e) => onChange(e.target.value)}
-//             className={[
-//                 "w-full px-4 py-2.5 rounded-lg border text-sm",
-//                 "focus:outline-none focus:ring-2 focus:ring-orange-400 focus:border-transparent",
-//                 "placeholder:text-gray-400 text-gray-900",
-//                 value ? "border-orange-400" : "border-gray-300",
-//             ].join(" ")}
-//         />
-//     </div>
-// );
+const Step8: React.FC<Props> = ({ data, onChange }) => {
+    const isComplete =
+        data.lastName.trim() !== "" &&
+        data.firstName.trim() !== "" &&
+        data.phoneNumber.trim() !== "" &&
+        data.email.trim() !== "";
 
-// const Step3: React.FC<Props> = ({ data, onChange }) => {
-//     return (
-//         <div className="space-y-6">
-//             <div>
-//                 <h2 className="text-xl font-semibold text-gray-900">
-//                     Where should we send your estimate?
-//                 </h2>
-//                 <p className="text-sm text-gray-500 mt-1">
-//                     We'll never share your information with third parties.
-//                 </p>
-//             </div>
+    return (
+        <div className="space-y-6">
+            {/* Header */}
+            <div>
+                <h2 className="text-xl font-bold text-gray-900">
+                    Customer Information
+                </h2>
+                <p className="text-sm text-gray-500 mt-1">
+                    Please provide your contact details to receive the estimate PDF.
+                </p>
+            </div>
 
-//             <div className="space-y-4">
-//                 <Field
-//                     id="name"
-//                     label="Full name"
-//                     placeholder="Jane Doe"
-//                     value={data.name}
-//                     onChange={(val) => onChange({ name: val })}
-//                 />
-//                 <Field
-//                     id="email"
-//                     label="Email address"
-//                     type="email"
-//                     placeholder="jane@example.com"
-//                     value={data.email}
-//                     onChange={(val) => onChange({ email: val })}
-//                 />
-//                 <Field
-//                     id="phone"
-//                     label="Phone number (optional)"
-//                     type="tel"
-//                     placeholder="+1 555 000 0000"
-//                     value={data.phone}
-//                     onChange={(val) => onChange({ phone: val })}
-//                 />
-//             </div>
-//         </div>
-//     );
-// };
+            {/* Form */}
+            <div className="space-y-4">
+                {/* Name Row */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    {/* Last Name */}
+                    <div className="space-y-1.5">
+                        <label
+                            htmlFor="lastName"
+                            className="block text-sm font-medium text-gray-700"
+                        >
+                            Last Name <span className="text-red-500">*</span>
+                        </label>
+                        <input
+                            id="lastName"
+                            type="text"
+                            value={data.lastName}
+                            onChange={(e) => onChange({ lastName: e.target.value })}
+                            placeholder="Yamada"
+                            className="w-full px-4 py-2.5 border border-gray-300 rounded-lg text-sm
+                                focus:outline-none focus:ring-2 focus:ring-orange-500/20 focus:border-orange-500
+                                transition-all"
+                        />
+                    </div>
 
-// export default Step3;
+                    {/* First Name */}
+                    <div className="space-y-1.5">
+                        <label
+                            htmlFor="firstName"
+                            className="block text-sm font-medium text-gray-700"
+                        >
+                            First Name <span className="text-red-500">*</span>
+                        </label>
+                        <input
+                            id="firstName"
+                            type="text"
+                            value={data.firstName}
+                            onChange={(e) => onChange({ firstName: e.target.value })}
+                            placeholder="Taro"
+                            className="w-full px-4 py-2.5 border border-gray-300 rounded-lg text-sm
+                                focus:outline-none focus:ring-2 focus:ring-orange-500/20 focus:border-orange-500
+                                transition-all"
+                        />
+                    </div>
+                </div>
+
+                {/* Phone Number */}
+                <div className="space-y-1.5">
+                    <label
+                        htmlFor="phoneNumber"
+                        className="block text-sm font-medium text-gray-700"
+                    >
+                        Phone Number <span className="text-red-500">*</span>
+                    </label>
+                    <input
+                        id="phoneNumber"
+                        type="tel"
+                        value={data.phoneNumber}
+                        onChange={(e) => onChange({ phoneNumber: e.target.value })}
+                        placeholder="090-1234-5678"
+                        className="w-full px-4 py-2.5 border border-gray-300 rounded-lg text-sm
+                            focus:outline-none focus:ring-2 focus:ring-orange-500/20 focus:border-orange-500
+                            transition-all"
+                    />
+                </div>
+
+                {/* Email */}
+                <div className="space-y-1.5">
+                    <label
+                        htmlFor="email"
+                        className="block text-sm font-medium text-gray-700"
+                    >
+                        Email Address <span className="text-red-500">*</span>
+                    </label>
+                    <input
+                        id="email"
+                        type="email"
+                        value={data.email}
+                        onChange={(e) => onChange({ email: e.target.value })}
+                        placeholder="yamada@example.com"
+                        className="w-full px-4 py-2.5 border border-gray-300 rounded-lg text-sm
+                            focus:outline-none focus:ring-2 focus:ring-orange-500/20 focus:border-orange-500
+                            transition-all"
+                    />
+                </div>
+
+                {/* City / Town / Village */}
+                <div className="space-y-1.5">
+                    <label
+                        htmlFor="city"
+                        className="block text-sm font-medium text-gray-700"
+                    >
+                        City / Town / Village / Address
+                    </label>
+                    <input
+                        id="city"
+                        type="text"
+                        value={data.city}
+                        onChange={(e) => onChange({ city: e.target.value })}
+                        placeholder="Shibuya-ku, Tokyo"
+                        className="w-full px-4 py-2.5 border border-gray-300 rounded-lg text-sm
+                            focus:outline-none focus:ring-2 focus:ring-orange-500/20 focus:border-orange-500
+                            transition-all"
+                    />
+                </div>
+
+                {/* Building Name / Room Number */}
+                <div className="space-y-1.5">
+                    <label
+                        htmlFor="building"
+                        className="block text-sm font-medium text-gray-700"
+                    >
+                        Building Name / Room Number
+                    </label>
+                    <input
+                        id="building"
+                        type="text"
+                        value={data.building}
+                        onChange={(e) => onChange({ building: e.target.value })}
+                        placeholder="Shibuya Heights 505"
+                        className="w-full px-4 py-2.5 border border-gray-300 rounded-lg text-sm
+                            focus:outline-none focus:ring-2 focus:ring-orange-500/20 focus:border-orange-500
+                            transition-all"
+                    />
+                </div>
+            </div>
+
+            {/* Completion indicator */}
+            {isComplete && (
+                <div className="bg-green-50 border border-green-200 rounded-lg p-3 flex items-center gap-2">
+                    <svg className="w-4 h-4 text-green-500 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+                    </svg>
+                    <p className="text-xs text-green-700">
+                        All required fields complete. You can now download your estimate.
+                    </p>
+                </div>
+            )}
+
+            {!isComplete && (
+                <p className="text-xs text-gray-400 text-center">
+                    * Required fields must be filled before submitting
+                </p>
+            )}
+        </div>
+    );
+};
+
+export default Step8;
