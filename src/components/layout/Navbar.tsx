@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import navLinks from "../../constants/navLinks";
-import logo from '../../assets/logo/eco-clean.png';
+import logo from '/assets/logo/eco-clean.png';
 
 export default function Navbar() {
     const [mobileOpen, setMobileOpen] = useState(false);

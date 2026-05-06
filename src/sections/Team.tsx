@@ -1,5 +1,5 @@
-import TeamMember from '../assets/team/kv_01.jpg'
-import Owner from '../assets/team/img_staff01.jpg'
+import TeamMember from '/assets/team/kv_01.jpg'
+import Owner from '/assets/team/img_staff01.jpg'
 
 export default function Team() {
     const teamMembers = [

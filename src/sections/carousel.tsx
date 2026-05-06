@@ -1,20 +1,20 @@
 import { useState } from "react";
-import cleaning from "../assets/history-works/20200806_212925.jpg";
-import img_concept01 from "../assets/history-works/img_concept01.jpg";
-import img_concept02 from "../assets/history-works/img_concept02.jpg";
-import img_menu01 from "../assets/history-works/img_menu01.jpg";
-import img_menu02 from "../assets/history-works/img_menu02.jpg";
-import img_menu03 from "../assets/history-works/img_menu03.jpg";
-import img_menu04 from "../assets/history-works/img_menu04.jpg";
-import img_menu05 from "../assets/history-works/img_menu05.jpg";
-import img_menu06 from "../assets/history-works/img_menu06.jpg";
-import img_menu09 from "../assets/history-works/img_menu09.jpg";
-import img_menu10 from "../assets/history-works/img_menu10.jpg";
-import img_menu11 from "../assets/history-works/img_menu11.jpg";
-import top_0sp from "../assets/history-works/top_01sp.jpg";
-import topsec02_01 from "../assets/history-works/topsec02_01.jpg";
-import topsec02_02 from "../assets/history-works/topsec02_02.jpg";
-import topsec02_03 from "../assets/history-works/topsec02_03.jpg";
+import cleaning from "/assets/history-works/20200806_212925.jpg";
+import img_concept01 from "/assets/history-works/img_concept01.jpg";
+import img_concept02 from "/assets/history-works/img_concept02.jpg";
+import img_menu01 from "/assets/history-works/img_menu01.jpg";
+import img_menu02 from "/assets/history-works/img_menu02.jpg";
+import img_menu03 from "/assets/history-works/img_menu03.jpg";
+import img_menu04 from "/assets/history-works/img_menu04.jpg";
+import img_menu05 from "/assets/history-works/img_menu05.jpg";
+import img_menu06 from "/assets/history-works/img_menu06.jpg";
+import img_menu09 from "/assets/history-works/img_menu09.jpg";
+import img_menu10 from "/assets/history-works/img_menu10.jpg";
+import img_menu11 from "/assets/history-works/img_menu11.jpg";
+import top_0sp from "/assets/history-works/top_01sp.jpg";
+import topsec02_01 from "/assets/history-works/topsec02_01.jpg";
+import topsec02_02 from "/assets/history-works/topsec02_02.jpg";
+import topsec02_03 from "/assets/history-works/topsec02_03.jpg";
 
 const SLIDES = [
   {
