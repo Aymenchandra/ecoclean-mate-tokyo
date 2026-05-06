@@ -1,9 +1,8 @@
-// src/features/calculator/steps/Step7.tsx
 
 import React from "react";
 import type { CalculatorFormData } from "../../../hooks/useCalculator";
 import type { CostBreakdown } from "../../../hooks/useCalculator";
-import { STAIR_CLIMBING_FEE, TAX_RATE, EXTRA_SERVICES } from "../calculatorConfig";
+import { EXTRA_SERVICES } from "../calculatorConfig";
 
 interface Props {
     formData: CalculatorFormData;
@@ -15,13 +14,18 @@ const Step7: React.FC<Props> = ({ formData, totals }) => {
         return "¥" + Math.round(amount).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
     };
 
+    const regularItems = formData.step4.items.filter(
+        (item) => !(item.forSelling && item.canSell)
+    );
+    const appraisalItems = formData.step4.items.filter(
+        (item) => item.forSelling && item.canSell
+    );
+
     return (
         <div className="space-y-6">
             {/* Header */}
             <div>
-                <h2 className="text-xl font-bold text-gray-900">
-                    Cost Breakdown
-                </h2>
+                <h2 className="text-xl font-bold text-gray-900">Cost Breakdown</h2>
                 <p className="text-sm text-gray-500 mt-1">
                     Review your estimate before submitting. Go back to any step to make changes.
                 </p>
@@ -30,8 +34,18 @@ const Step7: React.FC<Props> = ({ formData, totals }) => {
             {/* Items Summary */}
             <div className="space-y-3">
                 <h3 className="text-sm font-semibold text-gray-700 flex items-center gap-2">
-                    <svg className="w-4 h-4 text-orange-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+                    <svg
+                        className="w-4 h-4 text-orange-500"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                        strokeWidth={2}
+                    >
+                        <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"
+                        />
                     </svg>
                     Items
                 </h3>
@@ -48,10 +62,11 @@ const Step7: React.FC<Props> = ({ formData, totals }) => {
                             <div className="col-span-3 text-right">Total</div>
                         </div>
 
-                        {/* Items */}
                         <div className="divide-y divide-gray-100">
-                            {formData.step4.items.map((item) => {
-                                const unitPrice = parseInt(item.unitPrice.replace(/\./g, ""), 10) || 0;
+                            {/* Regular Items */}
+                            {regularItems.map((item) => {
+                                const unitPrice =
+                                    parseInt(item.unitPrice.replace(/\./g, ""), 10) || 0;
                                 const qty = item.quantity || 1;
                                 const itemTotal = unitPrice * qty;
 
@@ -63,7 +78,10 @@ const Step7: React.FC<Props> = ({ formData, totals }) => {
                                         {/* Item name + image */}
                                         <div className="sm:col-span-5 flex items-center gap-3 mb-2 sm:mb-0">
                                             <img
-                                                src={item.imagePreview || "https://via.placeholder.com/40x40?text=?"}
+                                                src={
+                                                    item.imagePreview ||
+                                                    "https://via.placeholder.com/40x40?text=?"
+                                                }
                                                 alt={item.productName}
                                                 className="w-10 h-10 rounded-md object-cover flex-shrink-0 bg-gray-100"
                                                 onError={(e) => {
@@ -95,7 +113,9 @@ const Step7: React.FC<Props> = ({ formData, totals }) => {
                                         {/* Unit Price */}
                                         <div className="sm:col-span-2 sm:text-center">
                                             <span className="sm:hidden text-xs text-gray-500">Unit: </span>
-                                            <span className="text-sm text-gray-700">{formatYen(unitPrice)}</span>
+                                            <span className="text-sm text-gray-700">
+                                                {formatYen(unitPrice)}
+                                            </span>
                                         </div>
 
                                         {/* Item Total */}
@@ -108,14 +128,79 @@ const Step7: React.FC<Props> = ({ formData, totals }) => {
                                     </div>
                                 );
                             })}
+
+                            {/* Appraisal Items */}
+                            {appraisalItems.map((item) => (
+                                <div
+                                    key={item.id}
+                                    className="px-4 py-3 bg-orange-50/40 sm:grid sm:grid-cols-12 sm:gap-3 sm:items-center"
+                                >
+                                    {/* Item name + image */}
+                                    <div className="sm:col-span-5 flex items-center gap-3 mb-2 sm:mb-0">
+                                        <div className="relative flex-shrink-0">
+                                            <img
+                                                src={
+                                                    item.sellingImage ||
+                                                    item.imagePreview ||
+                                                    "https://via.placeholder.com/40x40?text=?"
+                                                }
+                                                alt={item.productName}
+                                                className="w-10 h-10 rounded-md object-cover bg-gray-100"
+                                                onError={(e) => {
+                                                    (e.target as HTMLImageElement).src =
+                                                        "https://via.placeholder.com/40x40?text=?";
+                                                }}
+                                            />
+                                            {item.sellingImage && (
+                                                <span className="absolute -top-1 -right-1 w-3.5 h-3.5 bg-green-500 rounded-full border-2 border-white" />
+                                            )}
+                                        </div>
+                                        <div className="min-w-0">
+                                            <p className="text-sm font-medium text-gray-800 truncate">
+                                                {item.productName}
+                                            </p>
+                                            <p className="text-xs text-orange-600 font-medium">
+                                                To Be Appraised
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    {/* Qty */}
+                                    <div className="sm:col-span-2 sm:text-center">
+                                        <span className="sm:hidden text-xs text-gray-500">Qty: </span>
+                                        <span className="text-sm text-gray-700">
+                                            {item.quantity || 1}
+                                        </span>
+                                    </div>
+
+                                    {/* Unit Price - TBA */}
+                                    <div className="sm:col-span-2 sm:text-center">
+                                        <span className="text-xs text-orange-600 font-medium">TBA</span>
+                                    </div>
+
+                                    {/* Total - dash */}
+                                    <div className="sm:col-span-3 sm:text-right">
+                                        <span className="text-xs text-gray-400">—</span>
+                                    </div>
+                                </div>
+                            ))}
                         </div>
 
                         {/* Items Subtotal */}
-                        <div className="px-4 py-3 bg-gray-50 flex items-center justify-between">
-                            <span className="text-sm font-medium text-gray-600">Items Subtotal</span>
-                            <span className="text-sm font-bold text-gray-800">
-                                {formatYen(totals.itemsSubtotal)}
-                            </span>
+                        <div className="px-4 py-3 bg-gray-50 space-y-1">
+                            <div className="flex items-center justify-between">
+                                <span className="text-sm font-medium text-gray-600">
+                                    Items Subtotal
+                                </span>
+                                <span className="text-sm font-bold text-gray-800">
+                                    {formatYen(totals.itemsSubtotal)}
+                                </span>
+                            </div>
+                            {appraisalItems.length > 0 && (
+                                <p className="text-xs text-orange-600">
+                                    * Excludes {appraisalItems.length} item(s) to be appraised
+                                </p>
+                            )}
                         </div>
                     </div>
                 )}
@@ -124,8 +209,18 @@ const Step7: React.FC<Props> = ({ formData, totals }) => {
             {/* Additional Charges */}
             <div className="space-y-3">
                 <h3 className="text-sm font-semibold text-gray-700 flex items-center gap-2">
-                    <svg className="w-4 h-4 text-orange-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    <svg
+                        className="w-4 h-4 text-orange-500"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                        strokeWidth={2}
+                    >
+                        <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                        />
                     </svg>
                     Additional Charges
                 </h3>
@@ -141,6 +236,7 @@ const Step7: React.FC<Props> = ({ formData, totals }) => {
                             {formatYen(totals.basicFee)}
                         </span>
                     </div>
+
                     {/* Stair Climbing Fee */}
                     <div className="px-4 py-3 flex items-center justify-between">
                         <div>
@@ -162,7 +258,10 @@ const Step7: React.FC<Props> = ({ formData, totals }) => {
                             const service = EXTRA_SERVICES.find((s) => s.id === serviceId);
                             if (!service) return null;
                             return (
-                                <div key={serviceId} className="px-4 py-3 flex items-center justify-between">
+                                <div
+                                    key={serviceId}
+                                    className="px-4 py-3 flex items-center justify-between"
+                                >
                                     <span className="text-sm text-gray-700">{service.label}</span>
                                     <span className="text-sm text-gray-700">
                                         {formatYen(service.price)}
@@ -180,7 +279,9 @@ const Step7: React.FC<Props> = ({ formData, totals }) => {
                     {/* Services Total */}
                     {totals.servicesTotal > 0 && (
                         <div className="px-4 py-3 bg-gray-50 flex items-center justify-between">
-                            <span className="text-sm font-medium text-gray-600">Extra Services Total</span>
+                            <span className="text-sm font-medium text-gray-600">
+                                Extra Services Total
+                            </span>
                             <span className="text-sm font-bold text-gray-800">
                                 {formatYen(totals.servicesTotal)}
                             </span>
@@ -198,9 +299,7 @@ const Step7: React.FC<Props> = ({ formData, totals }) => {
                     </span>
                 </div>
                 <div className="px-4 py-3 flex items-center justify-between border-t border-orange-100">
-                    <span className="text-sm text-gray-600">
-                        Tax (10%)
-                    </span>
+                    <span className="text-sm text-gray-600">Tax (10%)</span>
                     <span className="text-sm font-semibold text-gray-800">
                         {formatYen(totals.tax)}
                     </span>

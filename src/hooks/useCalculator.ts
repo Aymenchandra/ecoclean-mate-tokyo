@@ -250,6 +250,8 @@ export function useCalculator() {
     const calculateTotal = useCallback((): CostBreakdown => {
         const items = formData.step4.items;
         const itemsSubtotal = items.reduce((sum, item) => {
+            // Skip items marked for selling
+            if (item.forSelling && item.canSell) return sum;
             const price = parseInt(item.unitPrice.replace(/\./g, ""), 10) || 0;
             const qty = item.quantity || 1;
             return sum + price * qty;

@@ -320,21 +320,37 @@ const Step5: React.FC<Props> = ({ data, onUpdateItem }) => {
 
                                 {/* Price */}
                                 <div className="pt-2 border-t border-gray-100 mt-auto">
-                                    <div className="flex items-center justify-between">
-                                        <span className="text-xs text-gray-500">Unit price</span>
-                                        <span className="text-sm font-bold text-orange-600">
-                                            {formatYen(unitPrice)}
-                                        </span>
-                                    </div>
-                                    {(item.quantity || 1) > 1 && (
-                                        <div className="flex items-center justify-between mt-1">
-                                            <span className="text-xs text-gray-500">
-                                                × {item.quantity}
-                                            </span>
-                                            <span className="text-sm font-bold text-gray-900">
-                                                {formatYen(itemTotal)}
-                                            </span>
+                                    {item.forSelling && item.canSell ? (
+                                        <div className="space-y-1">
+                                            <div className="flex items-center justify-between">
+                                                <span className="text-xs text-gray-500">Unit price</span>
+                                                <span className="text-sm font-bold text-orange-500">
+                                                    To Be Appraised
+                                                </span>
+                                            </div>
+                                            <p className="text-xs text-gray-400">
+                                                Price will be provided after assessment
+                                            </p>
                                         </div>
+                                    ) : (
+                                        <>
+                                            <div className="flex items-center justify-between">
+                                                <span className="text-xs text-gray-500">Unit price</span>
+                                                <span className="text-sm font-bold text-orange-600">
+                                                    {formatYen(unitPrice)}
+                                                </span>
+                                            </div>
+                                            {(item.quantity || 1) > 1 && (
+                                                <div className="flex items-center justify-between mt-1">
+                                                    <span className="text-xs text-gray-500">
+                                                        × {item.quantity}
+                                                    </span>
+                                                    <span className="text-sm font-bold text-gray-900">
+                                                        {formatYen(itemTotal)}
+                                                    </span>
+                                                </div>
+                                            )}
+                                        </>
                                     )}
                                 </div>
                             </div>
@@ -344,20 +360,30 @@ const Step5: React.FC<Props> = ({ data, onUpdateItem }) => {
             </div>
 
             {/* Grand Total */}
-            <div className="bg-orange-50 border border-orange-200 rounded-xl p-4 flex items-center justify-between">
-                <span className="text-sm font-semibold text-orange-800">
-                    Items Subtotal
-                </span>
-                <span className="text-lg font-bold text-orange-800">
-                    {formatYen(
-                        data.items.reduce(
-                            (sum, item) =>
-                                sum +
-                                (parseFloat(item.unitPrice) || 0) * (item.quantity || 1),
-                            0
-                        )
-                    )}
-                </span>
+            <div className="bg-orange-50 border border-orange-200 rounded-xl p-4 space-y-2">
+                <div className="flex items-center justify-between">
+                    <span className="text-sm font-semibold text-orange-800">
+                        Items Subtotal
+                    </span>
+                    <span className="text-lg font-bold text-orange-800">
+                        {formatYen(
+                            data.items.reduce(
+                                (sum, item) => {
+                                    // Skip items marked for selling
+                                    if (item.forSelling && item.canSell) return sum;
+                                    return sum + (parseFloat(item.unitPrice) || 0) * (item.quantity || 1);
+                                },
+                                0
+                            )
+                        )}
+                    </span>
+                </div>
+                {/* Show count of appraisal items */}
+                {data.items.filter(item => item.forSelling && item.canSell).length > 0 && (
+                    <p className="text-xs text-orange-600">
+                        * {data.items.filter(item => item.forSelling && item.canSell).length} item(s) to be appraised — not included in subtotal
+                    </p>
+                )}
             </div>
         </div>
     );
