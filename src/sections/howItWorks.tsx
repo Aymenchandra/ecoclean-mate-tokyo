@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 export default function HowItWorks() {
     const steps = [
         {
@@ -110,12 +112,12 @@ export default function HowItWorks() {
                 <div className="mt-16 text-center">
                     <div className="inline-flex items-center gap-3 px-6 py-3 bg-white/5 border border-white/10 rounded-full backdrop-blur-sm">
                         <span className="text-gray-400 text-sm">ご依頼をお考えですか？</span>
-                        <a href="/contact" className="text-orange-500 font-semibold text-sm hover:text-orange-400 transition-colors duration-300 flex items-center gap-1">
+                        <Link to="/contact" className="text-orange-500 font-semibold text-sm hover:text-orange-400 transition-colors duration-300 flex items-center gap-1">
                             今すぐお問い合わせ
                             <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                             </svg>
-                        </a>
+                        </Link>
                     </div>
                 </div>
             </div>

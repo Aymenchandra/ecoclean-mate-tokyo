@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import navLinks from "../../constants/navLinks";
 import logo from '/assets/logo/eco-clean.png';
+import { Link } from 'react-router-dom';
 
 export default function Navbar() {
     const [mobileOpen, setMobileOpen] = useState(false);
@@ -48,8 +49,8 @@ export default function Navbar() {
                 aria-label="グローバル"
             >
                 {/* ロゴ */}
-                <a
-                    href="/"
+                <Link
+                    to="/"
                     className="flex items-center gap-2.5 group"
                 >
                     <div className="relative">
@@ -63,7 +64,7 @@ export default function Navbar() {
                     <span className="text-xl font-bold text-gray-900 dark:text-white group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-orange-500 group-hover:to-orange-600 transition-all duration-300">
                         エコクリーン MATE 東京
                     </span>
-                </a>
+                </Link>
 
                 {/* デスクトップナビゲーション */}
                 <div className="hidden lg:flex lg:items-center lg:gap-x-1">
@@ -72,9 +73,9 @@ export default function Navbar() {
                         const isActive = activeSection === sectionId;
 
                         return (
-                            <a
+                            <Link
                                 key={link.path}
-                                href={link.path}
+                                to={link.path}
                                 className={`relative px-4 py-2 text-sm font-medium capitalize transition-all duration-300 rounded-lg ${isActive
                                     ? "text-orange-600 dark:text-orange-400 bg-orange-50 dark:bg-orange-500/10"
                                     : "text-gray-700 dark:text-gray-300 hover:text-orange-500 dark:hover:text-orange-400 hover:bg-orange-50/50 dark:hover:bg-orange-500/5"
@@ -84,17 +85,17 @@ export default function Navbar() {
                                 {isActive && (
                                     <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-6 h-0.5 bg-gradient-to-r from-orange-500 to-orange-600 rounded-full"></span>
                                 )}
-                            </a>
+                            </Link>
                         );
                     })}
 
                     {/* CTAボタン */}
-                    <a
-                        href="/contact"
+                    <Link
+                        to="/contact"
                         className="ml-4 px-5 py-2.5 bg-gradient-to-r from-orange-500 to-orange-600 text-white rounded-full text-sm font-semibold hover:from-orange-600 hover:to-orange-700 transition-all duration-300 shadow-lg hover:shadow-xl hover:shadow-orange-500/25 transform hover:-translate-y-0.5"
                     >
                         お見積り
-                    </a>
+                    </Link>
 
                     {/* 区切り線 */}
                     <div className="mx-2 w-px h-6 bg-gray-200 dark:bg-gray-700"></div>
@@ -148,19 +149,19 @@ export default function Navbar() {
                 <div className="bg-white dark:bg-gray-900 rounded-2xl shadow-2xl border border-gray-100 dark:border-gray-800 p-2 mt-2">
                     <div className="flex flex-col p-2">
                         {navLinks.map((link) => (
-                            <a
+                            <Link
                                 key={link.path}
-                                href={link.path}
+                                to={link.path}
                                 className="flex items-center gap-3 px-4 py-3 text-sm font-medium capitalize text-gray-700 dark:text-gray-300 hover:text-orange-500 dark:hover:text-orange-400 hover:bg-orange-50 dark:hover:bg-orange-500/5 rounded-xl transition-all duration-300"
                                 onClick={() => setMobileOpen(false)}
                             >
                                 <span className="w-1.5 h-1.5 bg-orange-500 rounded-full"></span>
                                 {link.label}
-                            </a>
+                            </Link>
                         ))}
                         <div className="border-t border-gray-100 dark:border-gray-800 my-2"></div>
-                        <a
-                            href="/contact"
+                        <Link
+                            to="/contact"
                             className="flex items-center justify-center gap-2 mx-2 px-4 py-3 bg-gradient-to-r from-orange-500 to-orange-600 text-white rounded-xl text-sm font-semibold hover:from-orange-600 hover:to-orange-700 transition-all duration-300"
                             onClick={() => setMobileOpen(false)}
                         >
@@ -168,7 +169,7 @@ export default function Navbar() {
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                             </svg>
                             お見積り
-                        </a>
+                        </Link>
                     </div>
                 </div>
             </div>

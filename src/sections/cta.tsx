@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 export default function CTA() {
     return (
         <section className="relative bg-white py-16 sm:py-20 lg:py-28 overflow-hidden">
@@ -46,15 +48,15 @@ export default function CTA() {
                         </div>
 
                         {/* CTAボタン */}
-                        <a
-                            href="/contact"
+                        <Link
+                            to="/contact"
                             className="group relative inline-flex items-center gap-2 bg-white text-orange-600 px-8 py-4 rounded-full text-base font-bold hover:bg-orange-50 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 mb-6"
                         >
                             <span>お問い合わせ</span>
                             <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
                             </svg>
-                        </a>
+                        </Link>
                     </div>
                 </div>
             </div>

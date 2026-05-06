@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import heroImg from '/assets/images/hero-img.png';
 
 {/* ヒーローセクション */ }
@@ -44,11 +45,10 @@ export default function heroSection() {
                                 strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
                         </svg>
                     </button>
-                    <a className="group relative overflow-hidden border-2 border-orange-500 text-orange-600 px-6 py-3 rounded-full text-sm font-semibold hover:text-white transition-all duration-300"
-                        href="#">
+                    <Link to="/" className="group relative overflow-hidden border-2 border-orange-500 text-orange-600 px-6 py-3 rounded-full text-sm font-semibold hover:text-white transition-all duration-300">
                         <span className="absolute inset-0 bg-gradient-to-r from-orange-500 to-orange-600 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></span>
                         <span className="relative z-10">緊急連絡：090-1432-7757</span>
-                    </a>
+                    </Link>
                 </div>
 
                 {/* 実績 */}

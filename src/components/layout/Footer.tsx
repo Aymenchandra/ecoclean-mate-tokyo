@@ -1,27 +1,28 @@
 import logo from '/assets/logo/eco-clean.png';
+import { Link } from 'react-router-dom';
 
 export default function Footer() {
     const currentYear = new Date().getFullYear();
 
     const footerLinks = {
         services: [
-            { label: "徹底清掃", href: "#" },
-            { label: "消毒", href: "#" },
-            { label: "不用品回収", href: "#" },
-            { label: "整理整頓", href: "#" },
-            { label: "遺品整理", href: "#" },
+            { label: "徹底清掃", href: "/" },
+            { label: "消毒", href: "/" },
+            { label: "不用品回収", href: "/" },
+            { label: "整理整頓", href: "/" },
+            { label: "遺品整理", href: "/" },
         ],
         company: [
-            { label: "会社概要", href: "#" },
-            { label: "スタッフ紹介", href: "#" },
-            { label: "採用情報", href: "#" },
-            { label: "ブログ", href: "#" },
+            { label: "会社概要", href: "/" },
+            { label: "スタッフ紹介", href: "/" },
+            { label: "採用情報", href: "/" },
+            { label: "ブログ", href: "/" },
         ],
         support: [
-            { label: "お問い合わせ", href: "#" },
-            { label: "よくある質問", href: "#" },
-            { label: "プライバシーポリシー", href: "#" },
-            { label: "利用規約", href: "#" },
+            { label: "お問い合わせ", href: "/" },
+            { label: "よくある質問", href: "/" },
+            { label: "プライバシーポリシー", href: "/" },
+            { label: "利用規約", href: "/" },
         ],
     };
 
@@ -46,12 +47,12 @@ export default function Footer() {
                     {/* ブランドカラム */}
                     <div className="lg:col-span-2">
                         {/* ロゴ */}
-                        <a href="/" className="inline-flex items-center gap-2 mb-6">
+                        <Link to="/" className="inline-flex items-center gap-2 mb-6">
                             <div className="flex items-center justify-center w-10 h-10 bg-gradient-to-br from-orange-500 to-orange-600 rounded-xl">
                                 <img src={logo} alt="ロゴ" className="w-6 h-6 text-white" />
                             </div>
                             <span className="text-xl font-bold text-white">エコクリーン MATE 東京</span>
-                        </a>
+                        </Link>
 
                         <p className="text-gray-400 mb-8 max-w-md leading-relaxed">
                             多くのお客様に信頼されているプロフェッショナルな清掃・整理サービス。
@@ -60,8 +61,8 @@ export default function Footer() {
 
                         {/* ソーシャルリンク */}
                         <div className="flex items-center gap-4">
-                            <a
-                                href="https://x.com/eco_clean_mate#CASE"
+                            <Link
+                                to="https://x.com/eco_clean_mate#CASE"
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 aria-label="X（旧Twitter）"
@@ -70,9 +71,9 @@ export default function Footer() {
                                 <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
                                     <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
                                 </svg>
-                            </a>
-                            <a
-                                href="https://page.line.me/759mdnmo?openQrModal=true"
+                            </Link>
+                            <Link
+                                to="https://page.line.me/759mdnmo?openQrModal=true"
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 aria-label="LINE"
@@ -81,7 +82,7 @@ export default function Footer() {
                                 <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
                                     <path d="M19.365 9.863a.631.631 0 010 1.261H17.61v1.125h1.755a.63.63 0 110 1.259H16.98a.63.63 0 01-.627-.629V9.863a.63.63 0 01.629-.63h2.384zm-3.229 0a.631.631 0 010 1.261h-.631v1.125h.63a.63.63 0 110 1.259h-1.257a.63.63 0 01-.629-.629V9.863a.63.63 0 01.629-.63h1.258zm-3.618.042c.312 0 .59.185.703.455l1.01 2.412a.63.63 0 11-1.17.488l-.133-.324h-1.1l-.133.324a.63.63 0 11-1.17-.488l1.01-2.412a.737.737 0 01.703-.455zm-.343 1.83h.686l-.343-.847-.343.847zm-3.17-1.83a.63.63 0 01.63.629v2.455a.63.63 0 11-1.259 0v-2.455a.63.63 0 01.629-.629zm-3.144 0h1.257a.63.63 0 01.629.629v2.455a.63.63 0 11-1.259 0v-.629h-.627v.629a.63.63 0 11-1.259 0V9.863a.63.63 0 01.629-.629zm.627 1.26h-.627v.627h.627v-.627zm15.955-1.26a.63.63 0 01.63.629v2.455a.63.63 0 11-1.259 0v-.629H20.98v.629a.63.63 0 11-1.259 0V9.863a.63.63 0 01.629-.629zm.627 1.26h-.627v.627h.627v-.627z" />
                                 </svg>
-                            </a>
+                            </Link>
                         </div>
                     </div>
 
@@ -91,13 +92,13 @@ export default function Footer() {
                         <ul className="space-y-4">
                             {footerLinks.services.map((link, index) => (
                                 <li key={index}>
-                                    <a
-                                        href={link.href}
+                                    <Link
+                                        to={link.href}
                                         className="text-gray-400 hover:text-orange-500 transition-colors duration-300 text-sm flex items-center gap-2 group"
                                     >
                                         <span className="w-0 group-hover:w-3 h-px bg-gradient-to-r from-orange-500 to-orange-600 transition-all duration-300"></span>
                                         {link.label}
-                                    </a>
+                                    </Link>
                                 </li>
                             ))}
                         </ul>
@@ -109,13 +110,13 @@ export default function Footer() {
                         <ul className="space-y-4">
                             {footerLinks.company.map((link, index) => (
                                 <li key={index}>
-                                    <a
-                                        href={link.href}
+                                    <Link
+                                        to={link.href}
                                         className="text-gray-400 hover:text-orange-500 transition-colors duration-300 text-sm flex items-center gap-2 group"
                                     >
                                         <span className="w-0 group-hover:w-3 h-px bg-gradient-to-r from-orange-500 to-orange-600 transition-all duration-300"></span>
                                         {link.label}
-                                    </a>
+                                    </Link>
                                 </li>
                             ))}
                         </ul>
@@ -127,13 +128,13 @@ export default function Footer() {
                         <ul className="space-y-4">
                             {footerLinks.support.map((link, index) => (
                                 <li key={index}>
-                                    <a
-                                        href={link.href}
+                                    <Link
+                                        to={link.href}
                                         className="text-gray-400 hover:text-orange-500 transition-colors duration-300 text-sm flex items-center gap-2 group"
                                     >
                                         <span className="w-0 group-hover:w-3 h-px bg-gradient-to-r from-orange-500 to-orange-600 transition-all duration-300"></span>
                                         {link.label}
-                                    </a>
+                                    </Link>
                                 </li>
                             ))}
                         </ul>
@@ -144,14 +145,14 @@ export default function Footer() {
                 <div className="mt-16 pt-8 border-t border-white/10">
                     <div className="flex flex-col md:flex-row items-center justify-between gap-4">
                         <p className="text-gray-500 text-sm text-center md:text-left">
-                            © {currentYear} Ecoclean Mate. All rights reserved. 清潔な空間のために❤️を込めて。
+                            © {currentYear} エコクリーン MATE 東京. All rights reserved. 清潔な空間のために を込めて。
                         </p>
                         <div className="flex items-center gap-4">
-                            <a href="#" className="text-gray-500 hover:text-orange-500 transition-colors duration-300 text-sm">プライバシーポリシー</a>
+                            <Link to="/" className="text-gray-500 hover:text-orange-500 transition-colors duration-300 text-sm">プライバシーポリシー</Link>
                             <span className="text-gray-600">•</span>
-                            <a href="#" className="text-gray-500 hover:text-orange-500 transition-colors duration-300 text-sm">利用規約</a>
+                            <Link to="/" className="text-gray-500 hover:text-orange-500 transition-colors duration-300 text-sm">利用規約</Link>
                             <span className="text-gray-600">•</span>
-                            <a href="#" className="text-gray-500 hover:text-orange-500 transition-colors duration-300 text-sm">Cookieポリシー</a>
+                            <Link to="/" className="text-gray-500 hover:text-orange-500 transition-colors duration-300 text-sm">Cookieポリシー</Link>
                         </div>
                     </div>
                 </div>

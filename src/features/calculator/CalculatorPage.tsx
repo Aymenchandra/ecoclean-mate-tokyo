@@ -11,6 +11,7 @@ import Step5 from "./steps/Step5";
 import Step6 from "./steps/Step6";
 import Step7 from "./steps/Step7";
 import Step8 from "./steps/Step8";
+import { Link } from "react-router-dom";
 
 // ---------------------------------------------------------------------------
 // Success screen
@@ -40,12 +41,12 @@ const SuccessScreen: React.FC<{ onReset: () => void }> = ({ onReset }) => (
             >
                 New Estimate
             </button>
-            <a
-                href="/"
+            <Link
+                to="/"
                 className="px-6 py-2.5 border border-gray-300 text-gray-600 hover:bg-gray-50 text-sm font-semibold rounded-lg transition-colors"
             >
                 Back to Home
-            </a>
+            </Link>
         </div>
     </div>
 );
