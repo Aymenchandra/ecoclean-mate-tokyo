@@ -1,0 +1,362 @@
+{
+  "nav": {
+    "home": "Home",
+    "pricing": "Pricing",
+    "contact": "Contact",
+    "estimate": "Estimate"
+  },
+  "brand": {
+    "name": "Ecoclean MATE Tokyo"
+  },
+  "hero": {
+    "badge": "24/7 Available・Quick Response",
+    "title": {
+      "part1": "Ecoclean MATE Tokyo",
+      "part2": "Professional Cleaning"
+    },
+    "description": "We handle junk removal, virus disinfection, estate organization, pre-mortem sorting, and hoarding house cleaning in Tokyo, Kanagawa, Saitama, and Chiba areas.",
+    "cta": {
+      "primary": "Contact: 03-6885-9300",
+      "secondary": "Emergency: 090-1432-7757"
+    },
+    "stats": {
+      "monthly": {
+        "number": "100+",
+        "label": "Monthly Requests"
+      },
+      "available": {
+        "number": "365",
+        "label": "Days Available"
+      },
+      "rating": {
+        "number": "5",
+        "label": "Customer Rating"
+      }
+    },
+    "imageAlt": "Hero image"
+  },
+  "logoGrid": {
+    "subtitle": "Trusted by the Industry",
+    "title": "Certifications",
+    "bottomText": "Trusted by over 100 companies"
+  },
+  "howItWorks": {
+    "badge": "Simple 3 Steps",
+    "title": "How It Works",
+    "description": "Our professional team delivers a smooth experience from start to finish",
+    "steps": {
+      "consultation": {
+        "title": "Inquiry & Consultation",
+        "description": "Tell us your needs for junk removal, cleaning, disinfection, organizing, and more. We carefully listen and provide a quick and reasonable estimate tailored to your situation."
+      },
+      "schedule": {
+        "title": "Schedule & Preparation",
+        "description": "Choose a convenient date and time. We thoroughly prepare in advance for any special requests, including female staff requests or handling of special items."
+      },
+      "completion": {
+        "title": "Professional Service & Completion",
+        "description": "Our trained staff arrives on time and completes the work efficiently and carefully. We clean and organize your space so it's ready for immediate use."
+      }
+    },
+    "cta": {
+      "question": "Ready to get started?",
+      "action": "Contact Us Now"
+    }
+  },
+  "stats": {
+    "badge": "Results in Numbers",
+    "title": "Our Achievements",
+    "description": "Join our growing community of customers and professionals",
+    "items": {
+      "monthlyServices": {
+        "value": "50+",
+        "label": "Monthly Services"
+      },
+      "satisfaction": {
+        "value": "98%",
+        "label": "Customer Satisfaction"
+      },
+      "totalHours": {
+        "value": "400+",
+        "label": "Total Service Hours"
+      },
+      "corporateClients": {
+        "value": "50+",
+        "label": "Corporate Clients"
+      }
+    },
+    "bottomText": "Trusted by many companies"
+  },
+  "whyUs": {
+    "badge": "Why Choose Us",
+    "title": "Why People Contact Us",
+    "description": "See why so many customers trust our services",
+    "benefits": {
+      "costPerformance": {
+        "title": "Cost Performance",
+        "description": "We provide high-quality services at competitive prices compared to other companies. From a single rice cooker to entire property cleanouts, we maintain transparent and reasonable pricing for both individual and corporate clients. We've received high ratings from many customers on 'Kurashi no Market'."
+      },
+      "speedEfficiency": {
+        "title": "Speed & Efficiency",
+        "description": "Speed is one of our strengths. With our 'Service First' motto, we complete work as quickly as possible without compromising quality. Leveraging our experience handling over 100 monthly requests (currently over 150), we provide speedy service even during peak seasons in Tokyo, Kanagawa, Saitama, and Chiba areas."
+      },
+      "experiencedStaff": {
+        "title": "Experienced Staff",
+        "description": "Our staff brings extensive expertise in junk removal, virus disinfection, estate organization, pre-mortem sorting, and hoarding house cleaning to every project. We can also accommodate requests for female staff members for clients who prefer them (reservation required one week in advance)."
+      }
+    }
+  },
+  "team": {
+    "title": "Our Team",
+    "description": "Our team consists of professionals dedicated to providing the best service possible",
+    "rating": "Rating 4.9",
+    "certified": "Certified",
+    "members": {
+      "owner": {
+        "name": "Manabu Umeda",
+        "role": "Owner",
+        "description": "Organizing a deceased person's belongings is more mentally burdening and challenging than one might imagine. Having lost both of my parents 15 years ago, I deeply understand the grief and hardship of bereaved families. That's why I prioritize the feelings of family members and work daily with the motto of 'compassionate organization of belongings.' More than anything, the moment when a client says 'thank you' is the greatest reward and joy for me."
+      },
+      "staff": {
+        "name": "Kei Inagawa",
+        "role": "Staff",
+        "description": "I believe the true purpose of this work is to help bereaved families preserve precious memories in the best possible way as keepsakes, while continuing good deeds through the purchase, recycling, and donation of unwanted items. I dedicate myself daily to 'supporting with compassion' for those left behind."
+      }
+    }
+  },
+  "carousel": {
+    "badge": "Service List",
+    "title": "Services",
+    "subtitle": "Professional care for every space",
+    "prev": "Previous",
+    "next": "Next",
+    "imageAlt": "Service image {{index}}",
+    "goToSlide": "Go to slide {{slide}}",
+    "navHint": "Use arrows or dots to navigate • Click card to select"
+  },
+  "cta": {
+    "heading": "Ready to transform your space?",
+    "subtitle": "Join our community of satisfied customers who trust us for their cleaning and organizing needs",
+    "counter": {
+      "number": "890",
+      "label": "customers have already booked"
+    },
+    "button": "Contact Us"
+  },
+  "footer": {
+    "description": "Professional cleaning and organizing services trusted by many customers. We make your space clean, healthy, and organized.",
+    "social": {
+      "x": "X (formerly Twitter)",
+      "line": "LINE"
+    },
+    "sections": {
+      "services": "Services",
+      "company": "Company",
+      "support": "Support"
+    },
+    "links": {
+      "deepCleaning": "Deep Cleaning",
+      "disinfection": "Disinfection",
+      "junkRemoval": "Junk Removal",
+      "organizing": "Organizing",
+      "estateOrganization": "Estate Organization",
+      "about": "About Us",
+      "team": "Our Team",
+      "careers": "Careers",
+      "blog": "Blog",
+      "contact": "Contact",
+      "faq": "FAQ",
+      "privacy": "Privacy Policy",
+      "terms": "Terms of Service",
+      "cookies": "Cookie Policy"
+    },
+    "copyright": "© {{year}} Ecoclean MATE Tokyo. All rights reserved."
+  },
+  "contact": {
+    "badge": "Contact Us",
+    "title": "Contact Us",
+    "description": "Please feel free to contact us with any questions or requests",
+    "info": {
+      "phone": {
+        "title": "Phone",
+        "details": [
+          {
+            "label": "Main Number",
+            "value": "03-6885-9300"
+          },
+          {
+            "label": "Direct Line",
+            "value": "090-1432-7757"
+          }
+        ]
+      },
+      "address": {
+        "title": "Address",
+        "details": [
+          {
+            "label": "Location",
+            "value": "〒176-0025 2-19-15 Nakamura Minami, Nerima-ku, Tokyo"
+          }
+        ]
+      },
+      "hours": {
+        "title": "Business Hours",
+        "details": [
+          {
+            "label": "Weekdays",
+            "value": "9:00～21:00"
+          },
+          {
+            "label": "Weekends & Holidays",
+            "value": "9:00～20:00"
+          },
+          {
+            "label": "Closed",
+            "value": "Open 365 days"
+          }
+        ]
+      }
+    },
+    "certifications": {
+      "title": "Certifications",
+      "antiqueLicense": {
+        "label": "Secondhand Goods Dealer License",
+        "value": "Tokyo Public Safety Commission No. 305572015633"
+      },
+      "estateOrganizer": {
+        "label": "Certified Estate Organizer",
+        "value": "Certification No. IS24460"
+      }
+    },
+    "map": {
+      "title": "Ecoclean Mate Office Location",
+      "label": "Office Location",
+      "address": "〒176-0025 2-19-15 Nakamura Minami, Nerima-ku, Tokyo"
+    },
+    "areas": {
+      "title": "Service Areas",
+      "list": [
+        "All of Tokyo (excluding remote islands)",
+        "Saitama: Kawaguchi, Tokorozawa, Warabi, Toda, Asaka, Wako, Niiza, Fujimino",
+        "Kanagawa: Yokohama (Tsurumi, Kohoku, Aoba, Tsuzuki), Kawasaki (Kawasaki, Saiwai, Nakahara, Takatsu, Tama, Miyamae, Asao)",
+        "Chiba: Nagareyama, Matsudo, Funabashi, Ichikawa, Kashiwa, Narashino, Chiba City"
+      ]
+    }
+  },
+  "pricing": {
+    "hero": {
+      "title": {
+        "part1": "Transparent Pricing for",
+        "part2": "Every Item"
+      },
+      "description": "Get an instant estimate for collecting and disposing your unwanted items. No hidden fees, no surprises.",
+      "cta": "Get Your Free Estimate"
+    },
+    "howItWorks": {
+      "title": "How It Works",
+      "step": "STEP {{number}}",
+      "steps": {
+        "homeInfo": {
+          "title": "Tell Us About Your Home",
+          "description": "Select your property type, floors, and elevator access so we can prepare accordingly."
+        },
+        "chooseItems": {
+          "title": "Choose Your Items",
+          "description": "Browse our catalog of furniture, appliances, and daily necessities. Add items you want collected."
+        },
+        "getEstimate": {
+          "title": "Get Your Estimate",
+          "description": "Review your cost breakdown and download a PDF estimate. No payment required upfront."
+        }
+      }
+    },
+    "structure": {
+      "title": "Pricing Structure",
+      "description": "Your total is calculated transparently based on these components",
+      "components": {
+        "basicFee": {
+          "label": "Basic Service Fee",
+          "price": "¥3,000",
+          "description": "Applied to every order"
+        },
+        "itemPrice": {
+          "label": "Item Price",
+          "price": "Varies",
+          "description": "Based on size & weight of each item"
+        },
+        "specialWork": {
+          "label": "Special Work",
+          "price": "Optional",
+          "description": "Stair climbing, AC removal, lowering service"
+        },
+        "tax": {
+          "label": "Tax (10%)",
+          "price": "Calculated",
+          "description": "Applied to subtotal"
+        }
+      },
+      "formula": "Total = Basic Fee + Item Prices + Special Work + Tax",
+      "note": "Items you wish to sell are appraised separately and excluded from the estimate."
+    },
+    "areas": {
+      "title": "Service Areas",
+      "description": "We currently serve the following regions in Japan",
+      "list": {
+        "tokyo": {
+          "name": "Tokyo",
+          "areas": "All wards"
+        },
+        "saitama": {
+          "name": "Saitama",
+          "areas": "24 cities"
+        },
+        "kanagawa": {
+          "name": "Kanagawa",
+          "areas": "10 cities"
+        },
+        "chiba": {
+          "name": "Chiba",
+          "areas": "10 cities"
+        },
+        "osaka": {
+          "name": "Osaka",
+          "areas": "All wards & 20+ cities"
+        },
+        "kyoto": {
+          "name": "Kyoto",
+          "areas": "Kyoto City & 12 areas"
+        },
+        "hyogo": {
+          "name": "Hyogo",
+          "areas": "Kobe & 14 cities"
+        },
+        "shiga": {
+          "name": "Shiga",
+          "areas": "8 cities"
+        },
+        "nara": {
+          "name": "Nara",
+          "areas": "9 areas"
+        },
+        "expanding": {
+          "name": "More coming",
+          "areas": "Expanding soon"
+        }
+      }
+    },
+    "notes": {
+      "title": "Please Note",
+      "items": {
+        "noHoistingUpper": "We do not perform hoisting operations from floors 3 or higher",
+        "noHoistingAppliances": "We do not perform hoisting operations for home appliances",
+        "appraisalAfter": "Items marked for selling will be appraised after submission",
+        "estimateOnly": "This is an estimate — final pricing confirmed upon assessment"
+      }
+    },
+    "cta": {
+      "title": "Ready to Get Started?",
+      "description": "Answer a few questions and get your estimate in minutes.",
+      "button": "Start Free Estimate"
+    }
+  }
+}

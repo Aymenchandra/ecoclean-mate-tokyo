@@ -1,40 +1,43 @@
-import logo from '/assets/logo/eco-clean.png';
-import { Link } from 'react-router-dom';
+import { memo } from "react";
+import { useTranslation } from "react-i18next";
+import { Link } from "react-router-dom";
+import logo from "/assets/logo/eco-clean.png";
 
-export default function Footer() {
+const Footer = memo(function Footer() {
+    const { t } = useTranslation();
     const currentYear = new Date().getFullYear();
 
     const footerLinks = {
         services: [
-            { label: "徹底清掃", href: "/" },
-            { label: "消毒", href: "/" },
-            { label: "不用品回収", href: "/" },
-            { label: "整理整頓", href: "/" },
-            { label: "遺品整理", href: "/" },
+            { key: "deepCleaning", href: "/" },
+            { key: "disinfection", href: "/" },
+            { key: "junkRemoval", href: "/" },
+            { key: "organizing", href: "/" },
+            { key: "estateOrganization", href: "/" },
         ],
         company: [
-            { label: "会社概要", href: "/" },
-            { label: "スタッフ紹介", href: "/" },
-            { label: "採用情報", href: "/" },
-            { label: "ブログ", href: "/" },
+            { key: "about", href: "/" },
+            { key: "team", href: "/" },
+            { key: "careers", href: "/" },
+            { key: "blog", href: "/" },
         ],
         support: [
-            { label: "お問い合わせ", href: "/" },
-            { label: "よくある質問", href: "/" },
-            { label: "プライバシーポリシー", href: "/" },
-            { label: "利用規約", href: "/" },
+            { key: "contact", href: "/" },
+            { key: "faq", href: "/" },
+            { key: "privacy", href: "/" },
+            { key: "terms", href: "/" },
         ],
     };
 
     return (
         <footer className="relative bg-gray-900 pt-16 sm:pt-20 lg:pt-24 overflow-hidden">
-            {/* 背景の装飾 */}
+            {/* Background decoration */}
             <div className="absolute inset-0 pointer-events-none">
                 <div className="absolute top-0 right-0 w-96 h-96 bg-orange-500/5 rounded-full filter blur-3xl"></div>
                 <div className="absolute bottom-0 left-0 w-96 h-96 bg-orange-600/5 rounded-full filter blur-3xl"></div>
             </div>
 
-            {/* 上部ウェーブ区切り */}
+            {/* Top wave divider */}
             <div className="absolute top-0 left-0 right-0">
                 <svg className="w-full h-12 text-white fill-current" viewBox="0 0 1440 48" xmlns="http://www.w3.org/2000/svg">
                     <path d="M0 48h1440V0c-196 28-392 20-588 18-196-2-392-8-588 2C68 28 0 48 0 48z" />
@@ -42,30 +45,29 @@ export default function Footer() {
             </div>
 
             <div className="relative container mx-auto px-4 sm:px-6 lg:px-8">
-                {/* メインフッターコンテンツ */}
+                {/* Main footer content */}
                 <div className="grid grid-cols-1 gap-12 sm:grid-cols-2 lg:grid-cols-5">
-                    {/* ブランドカラム */}
+                    {/* Brand column */}
                     <div className="lg:col-span-2">
-                        {/* ロゴ */}
+                        {/* Logo */}
                         <Link to="/" className="inline-flex items-center gap-2 mb-6">
                             <div className="flex items-center justify-center w-10 h-10 bg-gradient-to-br from-orange-500 to-orange-600 rounded-xl">
-                                <img src={logo} alt="ロゴ" className="w-6 h-6 text-white" />
+                                <img src={logo} alt={t("brand.name")} className="w-6 h-6" />
                             </div>
-                            <span className="text-xl font-bold text-white">エコクリーン MATE 東京</span>
+                            <span className="text-xl font-bold text-white">{t("brand.name")}</span>
                         </Link>
 
                         <p className="text-gray-400 mb-8 max-w-md leading-relaxed">
-                            多くのお客様に信頼されているプロフェッショナルな清掃・整理サービス。
-                            お客様の空間を清潔で健康的、そして整頓された状態にいたします。
+                            {t("footer.description")}
                         </p>
 
-                        {/* ソーシャルリンク */}
+                        {/* Social links */}
                         <div className="flex items-center gap-4">
                             <Link
                                 to="https://x.com/eco_clean_mate#CASE"
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                aria-label="X（旧Twitter）"
+                                aria-label={t("footer.social.x")}
                                 className="flex items-center justify-center w-10 h-10 rounded-xl bg-white/5 border border-white/10 text-gray-400 hover:text-orange-500 hover:border-orange-500/50 hover:bg-orange-500/10 transition-all duration-300"
                             >
                                 <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
@@ -76,7 +78,7 @@ export default function Footer() {
                                 to="https://page.line.me/759mdnmo?openQrModal=true"
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                aria-label="LINE"
+                                aria-label={t("footer.social.line")}
                                 className="flex items-center justify-center w-10 h-10 rounded-xl bg-white/5 border border-white/10 text-gray-400 hover:text-orange-500 hover:border-orange-500/50 hover:bg-orange-500/10 transition-all duration-300"
                             >
                                 <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
@@ -86,54 +88,60 @@ export default function Footer() {
                         </div>
                     </div>
 
-                    {/* サービスリンク */}
+                    {/* Services links */}
                     <div>
-                        <h3 className="text-white font-semibold text-sm uppercase tracking-wider mb-6">サービス</h3>
+                        <h3 className="text-white font-semibold text-sm uppercase tracking-wider mb-6">
+                            {t("footer.sections.services")}
+                        </h3>
                         <ul className="space-y-4">
-                            {footerLinks.services.map((link, index) => (
-                                <li key={index}>
+                            {footerLinks.services.map((link) => (
+                                <li key={link.key}>
                                     <Link
                                         to={link.href}
                                         className="text-gray-400 hover:text-orange-500 transition-colors duration-300 text-sm flex items-center gap-2 group"
                                     >
                                         <span className="w-0 group-hover:w-3 h-px bg-gradient-to-r from-orange-500 to-orange-600 transition-all duration-300"></span>
-                                        {link.label}
+                                        {t(`footer.links.${link.key}`)}
                                     </Link>
                                 </li>
                             ))}
                         </ul>
                     </div>
 
-                    {/* 会社リンク */}
+                    {/* Company links */}
                     <div>
-                        <h3 className="text-white font-semibold text-sm uppercase tracking-wider mb-6">会社情報</h3>
+                        <h3 className="text-white font-semibold text-sm uppercase tracking-wider mb-6">
+                            {t("footer.sections.company")}
+                        </h3>
                         <ul className="space-y-4">
-                            {footerLinks.company.map((link, index) => (
-                                <li key={index}>
+                            {footerLinks.company.map((link) => (
+                                <li key={link.key}>
                                     <Link
                                         to={link.href}
                                         className="text-gray-400 hover:text-orange-500 transition-colors duration-300 text-sm flex items-center gap-2 group"
                                     >
                                         <span className="w-0 group-hover:w-3 h-px bg-gradient-to-r from-orange-500 to-orange-600 transition-all duration-300"></span>
-                                        {link.label}
+                                        {t(`footer.links.${link.key}`)}
                                     </Link>
                                 </li>
                             ))}
                         </ul>
                     </div>
 
-                    {/* サポートリンク */}
+                    {/* Support links */}
                     <div>
-                        <h3 className="text-white font-semibold text-sm uppercase tracking-wider mb-6">サポート</h3>
+                        <h3 className="text-white font-semibold text-sm uppercase tracking-wider mb-6">
+                            {t("footer.sections.support")}
+                        </h3>
                         <ul className="space-y-4">
-                            {footerLinks.support.map((link, index) => (
-                                <li key={index}>
+                            {footerLinks.support.map((link) => (
+                                <li key={link.key}>
                                     <Link
                                         to={link.href}
                                         className="text-gray-400 hover:text-orange-500 transition-colors duration-300 text-sm flex items-center gap-2 group"
                                     >
                                         <span className="w-0 group-hover:w-3 h-px bg-gradient-to-r from-orange-500 to-orange-600 transition-all duration-300"></span>
-                                        {link.label}
+                                        {t(`footer.links.${link.key}`)}
                                     </Link>
                                 </li>
                             ))}
@@ -141,22 +149,30 @@ export default function Footer() {
                     </div>
                 </div>
 
-                {/* 下部バー */}
+                {/* Bottom bar */}
                 <div className="mt-16 pt-8 border-t border-white/10">
                     <div className="flex flex-col md:flex-row items-center justify-between gap-4">
                         <p className="text-gray-500 text-sm text-center md:text-left">
-                            © {currentYear} エコクリーン MATE 東京. All rights reserved. 清潔な空間のために を込めて。
+                            {t("footer.copyright", { year: currentYear })}
                         </p>
                         <div className="flex items-center gap-4">
-                            <Link to="/" className="text-gray-500 hover:text-orange-500 transition-colors duration-300 text-sm">プライバシーポリシー</Link>
+                            <Link to="/" className="text-gray-500 hover:text-orange-500 transition-colors duration-300 text-sm">
+                                {t("footer.links.privacy")}
+                            </Link>
                             <span className="text-gray-600">•</span>
-                            <Link to="/" className="text-gray-500 hover:text-orange-500 transition-colors duration-300 text-sm">利用規約</Link>
+                            <Link to="/" className="text-gray-500 hover:text-orange-500 transition-colors duration-300 text-sm">
+                                {t("footer.links.terms")}
+                            </Link>
                             <span className="text-gray-600">•</span>
-                            <Link to="/" className="text-gray-500 hover:text-orange-500 transition-colors duration-300 text-sm">Cookieポリシー</Link>
+                            <Link to="/" className="text-gray-500 hover:text-orange-500 transition-colors duration-300 text-sm">
+                                {t("footer.links.cookies")}
+                            </Link>
                         </div>
                     </div>
                 </div>
             </div>
         </footer>
     );
-}
+});
+
+export default Footer;

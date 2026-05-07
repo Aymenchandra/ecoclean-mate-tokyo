@@ -1,0 +1,362 @@
+{
+  "nav": {
+    "home": "首頁",
+    "pricing": "收費方案",
+    "contact": "聯絡我們",
+    "estimate": "立即詢價"
+  },
+  "brand": {
+    "name": "Ecoclean MATE 東京"
+  },
+  "hero": {
+    "badge": "全年無休・快速對應",
+    "title": {
+      "part1": "Ecoclean MATE 東京",
+      "part2": "專業清潔"
+    },
+    "description": "我們在東京、神奈川、埼玉、千葉地區提供廢棄物回收、病毒消毒、遺物整理・生前整理、垃圾屋清掃等服務。",
+    "cta": {
+      "primary": "諮詢：03-6885-9300",
+      "secondary": "緊急聯絡：090-1432-7757"
+    },
+    "stats": {
+      "monthly": {
+        "number": "100+",
+        "label": "每月委託件數"
+      },
+      "available": {
+        "number": "365",
+        "label": "全年無休"
+      },
+      "rating": {
+        "number": "5",
+        "label": "客戶評價"
+      }
+    },
+    "imageAlt": "主要圖片"
+  },
+  "logoGrid": {
+    "subtitle": "業界信賴",
+    "title": "認證資格",
+    "bottomText": "獲得100多家企業的信賴"
+  },
+  "howItWorks": {
+    "badge": "簡單3步驟",
+    "title": "使用流程",
+    "description": "專業團隊為您提供從頭到尾的順暢體驗",
+    "steps": {
+      "consultation": {
+        "title": "諮詢與協商",
+        "description": "請告訴我們您對廢棄物回收、清潔、消毒、整理整頓等的需求。我們會仔細聆聽，並根據您的狀況提供快速且合理的報價。"
+      },
+      "schedule": {
+        "title": "日程安排與準備",
+        "description": "請選擇您方便的時間。我們會針對女性工作人員的要求或特殊物品的處理等，事先做好充分準備後前往服務。"
+      },
+      "completion": {
+        "title": "專業服務實施與完成",
+        "description": "經過培訓的員工會準時到達，高效且細心地完成工作。我們會將您的空間整理乾淨，使其達到可立即使用的狀態。"
+      }
+    },
+    "cta": {
+      "question": "正在考慮委託嗎？",
+      "action": "立即聯繫我們"
+    }
+  },
+  "stats": {
+    "badge": "數據中的成果",
+    "title": "我們的成就",
+    "description": "加入我們不斷成長的客戶與專業人士社群",
+    "items": {
+      "monthlyServices": {
+        "value": "50+",
+        "label": "每月服務件數"
+      },
+      "satisfaction": {
+        "value": "98%",
+        "label": "客戶滿意度"
+      },
+      "totalHours": {
+        "value": "400+",
+        "label": "累計服務時數"
+      },
+      "corporateClients": {
+        "value": "50+",
+        "label": "企業客戶"
+      }
+    },
+    "bottomText": "深受眾多企業信賴"
+  },
+  "whyUs": {
+    "badge": "選擇我們的原因",
+    "title": "客戶聯繫我們的理由",
+    "description": "了解為何眾多客戶信賴我們的服務",
+    "benefits": {
+      "costPerformance": {
+        "title": "性價比高",
+        "description": "與其他公司相比，我們在保持高品質的同時提供價格實惠的服務。從單個電鍋到整個房產的清理，我們為個人和企業客戶提供透明且合理的價格設定。我們在「Kurashi no Market」上獲得了眾多客戶的高度評價。"
+      },
+      "speedEfficiency": {
+        "title": "快速高效",
+        "description": "速度是我們的優勢之一。秉持「服務第一」的理念，我們在不降低品質的情況下盡可能快速地完成工作。憑藉每月處理100件以上（目前150件以上）委託的經驗，即使在東京、神奈川、埼玉、千葉地區的繁忙期，也能實現迅速的對應。"
+      },
+      "experiencedStaff": {
+        "title": "經驗豐富的員工",
+        "description": "在廢棄物回收、病毒消毒、遺物整理・生前整理、垃圾屋清掃方面擁有豐富經驗的員工，為各類專案提供專業知識。此外，對於僅有男性員工感到不安的客戶，我們也可對應女性員工的需求（需提前一週預約）。"
+      }
+    }
+  },
+  "team": {
+    "title": "團隊介紹",
+    "description": "我們的團隊由致力於提供最佳服務的專業人士組成",
+    "rating": "評分 4.9",
+    "certified": "持有認證資格",
+    "members": {
+      "owner": {
+        "name": "Manabu Umeda",
+        "role": "Owner",
+        "description": "整理逝者遺物這項工作，比想像中更具精神負擔，是一項非常艱鉅的任務。然而，我自己也在15年前失去雙親，深切理解遺屬們的悲傷與痛苦。因此，我以遺屬的心情為最優先考量，秉持『貼近遺物的整理』理念，日復一日地投入工作。最重要的是，客戶對我說『謝謝』的那一刻，是我最大的成就感和喜悅。"
+      },
+      "staff": {
+        "name": "Kei Inagawa",
+        "role": "Staff",
+        "description": "我認為這份工作的真正目的，是讓遺屬們能以更好的形式保留珍貴回憶作為紀念，並透過廢品收購、回收、捐贈等善意行為將其傳承下去。我秉持著『貼近遺屬心情的協助』理念，日復一日地精進。"
+      }
+    }
+  },
+  "carousel": {
+    "badge": "服務列表",
+    "title": "服務項目",
+    "subtitle": "為每個空間提供專業照護",
+    "prev": "上一個",
+    "next": "下一個",
+    "imageAlt": "服務圖片 {{index}}",
+    "goToSlide": "移至第 {{slide}} 張投影片",
+    "navHint": "使用箭頭或圓點導航 • 點擊卡片選擇"
+  },
+  "cta": {
+    "heading": "準備好讓您的空間煥然一新了嗎？",
+    "subtitle": "加入我們眾多信賴我們清潔和整理服務的客戶社群",
+    "counter": {
+      "number": "890",
+      "label": "位用戶已預約"
+    },
+    "button": "聯絡我們"
+  },
+  "footer": {
+    "description": "深受眾多客戶信賴的專業清潔與整理服務。我們讓您的空間保持清潔、健康且井然有序。",
+    "social": {
+      "x": "X（原Twitter）",
+      "line": "LINE"
+    },
+    "sections": {
+      "services": "服務項目",
+      "company": "公司資訊",
+      "support": "支援"
+    },
+    "links": {
+      "deepCleaning": "徹底清潔",
+      "disinfection": "消毒",
+      "junkRemoval": "廢棄物回收",
+      "organizing": "整理整頓",
+      "estateOrganization": "遺物整理",
+      "about": "公司簡介",
+      "team": "團隊介紹",
+      "careers": "招聘資訊",
+      "blog": "部落格",
+      "contact": "聯絡我們",
+      "faq": "常見問題",
+      "privacy": "隱私權政策",
+      "terms": "使用條款",
+      "cookies": "Cookie政策"
+    },
+    "copyright": "© {{year}} Ecoclean MATE 東京. All rights reserved."
+  },
+  "contact": {
+    "badge": "聯絡我們",
+    "title": "聯絡我們",
+    "description": "如有任何疑問或需求，請隨時與我們聯繫",
+    "info": {
+      "phone": {
+        "title": "電話",
+        "details": [
+          {
+            "label": "代表號碼",
+            "value": "03-6885-9300"
+          },
+          {
+            "label": "直撥號碼",
+            "value": "090-1432-7757"
+          }
+        ]
+      },
+      "address": {
+        "title": "地址",
+        "details": [
+          {
+            "label": "所在地",
+            "value": "〒176-0025 東京都練馬區中村南2-19-15"
+          }
+        ]
+      },
+      "hours": {
+        "title": "營業時間",
+        "details": [
+          {
+            "label": "平日",
+            "value": "9:00～21:00"
+          },
+          {
+            "label": "週末及假日",
+            "value": "9:00～20:00"
+          },
+          {
+            "label": "公休日",
+            "value": "全年無休"
+          }
+        ]
+      }
+    },
+    "certifications": {
+      "title": "資格・認證",
+      "antiqueLicense": {
+        "label": "古物商許可證",
+        "value": "東京都公安委員會 第305572015633號"
+      },
+      "estateOrganizer": {
+        "label": "遺物整理師",
+        "value": "認證編號 IS24460號"
+      }
+    },
+    "map": {
+      "title": "Ecoclean Mate 辦公室所在地",
+      "label": "辦公室所在地",
+      "address": "〒176-0025 東京都練馬區中村南2-19-15"
+    },
+    "areas": {
+      "title": "服務地區",
+      "list": [
+        "東京都全區（離島除外）",
+        "埼玉縣：川口市、所澤市、蕨市、戶田市、朝霞市、和光市、新座市、富士見野市",
+        "神奈川縣：橫濱市（鶴見區、港北區、青葉區、都筑區）、川崎市（川崎區、幸區、中原區、高津區、多摩區、宮前區、麻生區）",
+        "千葉縣：流山市、松戶市、船橋市、市川市、柏市、習志野市、千葉市"
+      ]
+    }
+  },
+  "pricing": {
+    "hero": {
+      "title": {
+        "part1": "每件物品的",
+        "part2": "透明定價"
+      },
+      "description": "立即估算您的廢棄物品回收處理費用。無隱藏費用，無意外收費。",
+      "cta": "獲取免費估價"
+    },
+    "howItWorks": {
+      "title": "使用方式",
+      "step": "步驟 {{number}}",
+      "steps": {
+        "homeInfo": {
+          "title": "提供您的房屋資訊",
+          "description": "選擇您的物件類型、樓層數和電梯使用情況，以便我們做好相應準備。"
+        },
+        "chooseItems": {
+          "title": "選擇您的物品",
+          "description": "瀏覽我們的家具、家電和日用品目錄。添加您想要回收的物品。"
+        },
+        "getEstimate": {
+          "title": "獲取您的估價",
+          "description": "查看您的費用明細並下載PDF估價單。無需預先付款。"
+        }
+      }
+    },
+    "structure": {
+      "title": "收費結構",
+      "description": "您的總費用將根據以下組成部分透明計算",
+      "components": {
+        "basicFee": {
+          "label": "基本服務費",
+          "price": "¥3,000",
+          "description": "適用於每筆訂單"
+        },
+        "itemPrice": {
+          "label": "物品價格",
+          "price": "視物品而定",
+          "description": "根據每件物品的尺寸和重量"
+        },
+        "specialWork": {
+          "label": "特殊作業",
+          "price": "可選",
+          "description": "樓梯搬運、空調拆卸、吊掛服務"
+        },
+        "tax": {
+          "label": "消費稅（10%）",
+          "price": "計算得出",
+          "description": "適用於小計金額"
+        }
+      },
+      "formula": "總計 = 基本費用 + 物品價格 + 特殊作業 + 消費稅",
+      "note": "您希望出售的物品將另行估價，不計入估價中。"
+    },
+    "areas": {
+      "title": "服務地區",
+      "description": "我們目前在以下日本地區提供服務",
+      "list": {
+        "tokyo": {
+          "name": "東京",
+          "areas": "全23區"
+        },
+        "saitama": {
+          "name": "埼玉",
+          "areas": "24市"
+        },
+        "kanagawa": {
+          "name": "神奈川",
+          "areas": "10市"
+        },
+        "chiba": {
+          "name": "千葉",
+          "areas": "10市"
+        },
+        "osaka": {
+          "name": "大阪",
+          "areas": "全24區・20市以上"
+        },
+        "kyoto": {
+          "name": "京都",
+          "areas": "京都市・12地區"
+        },
+        "hyogo": {
+          "name": "兵庫",
+          "areas": "神戶市・14市"
+        },
+        "shiga": {
+          "name": "滋賀",
+          "areas": "8市"
+        },
+        "nara": {
+          "name": "奈良",
+          "areas": "9地區"
+        },
+        "expanding": {
+          "name": "即將擴展",
+          "areas": "持續擴展中"
+        }
+      }
+    },
+    "notes": {
+      "title": "注意事項",
+      "items": {
+        "noHoistingUpper": "3樓以上不提供吊掛作業",
+        "noHoistingAppliances": "家電產品不提供吊掛作業",
+        "appraisalAfter": "標記為出售的物品將在提交後進行估價",
+        "estimateOnly": "此為估價單 — 最終費用在現場評估後確認"
+      }
+    },
+    "cta": {
+      "title": "準備好開始了嗎？",
+      "description": "回答幾個問題，幾分鐘內即可獲得估價。",
+      "button": "開始免費估價"
+    }
+  }
+}
