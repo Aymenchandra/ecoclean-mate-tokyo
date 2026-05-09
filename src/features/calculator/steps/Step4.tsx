@@ -53,7 +53,7 @@ const Step4 = memo(function Step4({ data, onAdd, onRemove }: Props) {
         const cleanPrice = parseInt(item.price.toString().replace(/\./g, ""), 10);
 
         const newItem: ItemEntry = {
-            id: crypto.randomUUID(),
+            id: typeof crypto !== 'undefined' && crypto.randomUUID ? crypto.randomUUID() : Math.random().toString(36).substring(2, 15),
             category: `${activeMainType} > ${activeCategory}`,
             productName: item.name,
             quantity: 1,

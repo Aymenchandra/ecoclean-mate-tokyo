@@ -20,7 +20,7 @@ export const ToastProvider: React.FC<{ children: React.ReactNode }> = ({ childre
 
     const showToast = useCallback(
         (message: string, type: "error" | "success" | "warning" = "error") => {
-            const id = crypto.randomUUID();
+            const id = typeof crypto !== 'undefined' && crypto.randomUUID ? crypto.randomUUID() : Math.random().toString(36).substring(2, 15);
             setToasts((prev) => [...prev, { id, message, type }]);
         },
         []

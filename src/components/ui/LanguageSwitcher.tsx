@@ -63,7 +63,7 @@ const LanguageSwitcher = memo(function LanguageSwitcher() {
     }, []);
 
     return (
-        <div ref={ref} className="relative">
+        <div ref={ref} className="relative z-50">
             {/* Trigger button */}
             <button
                 ref={focusRef}

@@ -86,10 +86,11 @@ const Carousel = memo(function Carousel() {
           width: 800px;
           height: 800px;
           border-radius: 50%;
-          background: radial-gradient(circle, rgba(249,115,22,0.12) 0%, transparent 70%);
+          background: radial-gradient(circle, rgba(249,115,22,0.06) 0%, transparent 70%);
           top: -250px;
           left: -200px;
           pointer-events: none;
+          transform: translateZ(0);
         }
 
         .carousel-root::after {
@@ -98,10 +99,11 @@ const Carousel = memo(function Carousel() {
           width: 600px;
           height: 600px;
           border-radius: 50%;
-          background: radial-gradient(circle, rgba(234,88,12,0.10) 0%, transparent 70%);
+          background: radial-gradient(circle, rgba(234,88,12,0.05) 0%, transparent 70%);
           bottom: -150px;
           right: -150px;
           pointer-events: none;
+          transform: translateZ(0);
         }
 
         .carousel-title {
@@ -149,6 +151,7 @@ const Carousel = memo(function Carousel() {
                       opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1);
           transform-style: preserve-3d;
           cursor: pointer;
+          will-change: transform, opacity;
         }
 
         .card {
@@ -157,14 +160,14 @@ const Carousel = memo(function Carousel() {
           overflow: hidden;
           background: #1c1530;
           border: 1px solid rgba(249,115,22,0.18);
-          box-shadow: 0 20px 50px rgba(0,0,0,0.5);
-          transition: border-color 0.4s, box-shadow 0.4s;
+          box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+          transition: border-color 0.4s;
           position: relative;
+          transform: translateZ(0);
         }
 
         .card-wrapper.is-active .card {
           border-color: rgba(249,115,22,0.5);
-          box-shadow: 0 30px 80px rgba(249,115,22,0.3);
         }
 
         .card img {
@@ -181,7 +184,7 @@ const Carousel = memo(function Carousel() {
           width: 50px;
           height: 50px;
           border-radius: 50%;
-          background: rgba(255,255,255,0.06);
+          background: rgba(26, 18, 48, 0.85);
           border: 1px solid rgba(249,115,22,0.3);
           color: rgba(251,146,60,0.9);
           font-size: 20px;
@@ -192,7 +195,6 @@ const Carousel = memo(function Carousel() {
           transition: all 0.3s;
           z-index: 20;
           user-select: none;
-          backdrop-filter: blur(10px);
         }
 
         .nav-btn:hover {
