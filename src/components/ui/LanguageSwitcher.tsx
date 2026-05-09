@@ -73,7 +73,7 @@ const LanguageSwitcher = memo(function LanguageSwitcher() {
                 aria-label={t("aria.switchLanguage")}
                 aria-haspopup="listbox"
                 aria-expanded={open}
-                className="relative flex items-center gap-1.5 h-9 px-2.5 rounded-lg border border-gray-200/60 dark:border-gray-700/60 bg-gray-50 dark:bg-gray-800/50 hover:border-orange-300 dark:hover:border-orange-700 transition-all duration-300 group disabled:opacity-50 disabled:cursor-wait"
+                className="relative flex items-center gap-1.5 h-9 px-2.5 rounded-lg border border-gray-200/60 bg-gray-50 hover:border-orange-300 transition-all duration-300 group disabled:opacity-50 disabled:cursor-wait"
             >
                 {changing ? (
                     <div
@@ -85,12 +85,12 @@ const LanguageSwitcher = memo(function LanguageSwitcher() {
                         <span className="text-base leading-none" aria-hidden="true">
                             {current.flag}
                         </span>
-                        <span className="text-xs font-semibold text-gray-700 dark:text-gray-300 group-hover:text-orange-500 dark:group-hover:text-orange-400 transition-colors duration-300 tabular-nums">
+                        <span className="text-xs font-semibold text-gray-700 group-hover:text-orange-500 transition-colors duration-300 tabular-nums">
                             {current.short}
                         </span>
                         {/* Chevron */}
                         <svg
-                            className={`w-3 h-3 text-gray-400 dark:text-gray-500 transition-transform duration-300 ${open ? "rotate-180" : ""
+                            className={`w-3 h-3 text-gray-400 transition-transform duration-300 ${open ? "rotate-180" : ""
                                 }`}
                             fill="none"
                             viewBox="0 0 24 24"
@@ -114,9 +114,9 @@ const LanguageSwitcher = memo(function LanguageSwitcher() {
                 aria-label={t("aria.switchLanguage")}
                 className={`
           absolute right-0 mt-2 w-40 origin-top-right
-          bg-white dark:bg-gray-900
-          rounded-xl shadow-xl shadow-black/10 dark:shadow-black/30
-          border border-gray-100 dark:border-gray-800
+          bg-white 
+          rounded-xl shadow-xl shadow-black/10 
+          border border-gray-100 
           overflow-hidden
           transition-all duration-200
           ${open
@@ -141,8 +141,8 @@ const LanguageSwitcher = memo(function LanguageSwitcher() {
                   transition-all duration-200 text-sm font-medium
                   disabled:opacity-50
                   ${isActive
-                                        ? "bg-orange-50 dark:bg-orange-500/10 text-orange-600 dark:text-orange-400"
-                                        : "text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800 hover:text-orange-500"
+                                        ? "bg-orange-50 text-orange-600"
+                                        : "text-gray-700 hover:bg-gray-50 hover:text-orange-500"
                                     }
                 `}
                             >

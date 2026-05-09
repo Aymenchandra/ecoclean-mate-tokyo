@@ -27,7 +27,7 @@ const Navbar = memo(function Navbar() {
             if (current) setActiveSection(current);
         };
 
-        window.addEventListener("scroll", handleScroll, { passive: true }); // Add passive for better performance
+        window.addEventListener("scroll", handleScroll, { passive: true });
         return () => window.removeEventListener("scroll", handleScroll);
     }, []);
 
@@ -40,7 +40,6 @@ const Navbar = memo(function Navbar() {
         return () => window.removeEventListener("resize", handleResize);
     }, []);
 
-    // Memoize scroll handler for performance
     const handleMobileToggle = useCallback(() => {
         setMobileOpen((o) => !o);
     }, []);
@@ -53,26 +52,27 @@ const Navbar = memo(function Navbar() {
         <header className="fixed inset-x-0 top-0 z-50 w-full transition-all duration-300">
             <nav
                 className={`relative flex items-center justify-between px-4 sm:px-6 lg:px-8 py-4 transition-all duration-300 ${scrolled
-                    ? "bg-white/80 dark:bg-gray-900/80 backdrop-blur-xl shadow-lg shadow-orange-500/5"
+                    ? "bg-white/80 backdrop-blur-xl shadow-lg shadow-orange-500/5"
                     : "bg-transparent"
                     }`}
                 aria-label="Global navigation"
             >
-                {/* Logo */}
-                <Link to="/" className="flex items-center gap-2.5 group">
-                    <div className="relative">
+                {/* Logo — flex-shrink-0 prevents it from being squeezed out */}
+                <Link to="/" className="flex items-center gap-2 group flex-shrink-0 mr-2">
+                    <div className="relative flex-shrink-0">
                         <div className="absolute inset-0 bg-gradient-to-br from-orange-400 to-orange-600 rounded-xl blur-lg opacity-0 group-hover:opacity-40 transition-opacity duration-300" />
                         <img
                             src={logo}
                             alt="Ecoclean Mate ロゴ"
-                            className="relative w-10 h-10 rounded-xl transition-transform duration-300 group-hover:scale-110"
+                            className="relative w-9 h-9 sm:w-10 sm:h-10 rounded-xl transition-transform duration-300 group-hover:scale-110"
                             loading="eager"
                             decoding="async"
                             width="40"
                             height="40"
                         />
                     </div>
-                    <span className="text-xl font-bold text-gray-900 dark:text-white group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-orange-500 group-hover:to-orange-600 transition-all duration-300">
+                    {/* Brand name — no truncate, uses whitespace-nowrap and scales font on small screens */}
+                    <span className="text-sm sm:text-base lg:text-xl font-bold text-gray-900 whitespace-nowrap group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-orange-500 group-hover:to-orange-600 transition-all duration-300">
                         {t("brand.name")}
                     </span>
                 </Link>
@@ -88,8 +88,8 @@ const Navbar = memo(function Navbar() {
                                 key={link.path}
                                 to={link.path}
                                 className={`relative px-4 py-2 text-sm font-medium capitalize transition-all duration-300 rounded-lg ${isActive
-                                    ? "text-orange-600 dark:text-orange-400 bg-orange-50 dark:bg-orange-500/10"
-                                    : "text-gray-700 dark:text-gray-300 hover:text-orange-500 dark:hover:text-orange-400 hover:bg-orange-50/50 dark:hover:bg-orange-500/5"
+                                    ? "text-orange-600 bg-orange-50"
+                                    : "text-gray-700 hover:text-orange-500 hover:bg-orange-50/50"
                                     }`}
                             >
                                 {t(`nav.${link.label}`, { defaultValue: link.label })}
@@ -109,20 +109,20 @@ const Navbar = memo(function Navbar() {
                     </Link>
 
                     {/* Divider */}
-                    <div className="mx-2 w-px h-6 bg-gray-200 dark:bg-gray-700" />
+                    <div className="mx-2 w-px h-6 bg-gray-200" />
 
                     <LanguageSwitcher />
                 </div>
 
-                {/* Mobile: theme + language + hamburger */}
-                <div className="flex items-center gap-2 lg:hidden">
+                {/* Mobile: language + hamburger — flex-shrink-0 so it never gets squeezed */}
+                <div className="flex items-center gap-1 sm:gap-2 lg:hidden flex-shrink-0">
                     <LanguageSwitcher />
                     <button
                         type="button"
                         onClick={handleMobileToggle}
                         className={`inline-flex items-center justify-center p-2 rounded-lg transition-all duration-300 ${mobileOpen
-                            ? "bg-orange-50 dark:bg-orange-500/10 text-orange-600"
-                            : "text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800"
+                            ? "bg-orange-50 text-orange-600"
+                            : "text-gray-700 hover:bg-gray-100"
                             }`}
                         aria-expanded={mobileOpen}
                     >
@@ -187,13 +187,13 @@ const Navbar = memo(function Navbar() {
                 className={`lg:hidden absolute top-full left-0 right-0 mx-4 overflow-hidden transition-all duration-300 ${mobileOpen ? "max-h-[28rem] opacity-100" : "max-h-0 opacity-0"
                     }`}
             >
-                <div className="bg-white dark:bg-gray-900 rounded-2xl shadow-2xl border border-gray-100 dark:border-gray-800 p-2 mt-2">
+                <div className="bg-white rounded-2xl shadow-2xl border border-gray-100 p-2 mt-2">
                     <div className="flex flex-col p-2">
                         {navLinks.map((link) => (
                             <Link
                                 key={link.path}
                                 to={link.path}
-                                className="flex items-center gap-3 px-4 py-3 text-sm font-medium capitalize text-gray-700 dark:text-gray-300 hover:text-orange-500 dark:hover:text-orange-400 hover:bg-orange-50 dark:hover:bg-orange-500/5 rounded-xl transition-all duration-300"
+                                className="flex items-center gap-3 px-4 py-3 text-sm font-medium capitalize text-gray-700 hover:text-orange-500 hover:bg-orange-50 rounded-xl transition-all duration-300"
                                 onClick={handleMobileClose}
                             >
                                 <span className="w-1.5 h-1.5 bg-orange-500 rounded-full" />
@@ -201,7 +201,7 @@ const Navbar = memo(function Navbar() {
                             </Link>
                         ))}
 
-                        <div className="border-t border-gray-100 dark:border-gray-800 my-2" />
+                        <div className="border-t border-gray-100 my-2" />
 
                         <Link
                             to="/calculator"

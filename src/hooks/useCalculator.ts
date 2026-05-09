@@ -172,6 +172,7 @@ export function useCalculator() {
     });
 
     const [isSubmitted, setIsSubmitted] = useState(false);
+    const [isGeneratingPDF, setIsGeneratingPDF] = useState(false);
 
     useEffect(() => {
         if (isSubmitted) return;
@@ -360,10 +361,15 @@ export function useCalculator() {
         }
 
         // All good — generate PDF
-        const totals = calculateTotal();
-        await generatePDF(formData, totals, t);
-        clearStorage();
-        setIsSubmitted(true);
+        try {
+            setIsGeneratingPDF(true);
+            const totals = calculateTotal();
+            await generatePDF(formData, totals, t);
+            clearStorage();
+            setIsSubmitted(true);
+        } finally {
+            setIsGeneratingPDF(false);
+        }
     }, [formData, calculateTotal, showToast, t]);
 
     const reset = useCallback(() => {
@@ -386,6 +392,7 @@ export function useCalculator() {
         currentStep,
         formData,
         isSubmitted,
+        isGeneratingPDF,
         totalSteps,
         isFirstStep,
         isLastStep,
