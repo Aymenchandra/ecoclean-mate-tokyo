@@ -6,11 +6,15 @@ import { STAIR_CLIMBING_FEE } from "../calculatorConfig";
 interface Props {
     data: Step3Data;
     onChange: (data: Partial<Step3Data>) => void;
+    itemFloor?: string;
 }
 
-const Step3 = memo(function Step3({ data, onChange }: Props) {
+const Step3 = memo(function Step3({ data, onChange, itemFloor }: Props) {
     const { t } = useTranslation();
     const feeFormatted = STAIR_CLIMBING_FEE.toLocaleString();
+
+    const floorNumber = parseInt(itemFloor || "0", 10);
+    const isUpperFloor = !isNaN(floorNumber) && floorNumber >= 3;
 
     return (
         <div className="space-y-6">
@@ -64,8 +68,8 @@ const Step3 = memo(function Step3({ data, onChange }: Props) {
                 </div>
             </div>
 
-            {/* Conditional: Stair Climbing Help */}
-            {data.hasElevator === false && (
+            {/* Conditional: Stair Climbing Help — only if item floor >= 3 AND no elevator */}
+            {data.hasElevator === false && isUpperFloor && (
                 <div className="bg-gray-50 border border-gray-200 rounded-xl p-5 space-y-4 animate-in fade-in slide-in-from-top-2 duration-300">
                     <div className="flex items-start gap-3">
                         <div className="flex-shrink-0 w-8 h-8 rounded-full bg-orange-100 flex items-center justify-center">

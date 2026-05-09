@@ -82,6 +82,7 @@ const CalculatorPage = memo(function CalculatorPage() {
                     <Step3
                         data={calc.formData.step3}
                         onChange={calc.updateStep3}
+                        itemFloor={calc.formData.step2.itemFloor}
                     />
                 );
             case 4:
@@ -187,9 +188,8 @@ const CalculatorPage = memo(function CalculatorPage() {
                                     type="button"
                                     onClick={calc.submit}
                                     disabled={calc.isGeneratingPDF}
-                                    className={`px-6 py-2.5 bg-orange-500 text-white text-sm font-semibold rounded-lg transition-colors flex items-center justify-center ${
-                                        calc.isGeneratingPDF ? "opacity-70 cursor-not-allowed" : "hover:bg-orange-600"
-                                    }`}
+                                    className={`px-6 py-2.5 bg-orange-500 text-white text-sm font-semibold rounded-lg transition-colors flex items-center justify-center ${calc.isGeneratingPDF ? "opacity-70 cursor-not-allowed" : "hover:bg-orange-600"
+                                        }`}
                                 >
                                     {calc.isGeneratingPDF ? (
                                         <svg className="animate-spin -ml-1 mr-2 h-4 w-4 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
