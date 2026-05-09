@@ -1,7 +1,7 @@
 import { memo } from "react";
 import { useTranslation } from "react-i18next";
-import TeamMember from "/assets/team/kv_01.jpg";
-import Owner from "/assets/team/img_staff01.jpg";
+import TeamMember from "/assets/team/kv_01.webp";
+import Owner from "/assets/team/img_staff01.webp";
 
 const Team = memo(function Team() {
     const { t } = useTranslation();
@@ -65,6 +65,9 @@ const Team = memo(function Team() {
                                         alt={t(`team.members.${member.key}.name`)}
                                         className="w-full h-64 lg:h-full object-cover aspect-video lg:aspect-square group-hover:scale-105 transition-transform duration-500"
                                         loading="lazy"
+                                        decoding="async"
+                                        width="300"
+                                        height="300"
                                     />
                                     {/* Gradient overlay */}
                                     <div

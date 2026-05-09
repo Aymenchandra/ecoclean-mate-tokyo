@@ -1,9 +1,9 @@
-import logo1 from '/assets/logoGrid/1.png';
-import logo2 from '/assets/logoGrid/2.png';
-import logo3 from '/assets/logoGrid/3.jpg';
-import logo4 from '/assets/logoGrid/4.png';
-import logo5 from '/assets/logoGrid/5.jpg';
-import logo6 from '/assets/logoGrid/6.jpg';
+import logo1 from '/assets/logoGrid/1.webp';
+import logo2 from '/assets/logoGrid/2.webp';
+import logo3 from '/assets/logoGrid/3.webp';
+import logo4 from '/assets/logoGrid/4.webp';
+import logo5 from '/assets/logoGrid/5.webp';
+import logo6 from '/assets/logoGrid/6.webp';
 
 interface LogoGridItem {
     label: string;

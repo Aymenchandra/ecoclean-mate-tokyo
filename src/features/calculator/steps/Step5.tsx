@@ -111,6 +111,10 @@ const Step5 = memo(function Step5({ data, onUpdateItem }: Props) {
                                     src={item.imagePreview || "https://via.placeholder.com/400x225?text=No+Image"}
                                     alt={translatedName}
                                     className="w-full h-full object-cover"
+                                    loading="lazy"
+                                    decoding="async"
+                                    width="400"
+                                    height="225"
                                     onError={(e) => {
                                         (e.target as HTMLImageElement).src =
                                             "https://via.placeholder.com/400x225?text=No+Image";
@@ -252,6 +256,10 @@ const Step5 = memo(function Step5({ data, onUpdateItem }: Props) {
                                                                 src={item.sellingImage}
                                                                 alt="Preview"
                                                                 className="w-full h-24 object-cover rounded-lg border border-gray-200"
+                                                                loading="lazy"
+                                                                decoding="async"
+                                                                width="300"
+                                                                height="96"
                                                             />
                                                             <button
                                                                 type="button"

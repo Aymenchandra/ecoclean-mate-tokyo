@@ -78,6 +78,10 @@ const Step7 = memo(function Step7({ formData, totals }: Props) {
                                                 src={item.imagePreview || "https://via.placeholder.com/40x40?text=?"}
                                                 alt={translatedName}
                                                 className="w-10 h-10 rounded-md object-cover flex-shrink-0 bg-gray-100"
+                                                loading="lazy"
+                                                decoding="async"
+                                                width="40"
+                                                height="40"
                                                 onError={(e) => {
                                                     (e.target as HTMLImageElement).src = "https://via.placeholder.com/40x40?text=?";
                                                 }}
@@ -122,6 +126,10 @@ const Step7 = memo(function Step7({ formData, totals }: Props) {
                                                     src={item.sellingImage || item.imagePreview || "https://via.placeholder.com/40x40?text=?"}
                                                     alt={translatedName}
                                                     className="w-10 h-10 rounded-md object-cover bg-gray-100"
+                                                    loading="lazy"
+                                                    decoding="async"
+                                                    width="40"
+                                                    height="40"
                                                     onError={(e) => {
                                                         (e.target as HTMLImageElement).src = "https://via.placeholder.com/40x40?text=?";
                                                     }}

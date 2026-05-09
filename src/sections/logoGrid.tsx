@@ -44,6 +44,9 @@ const LogoGrid = memo(function LogoGrid() {
                                     alt={t(`logoGrid.logos.${index}.alt`, { defaultValue: logo.label })}
                                     className="h-12 w-auto object-contain relative z-10 filter grayscale hover:grayscale-0 transition-all duration-300 opacity-60 hover:opacity-100"
                                     loading="lazy"
+                                    decoding="async"
+                                    width="120"
+                                    height="48"
                                 />
                             </div>
                         </div>

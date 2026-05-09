@@ -1,39 +1,23 @@
 import { useState, memo, useCallback } from "react";
 import { useTranslation } from "react-i18next";
-import cleaning from "/assets/history-works/20200806_212925.jpg";
-import img_concept01 from "/assets/history-works/img_concept01.jpg";
-import img_concept02 from "/assets/history-works/img_concept02.jpg";
-import img_menu01 from "/assets/history-works/img_menu01.jpg";
-import img_menu02 from "/assets/history-works/img_menu02.jpg";
-import img_menu03 from "/assets/history-works/img_menu03.jpg";
-import img_menu04 from "/assets/history-works/img_menu04.jpg";
-import img_menu05 from "/assets/history-works/img_menu05.jpg";
-import img_menu06 from "/assets/history-works/img_menu06.jpg";
-import img_menu09 from "/assets/history-works/img_menu09.jpg";
-import img_menu10 from "/assets/history-works/img_menu10.jpg";
-import img_menu11 from "/assets/history-works/img_menu11.jpg";
-import top_0sp from "/assets/history-works/top_01sp.jpg";
-import topsec02_01 from "/assets/history-works/topsec02_01.jpg";
-import topsec02_02 from "/assets/history-works/topsec02_02.jpg";
-import topsec02_03 from "/assets/history-works/topsec02_03.jpg";
 
 const SLIDES = [
-  { img: cleaning },
-  { img: img_concept01 },
-  { img: img_concept02 },
-  { img: img_menu01 },
-  { img: img_menu02 },
-  { img: img_menu03 },
-  { img: img_menu04 },
-  { img: img_menu05 },
-  { img: img_menu06 },
-  { img: img_menu09 },
-  { img: img_menu10 },
-  { img: img_menu11 },
-  { img: top_0sp },
-  { img: topsec02_01 },
-  { img: topsec02_02 },
-  { img: topsec02_03 },
+  { img: "/assets/history-works/20200806_212925.webp" },
+  { img: "/assets/history-works/img_concept01.webp" },
+  { img: "/assets/history-works/img_concept02.webp" },
+  { img: "/assets/history-works/img_menu01.webp" },
+  { img: "/assets/history-works/img_menu02.webp" },
+  { img: "/assets/history-works/img_menu03.webp" },
+  { img: "/assets/history-works/img_menu04.webp" },
+  { img: "/assets/history-works/img_menu05.webp" },
+  { img: "/assets/history-works/img_menu06.webp" },
+  { img: "/assets/history-works/img_menu09.webp" },
+  { img: "/assets/history-works/img_menu10.webp" },
+  { img: "/assets/history-works/img_menu11.webp" },
+  { img: "/assets/history-works/top_01sp.webp" },
+  { img: "/assets/history-works/topsec02_01.webp" },
+  { img: "/assets/history-works/topsec02_02.webp" },
+  { img: "/assets/history-works/topsec02_03.webp" },
 ];
 
 // 5 positions: far left, left, center, right, far right
@@ -356,7 +340,7 @@ const Carousel = memo(function Carousel() {
                   onClick={() => goToSlide(i)}
                 >
                   <div className="card">
-                    <img src={slide.img} alt={t("carousel.imageAlt", { index: i + 1 })} loading="lazy" />
+                    <img src={slide.img} alt={t("carousel.imageAlt", { index: i + 1 })} loading="lazy" decoding="async" width="260" height="347" />
                   </div>
                 </div>
               );

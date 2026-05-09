@@ -1,7 +1,7 @@
 import { useState, useEffect, memo, useCallback } from "react";
 import { useTranslation } from "react-i18next";
 import navLinks from "../../constants/navLinks";
-import logo from "/assets/logo/eco-clean.png";
+import logo from "/assets/logo/eco-clean.webp";
 import { Link } from "react-router-dom";
 import LanguageSwitcher from "../ui/LanguageSwitcher";
 
@@ -66,7 +66,8 @@ const Navbar = memo(function Navbar() {
                             src={logo}
                             alt="Ecoclean Mate ロゴ"
                             className="relative w-10 h-10 rounded-xl transition-transform duration-300 group-hover:scale-110"
-                            loading="eager" // Logo should load eagerly
+                            loading="eager"
+                            decoding="async"
                             width="40"
                             height="40"
                         />

@@ -1,7 +1,7 @@
 import { memo } from "react";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
-import logo from "/assets/logo/eco-clean.png";
+import logo from "/assets/logo/eco-clean.webp";
 
 const Footer = memo(function Footer() {
     const { t } = useTranslation();
@@ -52,7 +52,7 @@ const Footer = memo(function Footer() {
                         {/* Logo */}
                         <Link to="/" className="inline-flex items-center gap-2 mb-6">
                             <div className="flex items-center justify-center w-10 h-10 bg-gradient-to-br from-orange-500 to-orange-600 rounded-xl">
-                                <img src={logo} alt={t("brand.name")} className="w-6 h-6" />
+                                <img src={logo} alt={t("brand.name")} className="w-6 h-6" loading="lazy" decoding="async" width="24" height="24" />
                             </div>
                             <span className="text-xl font-bold text-white">{t("brand.name")}</span>
                         </Link>

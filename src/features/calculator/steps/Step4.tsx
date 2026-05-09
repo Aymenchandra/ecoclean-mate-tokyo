@@ -156,6 +156,9 @@ const Step4 = memo(function Step4({ data, onAdd, onRemove }: Props) {
                                             alt={t(`products.names.${item.name}`, { defaultValue: item.name })}
                                             className="w-full h-full object-cover"
                                             loading="lazy"
+                                            decoding="async"
+                                            width="300"
+                                            height="300"
                                             onError={(e) => {
                                                 (e.target as HTMLImageElement).src =
                                                     "https://via.placeholder.com/300x300?text=No+Image";
@@ -214,6 +217,10 @@ const Step4 = memo(function Step4({ data, onAdd, onRemove }: Props) {
                                         src={item.imagePreview || "https://via.placeholder.com/40x40?text=?"}
                                         alt={t(`products.names.${item.productName}`, { defaultValue: item.productName })}
                                         className="w-10 h-10 rounded-md object-cover flex-shrink-0 bg-gray-100"
+                                        loading="lazy"
+                                        decoding="async"
+                                        width="40"
+                                        height="40"
                                         onError={(e) => {
                                             (e.target as HTMLImageElement).src =
                                                 "https://via.placeholder.com/40x40?text=?";

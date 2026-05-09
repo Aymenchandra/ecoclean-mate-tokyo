@@ -1,7 +1,7 @@
 import { memo } from "react";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
-import heroImg from "/assets/images/hero-img.png";
+import heroImg from "/assets/images/hero-img.webp";
 
 const Hero = memo(function Hero() {
     const { t } = useTranslation();
@@ -125,6 +125,7 @@ const Hero = memo(function Hero() {
                         alt={t("hero.imageAlt")}
                         className="relative w-80 h-96 sm:w-96 sm:h-[440px] md:w-[420px] md:h-[440px] rounded-2xl hover:scale-105 transition duration-500 object-cover shadow-2xl hover:shadow-orange-500/25"
                         loading="eager"
+                        decoding="async"
                         width="420"
                         height="440"
                     />
