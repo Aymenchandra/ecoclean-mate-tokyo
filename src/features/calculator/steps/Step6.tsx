@@ -1,6 +1,5 @@
-// src/features/calculator/steps/Step6.tsx
-
-import React from "react";
+import { memo, useCallback } from "react";
+import { useTranslation } from "react-i18next";
 import type { Step6Data } from "../../../hooks/useCalculator";
 import { EXTRA_SERVICES } from "../calculatorConfig";
 
@@ -9,14 +8,16 @@ interface Props {
     onChange: (data: Partial<Step6Data>) => void;
 }
 
-const Step6: React.FC<Props> = ({ data, onChange }) => {
-    const handleToggle = (serviceId: string) => {
+const Step6 = memo(function Step6({ data, onChange }: Props) {
+    const { t } = useTranslation();
+
+    const handleToggle = useCallback((serviceId: string) => {
         const isSelected = data.selectedServices.includes(serviceId);
         const updated = isSelected
             ? data.selectedServices.filter((id) => id !== serviceId)
             : [...data.selectedServices, serviceId];
         onChange({ selectedServices: updated });
-    };
+    }, [data.selectedServices, onChange]);
 
     const selectedTotal = data.selectedServices.reduce((sum, serviceId) => {
         const service = EXTRA_SERVICES.find((s) => s.id === serviceId);
@@ -28,10 +29,10 @@ const Step6: React.FC<Props> = ({ data, onChange }) => {
             {/* Header */}
             <div>
                 <h2 className="text-xl font-bold text-gray-900">
-                    Extra Services
+                    {t("calculator.step6.title")}
                 </h2>
                 <p className="text-sm text-gray-500 mt-1">
-                    Select any additional services you may need. Multiple services can be selected.
+                    {t("calculator.step6.description")}
                 </p>
             </div>
 
@@ -85,7 +86,7 @@ const Step6: React.FC<Props> = ({ data, onChange }) => {
                             {/* Service Info */}
                             <div className="flex-1 min-w-0">
                                 <p className="text-sm font-medium text-gray-800">
-                                    {service.label}
+                                    {t(service.label)}
                                 </p>
                             </div>
 
@@ -102,7 +103,7 @@ const Step6: React.FC<Props> = ({ data, onChange }) => {
             {data.selectedServices.length > 0 && (
                 <div className="bg-orange-50 border border-orange-200 rounded-xl p-4 flex items-center justify-between">
                     <span className="text-sm font-medium text-orange-800">
-                        Extra Services Total
+                        {t("calculator.step6.total")}
                     </span>
                     <span className="text-lg font-bold text-orange-800">
                         ¥{selectedTotal.toLocaleString("de-DE")}
@@ -114,12 +115,12 @@ const Step6: React.FC<Props> = ({ data, onChange }) => {
             {data.selectedServices.length === 0 && (
                 <div className="text-center py-6">
                     <p className="text-sm text-gray-400">
-                        No extra services selected. You can skip this step.
+                        {t("calculator.step6.noServices")}
                     </p>
                 </div>
             )}
         </div>
     );
-};
+});
 
 export default Step6;

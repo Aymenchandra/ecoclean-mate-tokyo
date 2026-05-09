@@ -12,6 +12,7 @@ import {
 } from "../features/calculator/calculatorConfig";
 import { generatePDF } from "../utils/generatePDF";
 import { useToast } from "../context/ToastContext";
+import { useTranslation } from "react-i18next";
 
 // ---------------------------------------------------------------------------
 // Types
@@ -158,6 +159,7 @@ function clearStorage(): void {
 export function useCalculator() {
     const totalSteps = STEPS.length;
     const { showToast } = useToast();
+    const { t } = useTranslation();
 
     const [currentStep, setCurrentStep] = useState<number>(() => {
         const saved = loadFromStorage();
@@ -324,7 +326,7 @@ export function useCalculator() {
     // Submission
     // -------------------------------------------------------------------
 
-    const submit = useCallback(() => {
+    const submit = useCallback(async () => {
         // Validate Step 8 before submitting
         if (!formData.step8.lastName.trim()) {
             showToast("Please enter your last name.", "warning");
@@ -359,10 +361,10 @@ export function useCalculator() {
 
         // All good — generate PDF
         const totals = calculateTotal();
-        generatePDF(formData, totals);
+        await generatePDF(formData, totals, t);
         clearStorage();
         setIsSubmitted(true);
-    }, [formData, calculateTotal, showToast]);
+    }, [formData, calculateTotal, showToast, t]);
 
     const reset = useCallback(() => {
         clearStorage();

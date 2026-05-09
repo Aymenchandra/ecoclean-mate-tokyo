@@ -1,5 +1,3 @@
-// src/features/calculator/calculatorConfig.ts
-
 export interface StepConfig {
     id: number;
     label: string;
@@ -9,43 +7,43 @@ export interface StepConfig {
 export const STEPS: StepConfig[] = [
     {
         id: 1,
-        label: "Confirmation",
-        description: "Please confirm the terms before we begin.",
+        label: "calculator.steps.confirmation.label",
+        description: "calculator.steps.confirmation.description",
     },
     {
         id: 2,
-        label: "Property",
-        description: "Tell us about your home.",
+        label: "calculator.steps.property.label",
+        description: "calculator.steps.property.description",
     },
     {
         id: 3,
-        label: "Access",
-        description: "Elevator availability and moving help.",
+        label: "calculator.steps.access.label",
+        description: "calculator.steps.access.description",
     },
     {
         id: 4,
-        label: "Items",
-        description: "Select products to be collected.",
+        label: "calculator.steps.items.label",
+        description: "calculator.steps.items.description",
     },
     {
         id: 5,
-        label: "Specifications",
-        description: "Add details for each item.",
+        label: "calculator.steps.specifications.label",
+        description: "calculator.steps.specifications.description",
     },
     {
         id: 6,
-        label: "Extra Services",
-        description: "Choose additional services.",
+        label: "calculator.steps.extraServices.label",
+        description: "calculator.steps.extraServices.description",
     },
     {
         id: 7,
-        label: "Estimate",
-        description: "Review your cost breakdown.",
+        label: "calculator.steps.estimate.label",
+        description: "calculator.steps.estimate.description",
     },
     {
         id: 8,
-        label: "Your Info",
-        description: "Final details and PDF download.",
+        label: "calculator.steps.yourInfo.label",
+        description: "calculator.steps.yourInfo.description",
     },
 ];
 
@@ -58,8 +56,8 @@ export const STAIR_CLIMBING_FEE = 5000;
 export const TAX_RATE = 0.10;
 
 export const EXTRA_SERVICES = [
-    { id: "lowering", label: "Lowering service fee", price: 11000 },
-    { id: "ac_standard", label: "Air conditioner removal (standard type)", price: 9000 },
-    { id: "ac_public", label: "Air conditioner removal (public housing unit)", price: 15000 },
-    { id: "ac_window", label: "Air conditioner removal (window type)", price: 3000 },
+    { id: "lowering", label: "calculator.extraServices.lowering", price: 11000 },
+    { id: "ac_standard", label: "calculator.extraServices.acStandard", price: 9000 },
+    { id: "ac_public", label: "calculator.extraServices.acPublic", price: 15000 },
+    { id: "ac_window", label: "calculator.extraServices.acWindow", price: 3000 },
 ] as const;

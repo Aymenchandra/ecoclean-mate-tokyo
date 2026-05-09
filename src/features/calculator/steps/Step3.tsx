@@ -1,6 +1,5 @@
-// src/features/calculator/steps/Step3.tsx
-
-import React from "react";
+import { memo } from "react";
+import { useTranslation } from "react-i18next";
 import type { Step3Data } from "../../../hooks/useCalculator";
 import { STAIR_CLIMBING_FEE } from "../calculatorConfig";
 
@@ -9,7 +8,8 @@ interface Props {
     onChange: (data: Partial<Step3Data>) => void;
 }
 
-const Step3: React.FC<Props> = ({ data, onChange }) => {
+const Step3 = memo(function Step3({ data, onChange }: Props) {
+    const { t } = useTranslation();
     const feeFormatted = STAIR_CLIMBING_FEE.toLocaleString();
 
     return (
@@ -17,17 +17,17 @@ const Step3: React.FC<Props> = ({ data, onChange }) => {
             {/* Header */}
             <div>
                 <h2 className="text-xl font-bold text-gray-900">
-                    Access Information
+                    {t("calculator.step3.title")}
                 </h2>
                 <p className="text-sm text-gray-500 mt-1">
-                    Let us know about building access so we can prepare accordingly.
+                    {t("calculator.step3.description")}
                 </p>
             </div>
 
             {/* Elevator Question */}
             <div className="space-y-3">
                 <label className="block text-sm font-semibold text-gray-700">
-                    Do you have an elevator?
+                    {t("calculator.step3.elevatorQuestion")}
                 </label>
                 <div className="flex gap-3">
                     <button
@@ -46,7 +46,7 @@ const Step3: React.FC<Props> = ({ data, onChange }) => {
                         ].join(" ")}
                     >
                         <span className="block text-2xl mb-1">🛗</span>
-                        Yes, there is an elevator
+                        {t("calculator.step3.hasElevator")}
                     </button>
                     <button
                         type="button"
@@ -59,7 +59,7 @@ const Step3: React.FC<Props> = ({ data, onChange }) => {
                         ].join(" ")}
                     >
                         <span className="block text-2xl mb-1">🪜</span>
-                        No elevator
+                        {t("calculator.step3.noElevator")}
                     </button>
                 </div>
             </div>
@@ -85,10 +85,10 @@ const Step3: React.FC<Props> = ({ data, onChange }) => {
                         </div>
                         <div>
                             <h4 className="text-sm font-semibold text-gray-800">
-                                Stair Climbing Support
+                                {t("calculator.step3.stairSupport")}
                             </h4>
                             <p className="text-xs text-gray-500 mt-0.5">
-                                Since there is no elevator, we can help carry items up/down stairs.
+                                {t("calculator.step3.stairSupportDescription")}
                             </p>
                         </div>
                     </div>
@@ -104,9 +104,9 @@ const Step3: React.FC<Props> = ({ data, onChange }) => {
                                     : "border-gray-300 bg-white text-gray-700 hover:border-orange-300 hover:bg-orange-50",
                             ].join(" ")}
                         >
-                            Yes, help me
+                            {t("calculator.step3.yesHelp")}
                             <span className="block text-xs mt-0.5 opacity-80">
-                                +¥{feeFormatted} (tax included)
+                                +¥{feeFormatted} {t("calculator.step3.taxIncluded")}
                             </span>
                         </button>
                         <button
@@ -119,7 +119,7 @@ const Step3: React.FC<Props> = ({ data, onChange }) => {
                                     : "border-gray-300 bg-white text-gray-500 hover:border-gray-400 hover:bg-gray-50",
                             ].join(" ")}
                         >
-                            No, I'll handle it
+                            {t("calculator.step3.noHelp")}
                         </button>
                     </div>
 
@@ -127,7 +127,7 @@ const Step3: React.FC<Props> = ({ data, onChange }) => {
                     {data.wantsStairHelp && (
                         <div className="bg-orange-50 border border-orange-200 rounded-lg p-3 flex items-center justify-between">
                             <span className="text-xs text-orange-700 font-medium">
-                                Stair climbing service
+                                {t("calculator.step3.stairClimbingService")}
                             </span>
                             <span className="text-sm font-bold text-orange-700">
                                 +¥{feeFormatted}
@@ -143,16 +143,16 @@ const Step3: React.FC<Props> = ({ data, onChange }) => {
                     <span className="text-lg">✅</span>
                     <div>
                         <p className="text-sm font-medium text-green-800">
-                            Elevator available
+                            {t("calculator.step3.elevatorAvailable")}
                         </p>
                         <p className="text-xs text-green-600">
-                            No additional access fees required.
+                            {t("calculator.step3.noAdditionalFees")}
                         </p>
                     </div>
                 </div>
             )}
         </div>
     );
-};
+});
 
 export default Step3;

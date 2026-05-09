@@ -1,6 +1,5 @@
-// src/features/calculator/CalculatorPage.tsx
-
-import React from "react";
+import { memo } from "react";
+import { useTranslation } from "react-i18next";
 import Stepper from "./Stepper";
 import { useCalculator } from "../../hooks/useCalculator";
 import Step1 from "./steps/Step1";
@@ -12,50 +11,51 @@ import Step6 from "./steps/Step6";
 import Step7 from "./steps/Step7";
 import Step8 from "./steps/Step8";
 import { Link } from "react-router-dom";
+import LanguageSwitcher from "../../components/ui/LanguageSwitcher";
 
-// ---------------------------------------------------------------------------
 // Success screen
-// ---------------------------------------------------------------------------
+const SuccessScreen: React.FC<{ onReset: () => void }> = ({ onReset }) => {
+    const { t } = useTranslation();
 
-const SuccessScreen: React.FC<{ onReset: () => void }> = ({ onReset }) => (
-    <div className="flex flex-col items-center justify-center text-center py-16 space-y-4">
-        <div className="w-16 h-16 rounded-full bg-orange-100 flex items-center justify-center">
-            <svg
-                className="w-8 h-8 text-orange-500"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-                strokeWidth={2}
-            >
-                <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
-            </svg>
+    return (
+        <div className="flex flex-col items-center justify-center text-center py-16 space-y-4">
+            <div className="w-16 h-16 rounded-full bg-orange-100 flex items-center justify-center">
+                <svg
+                    className="w-8 h-8 text-orange-500"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    strokeWidth={2}
+                >
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+                </svg>
+            </div>
+            <h2 className="text-2xl font-bold text-gray-900">
+                {t("calculator.success.title")}
+            </h2>
+            <p className="text-gray-500 max-w-xs">
+                {t("calculator.success.description")}
+            </p>
+            <div className="flex gap-3 pt-2">
+                <button
+                    onClick={onReset}
+                    className="px-6 py-2.5 bg-orange-500 hover:bg-orange-600 text-white text-sm font-semibold rounded-lg transition-colors"
+                >
+                    {t("calculator.success.newEstimate")}
+                </button>
+                <Link
+                    to="/"
+                    className="px-6 py-2.5 border border-gray-300 text-gray-600 hover:bg-gray-50 text-sm font-semibold rounded-lg transition-colors"
+                >
+                    {t("calculator.success.backHome")}
+                </Link>
+            </div>
         </div>
-        <h2 className="text-2xl font-bold text-gray-900">Estimate Downloaded!</h2>
-        <p className="text-gray-500 max-w-xs">
-            Your estimate PDF has been generated. We'll also send a copy to your email.
-        </p>
-        <div className="flex gap-3 pt-2">
-            <button
-                onClick={onReset}
-                className="px-6 py-2.5 bg-orange-500 hover:bg-orange-600 text-white text-sm font-semibold rounded-lg transition-colors"
-            >
-                New Estimate
-            </button>
-            <Link
-                to="/"
-                className="px-6 py-2.5 border border-gray-300 text-gray-600 hover:bg-gray-50 text-sm font-semibold rounded-lg transition-colors"
-            >
-                Back to Home
-            </Link>
-        </div>
-    </div>
-);
+    );
+};
 
-// ---------------------------------------------------------------------------
-// Main page
-// ---------------------------------------------------------------------------
-
-const CalculatorPage: React.FC = () => {
+const CalculatorPage = memo(function CalculatorPage() {
+    const { t } = useTranslation();
     const calc = useCalculator();
 
     // Steps 4 and 5 need the wider layout for the 3-column product selection
@@ -142,15 +142,9 @@ const CalculatorPage: React.FC = () => {
             {/* Minimal top bar */}
             <header className="w-full border-b border-gray-200 bg-white px-6 py-4 flex items-center justify-between">
                 <span className="font-bold text-orange-500 text-lg tracking-tight">
-                    エコクリーン MATE 東京
+                    {t("brand.name")}
                 </span>
-
-                <button
-                    onClick={calc.reset}
-                    className="text-xs text-gray-400 hover:text-gray-600 transition-colors"
-                >
-                    Clear & start over
-                </button>
+                <LanguageSwitcher />
             </header>
 
             {/* Main content */}
@@ -185,7 +179,7 @@ const CalculatorPage: React.FC = () => {
                                         : "border-gray-300 text-gray-600 hover:bg-gray-50",
                                 ].join(" ")}
                             >
-                                ← Back
+                                ← {t("calculator.navigation.back")}
                             </button>
 
                             {calc.isLastStep ? (
@@ -194,7 +188,7 @@ const CalculatorPage: React.FC = () => {
                                     onClick={calc.submit}
                                     className="px-6 py-2.5 bg-orange-500 hover:bg-orange-600 text-white text-sm font-semibold rounded-lg transition-colors"
                                 >
-                                    Download Estimate PDF →
+                                    {t("calculator.navigation.download")} →
                                 </button>
                             ) : (
                                 <button
@@ -202,7 +196,7 @@ const CalculatorPage: React.FC = () => {
                                     onClick={calc.goNext}
                                     className="px-6 py-2.5 bg-orange-500 hover:bg-orange-600 text-white text-sm font-semibold rounded-lg transition-colors"
                                 >
-                                    Next →
+                                    {t("calculator.navigation.next")} →
                                 </button>
                             )}
                         </div>
@@ -216,12 +210,12 @@ const CalculatorPage: React.FC = () => {
                         />
                     </div>
                     <p className="text-center text-xs text-gray-400">
-                        {calc.progressPercent}% complete
+                        {t("calculator.progress", { percent: calc.progressPercent })}
                     </p>
                 </div>
             </main>
         </div>
     );
-};
+});
 
 export default CalculatorPage;

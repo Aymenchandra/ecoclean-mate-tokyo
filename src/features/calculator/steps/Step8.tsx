@@ -1,6 +1,5 @@
-// src/features/calculator/steps/Step8.tsx
-
-import React from "react";
+import { memo } from "react";
+import { useTranslation } from "react-i18next";
 import type { Step8Data } from "../../../hooks/useCalculator";
 
 interface Props {
@@ -8,7 +7,9 @@ interface Props {
     onChange: (data: Partial<Step8Data>) => void;
 }
 
-const Step8: React.FC<Props> = ({ data, onChange }) => {
+const Step8 = memo(function Step8({ data, onChange }: Props) {
+    const { t } = useTranslation();
+
     const isComplete =
         data.lastName.trim() !== "" &&
         data.firstName.trim() !== "" &&
@@ -20,10 +21,10 @@ const Step8: React.FC<Props> = ({ data, onChange }) => {
             {/* Header */}
             <div>
                 <h2 className="text-xl font-bold text-gray-900">
-                    Customer Information
+                    {t("calculator.step8.title")}
                 </h2>
                 <p className="text-sm text-gray-500 mt-1">
-                    Please provide your contact details to receive the estimate PDF.
+                    {t("calculator.step8.description")}
                 </p>
             </div>
 
@@ -37,17 +38,17 @@ const Step8: React.FC<Props> = ({ data, onChange }) => {
                             htmlFor="lastName"
                             className="block text-sm font-medium text-gray-700"
                         >
-                            Last Name <span className="text-red-500">*</span>
+                            {t("calculator.step8.lastName")} <span className="text-red-500">*</span>
                         </label>
                         <input
                             id="lastName"
                             type="text"
                             value={data.lastName}
                             onChange={(e) => onChange({ lastName: e.target.value })}
-                            placeholder="Yamada"
+                            placeholder={t("calculator.step8.lastNamePlaceholder")}
                             className="w-full px-4 py-2.5 border border-gray-300 rounded-lg text-sm
-                                focus:outline-none focus:ring-2 focus:ring-orange-500/20 focus:border-orange-500
-                                transition-all"
+                focus:outline-none focus:ring-2 focus:ring-orange-500/20 focus:border-orange-500
+                transition-all"
                         />
                     </div>
 
@@ -57,17 +58,17 @@ const Step8: React.FC<Props> = ({ data, onChange }) => {
                             htmlFor="firstName"
                             className="block text-sm font-medium text-gray-700"
                         >
-                            First Name <span className="text-red-500">*</span>
+                            {t("calculator.step8.firstName")} <span className="text-red-500">*</span>
                         </label>
                         <input
                             id="firstName"
                             type="text"
                             value={data.firstName}
                             onChange={(e) => onChange({ firstName: e.target.value })}
-                            placeholder="Taro"
+                            placeholder={t("calculator.step8.firstNamePlaceholder")}
                             className="w-full px-4 py-2.5 border border-gray-300 rounded-lg text-sm
-                                focus:outline-none focus:ring-2 focus:ring-orange-500/20 focus:border-orange-500
-                                transition-all"
+                focus:outline-none focus:ring-2 focus:ring-orange-500/20 focus:border-orange-500
+                transition-all"
                         />
                     </div>
                 </div>
@@ -78,7 +79,7 @@ const Step8: React.FC<Props> = ({ data, onChange }) => {
                         htmlFor="phoneNumber"
                         className="block text-sm font-medium text-gray-700"
                     >
-                        Phone Number <span className="text-red-500">*</span>
+                        {t("calculator.step8.phone")} <span className="text-red-500">*</span>
                     </label>
                     <input
                         id="phoneNumber"
@@ -87,8 +88,8 @@ const Step8: React.FC<Props> = ({ data, onChange }) => {
                         onChange={(e) => onChange({ phoneNumber: e.target.value })}
                         placeholder="090-1234-5678"
                         className="w-full px-4 py-2.5 border border-gray-300 rounded-lg text-sm
-                            focus:outline-none focus:ring-2 focus:ring-orange-500/20 focus:border-orange-500
-                            transition-all"
+              focus:outline-none focus:ring-2 focus:ring-orange-500/20 focus:border-orange-500
+              transition-all"
                     />
                 </div>
 
@@ -98,7 +99,7 @@ const Step8: React.FC<Props> = ({ data, onChange }) => {
                         htmlFor="email"
                         className="block text-sm font-medium text-gray-700"
                     >
-                        Email Address <span className="text-red-500">*</span>
+                        {t("calculator.step8.email")} <span className="text-red-500">*</span>
                     </label>
                     <input
                         id="email"
@@ -107,8 +108,8 @@ const Step8: React.FC<Props> = ({ data, onChange }) => {
                         onChange={(e) => onChange({ email: e.target.value })}
                         placeholder="yamada@example.com"
                         className="w-full px-4 py-2.5 border border-gray-300 rounded-lg text-sm
-                            focus:outline-none focus:ring-2 focus:ring-orange-500/20 focus:border-orange-500
-                            transition-all"
+              focus:outline-none focus:ring-2 focus:ring-orange-500/20 focus:border-orange-500
+              transition-all"
                     />
                 </div>
 
@@ -118,17 +119,17 @@ const Step8: React.FC<Props> = ({ data, onChange }) => {
                         htmlFor="city"
                         className="block text-sm font-medium text-gray-700"
                     >
-                        City / Town / Village / Address
+                        {t("calculator.step8.city")}
                     </label>
                     <input
                         id="city"
                         type="text"
                         value={data.city}
                         onChange={(e) => onChange({ city: e.target.value })}
-                        placeholder="Shibuya-ku, Tokyo"
+                        placeholder={t("calculator.step8.cityPlaceholder")}
                         className="w-full px-4 py-2.5 border border-gray-300 rounded-lg text-sm
-                            focus:outline-none focus:ring-2 focus:ring-orange-500/20 focus:border-orange-500
-                            transition-all"
+              focus:outline-none focus:ring-2 focus:ring-orange-500/20 focus:border-orange-500
+              transition-all"
                     />
                 </div>
 
@@ -138,17 +139,17 @@ const Step8: React.FC<Props> = ({ data, onChange }) => {
                         htmlFor="building"
                         className="block text-sm font-medium text-gray-700"
                     >
-                        Building Name / Room Number
+                        {t("calculator.step8.building")}
                     </label>
                     <input
                         id="building"
                         type="text"
                         value={data.building}
                         onChange={(e) => onChange({ building: e.target.value })}
-                        placeholder="Shibuya Heights 505"
+                        placeholder={t("calculator.step8.buildingPlaceholder")}
                         className="w-full px-4 py-2.5 border border-gray-300 rounded-lg text-sm
-                            focus:outline-none focus:ring-2 focus:ring-orange-500/20 focus:border-orange-500
-                            transition-all"
+              focus:outline-none focus:ring-2 focus:ring-orange-500/20 focus:border-orange-500
+              transition-all"
                     />
                 </div>
             </div>
@@ -160,18 +161,18 @@ const Step8: React.FC<Props> = ({ data, onChange }) => {
                         <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
                     </svg>
                     <p className="text-xs text-green-700">
-                        All required fields complete. You can now download your estimate.
+                        {t("calculator.step8.complete")}
                     </p>
                 </div>
             )}
 
             {!isComplete && (
                 <p className="text-xs text-gray-400 text-center">
-                    * Required fields must be filled before submitting
+                    {t("calculator.step8.required")}
                 </p>
             )}
         </div>
     );
-};
+});
 
 export default Step8;

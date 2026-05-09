@@ -1,6 +1,5 @@
-// src/features/calculator/Stepper.tsx
-
-import React from "react";
+import { memo } from "react";
+import { useTranslation } from "react-i18next";
 import { STEPS } from "./calculatorConfig";
 
 interface StepperProps {
@@ -8,7 +7,9 @@ interface StepperProps {
     onStepClick: (step: number) => void;
 }
 
-const Stepper: React.FC<StepperProps> = ({ currentStep, onStepClick }) => {
+const Stepper = memo(function Stepper({ currentStep, onStepClick }: StepperProps) {
+    const { t } = useTranslation();
+
     return (
         <div className="w-full">
             {/* Step indicators */}
@@ -27,7 +28,7 @@ const Stepper: React.FC<StepperProps> = ({ currentStep, onStepClick }) => {
                 {STEPS.map((step) => {
                     const isCompleted = step.id < currentStep;
                     const isActive = step.id === currentStep;
-                    const isClickable = step.id < currentStep; // only allow going back
+                    const isClickable = step.id < currentStep;
 
                     return (
                         <div
@@ -48,10 +49,9 @@ const Stepper: React.FC<StepperProps> = ({ currentStep, onStepClick }) => {
                                             ? "bg-white border-orange-500 text-orange-500 cursor-default"
                                             : "bg-white border-gray-300 text-gray-400 cursor-default",
                                 ].join(" ")}
-                                aria-label={`Step ${step.id}: ${step.label}`}
+                                aria-label={t("calculator.stepper.ariaLabel", { step: step.id, label: t(step.label) })}
                             >
                                 {isCompleted ? (
-                                    // Checkmark icon
                                     <svg
                                         className="w-4 h-4"
                                         fill="none"
@@ -81,7 +81,7 @@ const Stepper: React.FC<StepperProps> = ({ currentStep, onStepClick }) => {
                                             : "text-gray-400",
                                 ].join(" ")}
                             >
-                                {step.label}
+                                {t(step.label)}
                             </span>
                         </div>
                     );
@@ -90,13 +90,17 @@ const Stepper: React.FC<StepperProps> = ({ currentStep, onStepClick }) => {
 
             {/* Current step description */}
             <p className="mt-4 text-center text-sm text-gray-500">
-                Step {currentStep} of {STEPS.length} —{" "}
+                {t("calculator.stepper.stepOf", {
+                    current: currentStep,
+                    total: STEPS.length
+                })}{" "}
+                —{" "}
                 <span className="text-gray-700 font-medium">
-                    {STEPS[currentStep - 1]?.description}
+                    {t(STEPS[currentStep - 1]?.description)}
                 </span>
             </p>
         </div>
     );
-};
+});
 
 export default Stepper;

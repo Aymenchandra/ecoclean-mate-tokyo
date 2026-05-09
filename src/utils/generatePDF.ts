@@ -6,11 +6,44 @@ const formatYen = (amount: number): string => {
     return "¥" + Math.round(amount).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
 };
 
-export function generatePDF(
+// Translation function type
+type TFunction = (key: string, options?: any) => string;
+
+export async function generatePDF(
     formData: CalculatorFormData,
-    totals: CostBreakdown
-): void {
+    totals: CostBreakdown,
+    t?: TFunction
+): Promise<void> {
+    // Helper to get translated text with fallback
+    const translate = (key: string, fallback: string, options?: any): string => {
+        if (t) {
+            const translated = t(key, { defaultValue: fallback, ...options });
+            return translated === key ? fallback : translated;
+        }
+        return fallback;
+    };
+
     const doc = new jsPDF("p", "mm", "a4");
+
+    try {
+        const response = await fetch('/fonts/NotoSansJP-Regular.ttf');
+        const arrayBuffer = await response.arrayBuffer();
+        const bytes = new Uint8Array(arrayBuffer);
+        let binary = '';
+        const len = bytes.byteLength;
+        for (let i = 0; i < len; i++) {
+            binary += String.fromCharCode(bytes[i]);
+        }
+        const base64String = window.btoa(binary);
+
+        doc.addFileToVFS('NotoSansJP-Regular.ttf', base64String);
+        doc.addFont('NotoSansJP-Regular.ttf', 'NotoSansJP', 'normal', 'Identity-H');
+        doc.addFont('NotoSansJP-Regular.ttf', 'NotoSansJP', 'bold', 'Identity-H');
+        doc.setFont('NotoSansJP', 'normal');
+    } catch (e) {
+        console.error("Failed to load font:", e);
+    }
+
     const pageWidth = doc.internal.pageSize.getWidth();
     let y = 20;
 
@@ -26,13 +59,13 @@ export function generatePDF(
     // ------------------------------------------------------------------
     doc.setFontSize(22);
     doc.setTextColor(249, 115, 22);
-    doc.setFont("helvetica", "bold");
-    doc.text("Eco Clean Mate Tokyo", 20, y);
+    doc.setFont("NotoSansJP", "bold");
+    doc.text(translate("brand.name", "Eco Clean Mate Tokyo"), 20, y);
 
     doc.setFontSize(10);
     doc.setTextColor(107, 114, 128);
-    doc.setFont("helvetica", "normal");
-    doc.text("Cost Estimate", 20, y + 6);
+    doc.setFont("NotoSansJP", "normal");
+    doc.text(translate("pdf.title", "Cost Estimate"), 20, y + 6);
 
     // Date
     const now = new Date();
@@ -45,7 +78,7 @@ export function generatePDF(
 
     doc.setFontSize(8);
     doc.setTextColor(156, 163, 175);
-    doc.text(`Generated: ${dateStr}`, pageWidth - 20, y, { align: "right" });
+    doc.text(`${translate("pdf.generated", "Generated")}: ${dateStr}`, pageWidth - 20, y, { align: "right" });
 
     // Divider
     y += 14;
@@ -58,32 +91,32 @@ export function generatePDF(
     // ------------------------------------------------------------------
     doc.setFontSize(12);
     doc.setTextColor(31, 41, 55);
-    doc.setFont("helvetica", "bold");
-    doc.text("Customer Information", 20, y);
+    doc.setFont("NotoSansJP", "bold");
+    doc.text(translate("pdf.customerInfo", "Customer Information"), 20, y);
     y += 8;
 
     doc.setFontSize(9);
-    doc.setFont("helvetica", "normal");
+    doc.setFont("NotoSansJP", "normal");
     doc.setTextColor(55, 65, 81);
 
     const customerInfo = [
-        ["Name:", `${formData.step8.lastName} ${formData.step8.firstName}`],
-        ["Phone:", formData.step8.phoneNumber],
-        ["Email:", formData.step8.email],
+        [translate("pdf.name", "Name") + ":", `${formData.step8.lastName} ${formData.step8.firstName}`],
+        [translate("pdf.phone", "Phone") + ":", formData.step8.phoneNumber],
+        [translate("pdf.email", "Email") + ":", formData.step8.email],
     ];
 
     if (formData.step8.city) {
-        customerInfo.push(["Address:", formData.step8.city]);
+        customerInfo.push([translate("pdf.address", "Address") + ":", formData.step8.city]);
     }
     if (formData.step8.building) {
-        customerInfo.push(["Building:", formData.step8.building]);
+        customerInfo.push([translate("pdf.building", "Building") + ":", formData.step8.building]);
     }
 
     customerInfo.forEach(([label, value]) => {
         if (value && value.trim()) {
-            doc.setFont("helvetica", "bold");
+            doc.setFont("NotoSansJP", "bold");
             doc.text(label, 20, y);
-            doc.setFont("helvetica", "normal");
+            doc.setFont("NotoSansJP", "normal");
             doc.text(value, 52, y);
             y += 6;
         }
@@ -101,19 +134,19 @@ export function generatePDF(
     // ------------------------------------------------------------------
     doc.setFontSize(12);
     doc.setTextColor(31, 41, 55);
-    doc.setFont("helvetica", "bold");
-    doc.text("Items", 20, y);
+    doc.setFont("NotoSansJP", "bold");
+    doc.text(translate("pdf.items", "Items"), 20, y);
     y += 8;
 
     if (formData.step4.items.length > 0) {
         // Table header
         doc.setFontSize(8);
-        doc.setFont("helvetica", "bold");
+        doc.setFont("NotoSansJP", "bold");
         doc.setTextColor(107, 114, 128);
-        doc.text("Item", 22, y);
-        doc.text("Qty", 110, y, { align: "center" });
-        doc.text("Unit Price", 140, y, { align: "center" });
-        doc.text("Total", pageWidth - 22, y, { align: "right" });
+        doc.text(translate("pdf.table.item", "Item"), 22, y);
+        doc.text(translate("pdf.table.qty", "Qty"), 110, y, { align: "center" });
+        doc.text(translate("pdf.table.unitPrice", "Unit Price"), 140, y, { align: "center" });
+        doc.text(translate("pdf.table.total", "Total"), pageWidth - 22, y, { align: "right" });
         y += 6;
 
         doc.setDrawColor(229, 231, 235);
@@ -121,7 +154,7 @@ export function generatePDF(
         y += 4;
 
         // Regular Items
-        doc.setFont("helvetica", "normal");
+        doc.setFont("NotoSansJP", "normal");
         doc.setTextColor(55, 65, 81);
 
         regularItems.forEach((item) => {
@@ -134,8 +167,11 @@ export function generatePDF(
                 y = 20;
             }
 
+            // Get translated product name
+            const productName = translate(`products.names.${item.productName}`, item.productName);
+            const name = productName.length > 35 ? productName.substring(0, 33) + "..." : productName;
+
             doc.setFontSize(8);
-            const name = item.productName.length > 35 ? item.productName.substring(0, 33) + "..." : item.productName;
             doc.text(name, 22, y);
             doc.text(qty.toString(), 110, y, { align: "center" });
             doc.text(formatYen(unitPrice), 140, y, { align: "center" });
@@ -154,15 +190,17 @@ export function generatePDF(
             doc.setFillColor(255, 247, 237);
             doc.rect(20, y - 3, pageWidth - 40, 6, "F");
 
+            const productName = translate(`products.names.${item.productName}`, item.productName);
+            const name = productName.length > 30 ? productName.substring(0, 28) + "..." : productName;
+
             doc.setFontSize(8);
             doc.setTextColor(55, 65, 81);
-            const name = item.productName.length > 30 ? item.productName.substring(0, 28) + "..." : item.productName;
             doc.text(name, 22, y);
             doc.text((item.quantity || 1).toString(), 110, y, { align: "center" });
             doc.setTextColor(249, 115, 22);
-            doc.setFont("helvetica", "bold");
-            doc.text("TBA", 140, y, { align: "center" });
-            doc.setFont("helvetica", "normal");
+            doc.setFont("NotoSansJP", "bold");
+            doc.text(translate("pdf.tba", "TBA"), 140, y, { align: "center" });
+            doc.setFont("NotoSansJP", "normal");
             doc.setTextColor(156, 163, 175);
             doc.text("—", pageWidth - 22, y, { align: "right" });
             doc.setTextColor(55, 65, 81);
@@ -171,7 +209,7 @@ export function generatePDF(
             // "To Be Appraised" label
             doc.setFontSize(6);
             doc.setTextColor(249, 115, 22);
-            doc.text("To Be Appraised — price will be provided after assessment", 24, y);
+            doc.text(translate("pdf.toBeAppraised", "To Be Appraised — price will be provided after assessment"), 24, y);
             doc.setTextColor(55, 65, 81);
             y += 5;
         });
@@ -183,24 +221,28 @@ export function generatePDF(
         y += 6;
 
         doc.setFontSize(8);
-        doc.setFont("helvetica", "bold");
-        doc.text("Items Subtotal", 22, y);
+        doc.setFont("NotoSansJP", "bold");
+        doc.text(translate("pdf.itemsSubtotal", "Items Subtotal"), 22, y);
         doc.text(formatYen(totals.itemsSubtotal), pageWidth - 22, y, { align: "right" });
 
         // Appraisal note
         if (appraisalItems.length > 0) {
             y += 5;
             doc.setFontSize(6);
-            doc.setFont("helvetica", "normal");
+            doc.setFont("NotoSansJP", "normal");
             doc.setTextColor(249, 115, 22);
-            doc.text(`* Excludes ${appraisalItems.length} item(s) to be appraised`, 22, y);
+            doc.text(
+                translate("pdf.excludesAppraisal", "* Excludes {{count}} item(s) to be appraised", { count: appraisalItems.length }),
+                22,
+                y
+            );
         }
 
         y += 10;
     } else {
         doc.setFontSize(9);
         doc.setTextColor(156, 163, 175);
-        doc.text("No items added", 22, y);
+        doc.text(translate("pdf.noItems", "No items added"), 22, y);
         y += 10;
     }
 
@@ -209,24 +251,27 @@ export function generatePDF(
     // ------------------------------------------------------------------
     doc.setFontSize(12);
     doc.setTextColor(31, 41, 55);
-    doc.setFont("helvetica", "bold");
-    doc.text("Cost Breakdown", 20, y);
+    doc.setFont("NotoSansJP", "bold");
+    doc.text(translate("pdf.costBreakdown", "Cost Breakdown"), 20, y);
     y += 8;
 
     doc.setFontSize(9);
-    doc.setFont("helvetica", "normal");
+    doc.setFont("NotoSansJP", "normal");
     doc.setTextColor(55, 65, 81);
 
     const breakdownLines = [
-        { label: "Basic Service Fee", value: formatYen(totals.basicFee) },
-        { label: "Stair Climbing Service", value: totals.stairFee > 0 ? formatYen(totals.stairFee) : "¥0" },
+        { label: translate("pdf.basicFee", "Basic Service Fee"), value: formatYen(totals.basicFee) },
+        { label: translate("pdf.stairClimbing", "Stair Climbing Service"), value: totals.stairFee > 0 ? formatYen(totals.stairFee) : "¥0" },
     ];
 
     if (formData.step6.selectedServices.length > 0) {
         formData.step6.selectedServices.forEach((serviceId) => {
             const service = EXTRA_SERVICES.find((s) => s.id === serviceId);
             if (service) {
-                breakdownLines.push({ label: service.label, value: formatYen(service.price) });
+                breakdownLines.push({
+                    label: translate(service.label, service.label),
+                    value: formatYen(service.price)
+                });
             }
         });
     }
@@ -244,13 +289,13 @@ export function generatePDF(
     y += 8;
 
     // Totals
-    doc.setFont("helvetica", "bold");
-    doc.text("Subtotal", 22, y);
+    doc.setFont("NotoSansJP", "bold");
+    doc.text(translate("pdf.subtotal", "Subtotal"), 22, y);
     doc.text(formatYen(totals.subtotal), pageWidth - 22, y, { align: "right" });
     y += 7;
 
-    doc.setFont("helvetica", "normal");
-    doc.text("Tax (10%)", 22, y);
+    doc.setFont("NotoSansJP", "normal");
+    doc.text(translate("pdf.tax", "Tax (10%)"), 22, y);
     doc.text(formatYen(totals.tax), pageWidth - 22, y, { align: "right" });
     y += 7;
 
@@ -262,9 +307,9 @@ export function generatePDF(
     y += 7;
 
     doc.setFontSize(12);
-    doc.setFont("helvetica", "bold");
+    doc.setFont("NotoSansJP", "bold");
     doc.setTextColor(249, 115, 22);
-    doc.text("Grand Total", 22, y);
+    doc.text(translate("pdf.grandTotal", "Grand Total"), 22, y);
     doc.text(formatYen(totals.grandTotal), pageWidth - 22, y, { align: "right" });
 
     // ------------------------------------------------------------------
@@ -273,13 +318,14 @@ export function generatePDF(
     y = 280;
     doc.setFontSize(7);
     doc.setTextColor(156, 163, 175);
-    doc.setFont("helvetica", "normal");
-    doc.text("This is an estimate only. Final pricing may vary based on actual assessment.", pageWidth / 2, y, { align: "center" });
+    doc.setFont("NotoSansJP", "normal");
+    doc.text(translate("pdf.footer.estimate", "This is an estimate only. Final pricing may vary based on actual assessment."), pageWidth / 2, y, { align: "center" });
     if (appraisalItems.length > 0) {
-        doc.text("Items marked 'TBA' will be appraised separately. We will contact you with purchase prices.", pageWidth / 2, y + 4, { align: "center" });
+        doc.text(translate("pdf.footer.appraisal", "Items marked 'TBA' will be appraised separately. We will contact you with purchase prices."), pageWidth / 2, y + 4, { align: "center" });
     } else {
-        doc.text("Contact us for any questions about this estimate.", pageWidth / 2, y + 4, { align: "center" });
+        doc.text(translate("pdf.footer.contact", "Contact us for any questions about this estimate."), pageWidth / 2, y + 4, { align: "center" });
     }
+
     // ------------------------------------------------------------------
     // Save
     // ------------------------------------------------------------------
