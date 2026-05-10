@@ -70,10 +70,10 @@ const Stepper = memo(function Stepper({ currentStep, onStepClick }: StepperProps
                                 )}
                             </button>
 
-                            {/* Label */}
+                            {/* Label - hidden on mobile, visible on sm and up */}
                             <span
                                 className={[
-                                    "text-xs font-medium text-center mt-2 w-20 sm:w-24",
+                                    "hidden sm:block text-xs font-medium text-center mt-2 w-20 sm:w-24",
                                     "leading-tight break-words",
                                     isActive
                                         ? "text-orange-500"

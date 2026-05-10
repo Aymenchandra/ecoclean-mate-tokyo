@@ -142,9 +142,9 @@ const CalculatorPage = memo(function CalculatorPage() {
         <div className="min-h-screen bg-gray-50 flex flex-col">
             {/* Minimal top bar */}
             <header className="w-full border-b border-gray-200 bg-white px-6 py-4 flex items-center justify-between">
-                <span className="font-bold text-orange-500 text-lg tracking-tight">
+                <Link to="/" className="font-bold text-orange-500 text-lg tracking-tight hover:text-orange-600 transition-colors">
                     {t("brand.name")}
-                </span>
+                </Link>
                 <LanguageSwitcher />
             </header>
 
