@@ -5,6 +5,7 @@ import viteCompression from "vite-plugin-compression";
 
 export default defineConfig({
   plugins: [react(), tailwindcss(), viteCompression({ algorithm: "brotliCompress" })],
+  base: "/",
   build: {
     rollupOptions: {
       output: {
