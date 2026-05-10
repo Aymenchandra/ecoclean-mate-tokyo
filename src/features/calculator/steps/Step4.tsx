@@ -18,24 +18,30 @@ const MAIN_TYPES: { value: MainType; icon: string }[] = [
 ];
 
 const Step4 = memo(function Step4({ data, onAdd, onRemove }: Props) {
-    const { t } = useTranslation();
+    // Request both namespaces — i18next will lazy-load "products" on mount
+    const { t, i18n } = useTranslation(["translation", "products"]);
+
     const [activeMainType, setActiveMainType] = useState<MainType>("furniture");
     const [activeCategory, setActiveCategory] = useState<string>("");
+    const [productsReady, setProductsReady] = useState(false);
 
-    // Get the current product category data
+    // Load the products namespace when Step4 first mounts.
+    // i18next fetches it once and caches it — subsequent renders are instant.
+    useEffect(() => {
+        i18n.loadNamespaces("products").then(() => setProductsReady(true));
+    }, [i18n]);
+
     const currentProductCategory: ProductCategory | undefined = useMemo(
         () => productsData.find((pc) => pc.type === activeMainType),
         [activeMainType]
     );
 
-    // Auto-select first category when main type changes
     useEffect(() => {
-        if (currentProductCategory && currentProductCategory.categories.length > 0) {
+        if (currentProductCategory?.categories.length) {
             setActiveCategory(currentProductCategory.categories[0].categoryName);
         }
     }, [currentProductCategory]);
 
-    // Get items for active category
     const activeItems: Item[] = useMemo(() => {
         if (!currentProductCategory) return [];
         const cat = currentProductCategory.categories.find(
@@ -44,16 +50,16 @@ const Step4 = memo(function Step4({ data, onAdd, onRemove }: Props) {
         return cat ? cat.items : [];
     }, [currentProductCategory, activeCategory]);
 
-    // Check if item is already added
-    const isItemAdded = (itemName: string): boolean => {
-        return data.items.some((i) => i.productName === itemName);
-    };
+    const isItemAdded = (itemName: string): boolean =>
+        data.items.some((i) => i.productName === itemName);
 
     const handleAddItem = (item: Item) => {
         const cleanPrice = parseInt(item.price.toString().replace(/\./g, ""), 10);
-
         const newItem: ItemEntry = {
-            id: typeof crypto !== 'undefined' && crypto.randomUUID ? crypto.randomUUID() : Math.random().toString(36).substring(2, 15),
+            id:
+                typeof crypto !== "undefined" && crypto.randomUUID
+                    ? crypto.randomUUID()
+                    : Math.random().toString(36).substring(2, 15),
             category: `${activeMainType} > ${activeCategory}`,
             productName: item.name,
             quantity: 1,
@@ -71,6 +77,11 @@ const Step4 = memo(function Step4({ data, onAdd, onRemove }: Props) {
         };
         onAdd(newItem);
     };
+
+    // Helper: look up a product name/category from the "products" namespace.
+    // Falls back to the raw key while the namespace is still loading.
+    const tp = (key: string, fallback: string) =>
+        productsReady ? t(key, { ns: "products", defaultValue: fallback }) : fallback;
 
     return (
         <div className="space-y-6">
@@ -123,7 +134,8 @@ const Step4 = memo(function Step4({ data, onAdd, onRemove }: Props) {
                                         : "text-gray-600 hover:bg-gray-50 border border-transparent",
                                 ].join(" ")}
                             >
-                                {t(`products.categories.${cat.categoryName}`, { defaultValue: cat.categoryName })}
+                                {/* Key in products namespace: categories.<name> */}
+                                {tp(`categories.${cat.categoryName}`, cat.categoryName)}
                             </button>
                         ))}
                     </div>
@@ -153,7 +165,7 @@ const Step4 = memo(function Step4({ data, onAdd, onRemove }: Props) {
                                     <div className="aspect-square bg-gray-100 rounded-md overflow-hidden mb-2">
                                         <img
                                             src={item.imagePreview}
-                                            alt={t(`products.names.${item.name}`, { defaultValue: item.name })}
+                                            alt={tp(`names.${item.name}`, item.name)}
                                             className="w-full h-full object-cover"
                                             loading="lazy"
                                             decoding="async"
@@ -166,7 +178,8 @@ const Step4 = memo(function Step4({ data, onAdd, onRemove }: Props) {
                                         />
                                     </div>
                                     <p className="text-xs font-medium text-gray-800 leading-tight line-clamp-2">
-                                        {t(`products.names.${item.name}`, { defaultValue: item.name })}
+                                        {/* Key in products namespace: names.<item name> */}
+                                        {tp(`names.${item.name}`, item.name)}
                                     </p>
                                     {added && (
                                         <span className="inline-block mt-1.5 text-xs text-green-600 font-medium">
@@ -215,7 +228,7 @@ const Step4 = memo(function Step4({ data, onAdd, onRemove }: Props) {
                                 >
                                     <img
                                         src={item.imagePreview || "https://via.placeholder.com/40x40?text=?"}
-                                        alt={t(`products.names.${item.productName}`, { defaultValue: item.productName })}
+                                        alt={tp(`names.${item.productName}`, item.productName)}
                                         className="w-10 h-10 rounded-md object-cover flex-shrink-0 bg-gray-100"
                                         loading="lazy"
                                         decoding="async"
@@ -228,7 +241,7 @@ const Step4 = memo(function Step4({ data, onAdd, onRemove }: Props) {
                                     />
                                     <div className="flex-1 min-w-0">
                                         <p className="text-xs font-medium text-gray-800 truncate">
-                                            {t(`products.names.${item.productName}`, { defaultValue: item.productName })}
+                                            {tp(`names.${item.productName}`, item.productName)}
                                         </p>
                                     </div>
                                     <button
@@ -239,7 +252,13 @@ const Step4 = memo(function Step4({ data, onAdd, onRemove }: Props) {
                       transition-colors md:opacity-0 md:group-hover:opacity-100 opacity-100"
                                         title={t("calculator.step4.removeItem")}
                                     >
-                                        <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                                        <svg
+                                            className="w-3 h-3"
+                                            fill="none"
+                                            viewBox="0 0 24 24"
+                                            stroke="currentColor"
+                                            strokeWidth={2}
+                                        >
                                             <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
                                         </svg>
                                     </button>
@@ -263,9 +282,7 @@ const Step4 = memo(function Step4({ data, onAdd, onRemove }: Props) {
 
             {/* Note */}
             <div className="bg-blue-50 border border-blue-200 rounded-lg p-3">
-                <p className="text-xs text-blue-700">
-                    {t("calculator.step4.note")}
-                </p>
+                <p className="text-xs text-blue-700">{t("calculator.step4.note")}</p>
             </div>
         </div>
     );

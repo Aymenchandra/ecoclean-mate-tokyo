@@ -1,6 +1,7 @@
 import jsPDF from "jspdf";
 import { EXTRA_SERVICES } from "../features/calculator/calculatorConfig";
 import type { CalculatorFormData, CostBreakdown } from "../hooks/useCalculator";
+import i18n from "../i18n/i18n";
 
 const formatYen = (amount: number): string => {
     return "¥" + Math.round(amount).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
@@ -14,6 +15,10 @@ export async function generatePDF(
     totals: CostBreakdown,
     t?: TFunction
 ): Promise<void> {
+    // Ensure the products namespace is loaded — it's lazy and may not be
+    // available if the user triggers PDF generation before visiting Step 4.
+    await i18n.loadNamespaces("products");
+
     // Helper to get translated text with fallback
     const translate = (key: string, fallback: string, options?: any): string => {
         if (t) {
@@ -168,7 +173,7 @@ export async function generatePDF(
             }
 
             // Get translated product name
-            const productName = translate(`products.names.${item.productName}`, item.productName);
+            const productName = translate(`products:names.${item.productName}`, item.productName);
             const name = productName.length > 35 ? productName.substring(0, 33) + "..." : productName;
 
             doc.setFontSize(8);
@@ -190,7 +195,7 @@ export async function generatePDF(
             doc.setFillColor(255, 247, 237);
             doc.rect(20, y - 3, pageWidth - 40, 6, "F");
 
-            const productName = translate(`products.names.${item.productName}`, item.productName);
+            const productName = translate(`products:names.${item.productName}`, item.productName);
             const name = productName.length > 30 ? productName.substring(0, 28) + "..." : productName;
 
             doc.setFontSize(8);

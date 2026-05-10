@@ -11,13 +11,17 @@ export const LANGUAGES = [
 
 export type LangCode = (typeof LANGUAGES)[number]["code"];
 
-// Type for our backend plugin
 const lazyLoadBackend = {
     type: "backend" as const,
     init: () => { },
-    read: async (language: string, _namespace: string, callback: Function) => {
+    // i18next now passes the namespace — forward it to loadTranslation
+    read: async (
+        language: string,
+        namespace: string,
+        callback: (err: unknown, data: unknown) => void
+    ) => {
         try {
-            const translations = await loadTranslation(language);
+            const translations = await loadTranslation(language, namespace);
             callback(null, translations);
         } catch (error) {
             callback(error, null);
@@ -27,13 +31,17 @@ const lazyLoadBackend = {
 
 i18n
     .use(LanguageDetector)
-    .use(lazyLoadBackend as any) // Type assertion needed for custom backend
+    .use(lazyLoadBackend as any)
     .use(initReactI18next)
     .init({
         fallbackLng: "ja",
         supportedLngs: ["ja", "en", "fil"],
 
-        // Use custom backend for lazy loading
+        // Declare both namespaces; "translation" is the default
+        ns: ["translation", "products"],
+        defaultNS: "translation",
+
+        // Load namespaces on demand (products loads when Step4 mounts)
         partialBundledLanguages: true,
 
         detection: {
@@ -46,15 +54,11 @@ i18n
             escapeValue: false,
         },
 
-        // Important: Don't load anything initially
         load: "languageOnly",
-
-        // Return details for debugging
         returnDetails: false,
 
-        // React specific options
         react: {
-            useSuspense: false, // We'll handle loading ourselves
+            useSuspense: false, // loading state handled in components
         },
     });
 

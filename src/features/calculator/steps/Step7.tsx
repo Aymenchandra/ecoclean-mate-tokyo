@@ -10,7 +10,7 @@ interface Props {
 }
 
 const Step7 = memo(function Step7({ formData, totals }: Props) {
-    const { t } = useTranslation();
+    const { t } = useTranslation(["translation", "products"]);
 
     const formatYen = (amount: number): string => {
         return "¥" + Math.round(amount).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
@@ -25,8 +25,9 @@ const Step7 = memo(function Step7({ formData, totals }: Props) {
 
     // Helper function to get translated product name
     const getTranslatedName = (productName: string): string => {
-        const translated = t(`products.names.${productName}`, {
+        const translated = t(`names.${productName}`, {
             defaultValue: productName,
+            ns: "products",
             fallbackLng: 'ja'
         });
         return translated;

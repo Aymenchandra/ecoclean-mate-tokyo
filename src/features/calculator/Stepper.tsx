@@ -13,7 +13,7 @@ const Stepper = memo(function Stepper({ currentStep, onStepClick }: StepperProps
     return (
         <div className="w-full">
             {/* Step indicators */}
-            <div className="flex items-center justify-between relative">
+            <div className="flex items-start justify-between relative">
                 {/* Background connector line */}
                 <div className="absolute top-4 left-0 right-0 h-0.5 bg-gray-200 z-0" />
 
@@ -33,7 +33,7 @@ const Stepper = memo(function Stepper({ currentStep, onStepClick }: StepperProps
                     return (
                         <div
                             key={step.id}
-                            className="relative z-10 flex flex-col items-center gap-2"
+                            className="relative z-10 flex flex-col items-center"
                         >
                             {/* Circle */}
                             <button
@@ -41,7 +41,7 @@ const Stepper = memo(function Stepper({ currentStep, onStepClick }: StepperProps
                                 onClick={() => isClickable && onStepClick(step.id)}
                                 disabled={!isClickable}
                                 className={[
-                                    "w-8 h-8 rounded-full flex items-center justify-center text-sm font-semibold",
+                                    "w-8 h-8 rounded-full flex items-center justify-center text-sm font-semibold shrink-0",
                                     "border-2 transition-all duration-300",
                                     isCompleted
                                         ? "bg-orange-500 border-orange-500 text-white cursor-pointer hover:bg-orange-600"
@@ -73,7 +73,8 @@ const Stepper = memo(function Stepper({ currentStep, onStepClick }: StepperProps
                             {/* Label */}
                             <span
                                 className={[
-                                    "text-xs font-medium whitespace-nowrap hidden sm:block",
+                                    "text-xs font-medium text-center mt-2 w-20 sm:w-24",
+                                    "leading-tight break-words",
                                     isActive
                                         ? "text-orange-500"
                                         : isCompleted
@@ -89,7 +90,7 @@ const Stepper = memo(function Stepper({ currentStep, onStepClick }: StepperProps
             </div>
 
             {/* Current step description */}
-            <p className="mt-4 text-center text-sm text-gray-500">
+            <p className="mt-6 text-center text-sm text-gray-500">
                 {t("calculator.stepper.stepOf", {
                     current: currentStep,
                     total: STEPS.length

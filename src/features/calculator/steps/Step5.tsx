@@ -11,7 +11,7 @@ interface Props {
 }
 
 const Step5 = memo(function Step5({ data, onUpdateItem }: Props) {
-    const { t } = useTranslation();
+    const { t } = useTranslation(["translation", "products"]);
     const fileInputRefs = useRef<Map<string, HTMLInputElement>>(new Map());
 
     const recalcPrice = useCallback(
@@ -99,7 +99,7 @@ const Step5 = memo(function Step5({ data, onUpdateItem }: Props) {
                 {data.items.map((item) => {
                     const unitPrice = parseFloat(item.unitPrice) || 0;
                     const itemTotal = unitPrice * (item.quantity || 1);
-                    const translatedName = t(`products.names.${item.productName}`, { defaultValue: item.productName });
+                    const translatedName = t(`names.${item.productName}`, { ns: "products", defaultValue: item.productName });
 
                     return (
                         <div
