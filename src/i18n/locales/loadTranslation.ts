@@ -5,7 +5,7 @@ type TranslationLoader = () => Promise<ResourceLanguage>;
 const translationLoaders: Record<string, TranslationLoader> = {
   en: () => import("./en.json").then(m => m.default),
   ja: () => import("./ja.json").then(m => m.default),
-  "zh-TW": () => import("./zh-TW.json").then(m => m.default),
+  fil: () => import("./fil.json").then(m => m.default),
 };
 
 // Cache management

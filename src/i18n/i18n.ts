@@ -6,7 +6,7 @@ import { loadTranslation } from "./locales/loadTranslation";
 export const LANGUAGES = [
     { code: "ja", label: "日本語", flag: "🇯🇵", short: "JP" },
     { code: "en", label: "English", flag: "🇺🇸", short: "EN" },
-    { code: "zh-TW", label: "繁體中文", flag: "🇹🇼", short: "TW" },
+    { code: "fil", label: "Filipino", flag: "🇵🇭", short: "PH" },
 ] as const;
 
 export type LangCode = (typeof LANGUAGES)[number]["code"];
@@ -31,7 +31,7 @@ i18n
     .use(initReactI18next)
     .init({
         fallbackLng: "ja",
-        supportedLngs: ["ja", "en", "zh-TW"],
+        supportedLngs: ["ja", "en", "fil"],
 
         // Use custom backend for lazy loading
         partialBundledLanguages: true,

@@ -6,6 +6,10 @@ import heroImg from "/assets/images/hero-img.webp";
 const Hero = memo(function Hero() {
     const { t } = useTranslation();
 
+    const handleCall = (phoneNumber: string) => {
+        window.location.href = `tel:${phoneNumber}`;
+    };
+
     return (
         <section className="flex flex-col md:flex-row items-center max-md:text-center justify-between mt-16 pb-16 px-6 sm:px-10 md:px-24 max-w-7xl mx-auto w-full">
             <div className="flex flex-col items-center md:items-start">
@@ -48,6 +52,7 @@ const Hero = memo(function Hero() {
                 {/* CTA Buttons */}
                 <div className="flex flex-col sm:flex-row items-center mt-8 gap-4">
                     <button
+                        onClick={() => handleCall("03-6885-9300")}
                         className="group bg-gradient-to-r from-orange-500 to-orange-600 text-white px-6 py-3 rounded-full text-sm font-semibold flex items-center gap-2 hover:from-orange-600 hover:to-orange-700 transition-all duration-300 shadow-lg hover:shadow-xl hover:shadow-orange-500/25 transform hover:-translate-y-0.5"
                         type="button"
                     >
@@ -67,15 +72,16 @@ const Hero = memo(function Hero() {
                             />
                         </svg>
                     </button>
-                    <Link
-                        to="/"
+                    <button
+                        onClick={() => handleCall("090-1432-7757")}
                         className="group relative overflow-hidden border-2 border-orange-500 text-orange-600 px-6 py-3 rounded-full text-sm font-semibold hover:text-white transition-all duration-300"
+                        type="button"
                     >
                         <span className="absolute inset-0 bg-gradient-to-r from-orange-500 to-orange-600 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></span>
                         <span className="relative z-10">
                             {t("hero.cta.secondary", { phone: "090-1432-7757" })}
                         </span>
-                    </Link>
+                    </button>
                 </div>
 
                 {/* Stats */}

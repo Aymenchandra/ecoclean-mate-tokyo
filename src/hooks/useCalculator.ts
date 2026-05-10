@@ -285,27 +285,27 @@ export function useCalculator() {
 
     const goNext = useCallback(() => {
         if (currentStep === 1 && !formData.step1.confirmed) {
-            showToast("Please confirm the terms to continue.", "warning");
+            showToast(t('calculator.validation.confirmTerms', 'Please confirm the terms to continue.'), "warning");
             return;
         }
         if (
             currentStep === 2 &&
             (!formData.step2.propertyType || !formData.step2.totalFloors || !formData.step2.itemFloor)
         ) {
-            showToast("Please complete all fields before proceeding.", "warning");
+            showToast(t('calculator.validation.completeFields', 'Please complete all fields before proceeding.'), "warning");
             return;
         }
         if (currentStep === 3 && formData.step3.hasElevator === null) {
-            showToast("Please select whether you have an elevator.", "warning");
+            showToast(t('calculator.validation.selectElevator', 'Please select whether you have an elevator.'), "warning");
             return;
         }
         if (currentStep === 4 && formData.step4.items.length === 0) {
-            showToast("Please add at least one item.", "warning");
+            showToast(t('calculator.validation.addItem', 'Please add at least one item.'), "warning");
             return;
         }
 
         setCurrentStep((s) => Math.min(s + 1, totalSteps));
-    }, [currentStep, formData, totalSteps, showToast]);
+    }, [currentStep, formData, totalSteps, showToast, t]);
 
     const goPrev = useCallback(() => {
         setCurrentStep((s) => Math.max(s - 1, 1));
@@ -330,33 +330,33 @@ export function useCalculator() {
     const submit = useCallback(async () => {
         // Validate Step 8 before submitting
         if (!formData.step8.lastName.trim()) {
-            showToast("Please enter your last name.", "warning");
+            showToast(t('calculator.validation.lastName', 'Please enter your last name.'), "warning");
             return;
         }
         if (!formData.step8.firstName.trim()) {
-            showToast("Please enter your first name.", "warning");
+            showToast(t('calculator.validation.firstName', 'Please enter your first name.'), "warning");
             return;
         }
         const phoneNumber = formData.step8.phoneNumber.trim().replace(/\s/g, "");
 
         if (!phoneNumber) {
-            showToast("Please enter your phone number.", "warning");
+            showToast(t('calculator.validation.phone', 'Please enter your phone number.'), "warning");
             return;
         }
 
         const phoneRegex = /^(\+81-?)?0(\d{1,4})-?\d{1,4}-?\d{3,4}$/;
 
         if (!phoneRegex.test(phoneNumber)) {
-            showToast("Please enter a valid phone number (e.g., 090-1234-5678 or 03-1234-5678).", "warning");
+            showToast(t('calculator.validation.validPhone', 'Please enter a valid phone number (e.g., 090-1234-5678 or 03-1234-5678).'), "warning");
             return;
         }
 
         if (!formData.step8.email.trim()) {
-            showToast("Please enter your email address.", "warning");
+            showToast(t('calculator.validation.email', 'Please enter your email address.'), "warning");
             return;
         }
         if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.step8.email.trim())) {
-            showToast("Please enter a valid email address.", "warning");
+            showToast(t('calculator.validation.validEmail', 'Please enter a valid email address.'), "warning");
             return;
         }
 

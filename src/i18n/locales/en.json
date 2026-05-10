@@ -360,6 +360,18 @@
     }
   },
   "calculator": {
+    "validation": {
+      "confirmTerms": "Please confirm the terms to continue.",
+      "completeFields": "Please complete all fields before proceeding.",
+      "selectElevator": "Please select whether you have an elevator.",
+      "addItem": "Please add at least one item.",
+      "lastName": "Please enter your last name.",
+      "firstName": "Please enter your first name.",
+      "phone": "Please enter your phone number.",
+      "validPhone": "Please enter a valid phone number (e.g., 090-1234-5678 or 03-1234-5678).",
+      "email": "Please enter your email address.",
+      "validEmail": "Please enter a valid email address."
+    },
     "success": {
       "title": "Estimate Downloaded!",
       "description": "Your estimate PDF has been generated. We'll also send a copy to your email.",
