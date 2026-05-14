@@ -50,8 +50,13 @@ const Step4 = memo(function Step4({ data, onAdd, onRemove }: Props) {
         return cat ? cat.items : [];
     }, [currentProductCategory, activeCategory]);
 
+    const addedItemNames = useMemo(
+        () => new Set(data.items.map((i) => i.productName)),
+        [data.items]
+    );
+
     const isItemAdded = (itemName: string): boolean =>
-        data.items.some((i) => i.productName === itemName);
+        addedItemNames.has(itemName);
 
     const handleAddItem = (item: Item) => {
         const cleanPrice = parseInt(item.price.toString().replace(/\./g, ""), 10);
@@ -181,20 +186,20 @@ const Step4 = memo(function Step4({ data, onAdd, onRemove }: Props) {
                                         {/* Key in products namespace: names.<item name> */}
                                         {tp(`names.${item.name}`, item.name)}
                                     </p>
-                                    {added && (
+                                    {added ? (
                                         <span className="inline-block mt-1.5 text-xs text-green-600 font-medium">
                                             ✓ {t("calculator.step4.added")}
                                         </span>
-                                    )}
+                                    ) : null}
                                 </button>
                             );
                         })}
                     </div>
-                    {activeItems.length === 0 && (
+                    {activeItems.length === 0 ? (
                         <p className="text-sm text-gray-400 text-center py-8">
                             {t("calculator.step4.noItems")}
                         </p>
-                    )}
+                    ) : null}
                 </div>
 
                 {/* Selected Items Cart */}
@@ -203,11 +208,11 @@ const Step4 = memo(function Step4({ data, onAdd, onRemove }: Props) {
                         <h4 className="text-xs font-semibold text-gray-500 uppercase tracking-wider">
                             {t("calculator.step4.selectedItems")}
                         </h4>
-                        {data.items.length > 0 && (
+                        {data.items.length > 0 ? (
                             <span className="text-xs bg-orange-100 text-orange-700 px-2 py-0.5 rounded-full font-medium">
                                 {data.items.length}
                             </span>
-                        )}
+                        ) : null}
                     </div>
 
                     {data.items.length === 0 ? (
@@ -267,7 +272,7 @@ const Step4 = memo(function Step4({ data, onAdd, onRemove }: Props) {
                         </div>
                     )}
 
-                    {data.items.length > 0 && (
+                    {data.items.length > 0 ? (
                         <div className="mt-3 pt-3 border-t border-gray-100">
                             <p className="text-xs text-gray-500 text-center">
                                 {t("calculator.step4.itemsSelected", { count: data.items.length })}
@@ -276,7 +281,7 @@ const Step4 = memo(function Step4({ data, onAdd, onRemove }: Props) {
                                 {t("calculator.step4.nextStepHint")}
                             </p>
                         </div>
-                    )}
+                    ) : null}
                 </div>
             </div>
 

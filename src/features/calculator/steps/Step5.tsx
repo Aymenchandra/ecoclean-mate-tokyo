@@ -84,6 +84,8 @@ const Step5 = memo(function Step5({ data, onUpdateItem }: Props) {
         );
     }
 
+    const sellingItemsCount = data.items.filter(item => item.forSelling && item.canSell).length;
+
     return (
         <div className="space-y-6">
             <div>
@@ -127,7 +129,7 @@ const Step5 = memo(function Step5({ data, onUpdateItem }: Props) {
                                     {translatedName}
                                 </h3>
 
-                                {item.hasSize && (
+                                {item.hasSize ? (
                                     <div>
                                         <label className="block text-xs font-medium text-gray-500 mb-1.5">
                                             {t("calculator.step5.size")}
@@ -161,15 +163,15 @@ const Step5 = memo(function Step5({ data, onUpdateItem }: Props) {
                           focus:outline-none focus:ring-1 focus:ring-orange-500/30 focus:border-orange-500"
                                             />
                                         </div>
-                                        {item.width && item.depth && item.height && (
+                                        {item.width && item.depth && item.height ? (
                                             <p className="text-xs text-gray-400 mt-1 text-center">
                                                 {t("calculator.step5.total")}: {getTotalSize(item.width, item.depth, item.height)} cm
                                             </p>
-                                        )}
+                                        ) : null}
                                     </div>
-                                )}
+                                ) : null}
 
-                                {item.hasWeight && (
+                                {item.hasWeight ? (
                                     <div>
                                         <label className="block text-xs font-medium text-gray-500 mb-1">
                                             {t("calculator.step5.weight")}
@@ -184,7 +186,7 @@ const Step5 = memo(function Step5({ data, onUpdateItem }: Props) {
                         focus:outline-none focus:ring-1 focus:ring-orange-500/30 focus:border-orange-500"
                                         />
                                     </div>
-                                )}
+                                ) : null}
 
                                 <div>
                                     <label className="block text-xs font-medium text-gray-500 mb-1">
@@ -233,7 +235,7 @@ const Step5 = memo(function Step5({ data, onUpdateItem }: Props) {
                                                 </span>
                                             </label>
 
-                                            {item.forSelling && (
+                                            {item.forSelling ? (
                                                 <div className="space-y-2">
                                                     <button
                                                         type="button"
@@ -250,7 +252,7 @@ const Step5 = memo(function Step5({ data, onUpdateItem }: Props) {
                                                         onChange={(e) => handleImageSelect(item, e)}
                                                         className="hidden"
                                                     />
-                                                    {item.sellingImage && (
+                                                    {item.sellingImage ? (
                                                         <div className="relative">
                                                             <img
                                                                 src={item.sellingImage}
@@ -270,9 +272,9 @@ const Step5 = memo(function Step5({ data, onUpdateItem }: Props) {
                                                                 ×
                                                             </button>
                                                         </div>
-                                                    )}
+                                                    ) : null}
                                                 </div>
-                                            )}
+                                            ) : null}
                                         </div>
                                     ) : (
                                         <p className="text-xs font-medium text-red-500 flex items-center gap-1">
@@ -305,14 +307,14 @@ const Step5 = memo(function Step5({ data, onUpdateItem }: Props) {
                                                     {formatYen(unitPrice)}
                                                 </span>
                                             </div>
-                                            {(item.quantity || 1) > 1 && (
+                                            {(item.quantity || 1) > 1 ? (
                                                 <div className="flex items-center justify-between mt-1">
                                                     <span className="text-xs text-gray-500">× {item.quantity}</span>
                                                     <span className="text-sm font-bold text-gray-900">
                                                         {formatYen(itemTotal)}
                                                     </span>
                                                 </div>
-                                            )}
+                                            ) : null}
                                         </>
                                     )}
                                 </div>
@@ -336,13 +338,13 @@ const Step5 = memo(function Step5({ data, onUpdateItem }: Props) {
                         )}
                     </span>
                 </div>
-                {data.items.filter(item => item.forSelling && item.canSell).length > 0 && (
+                {sellingItemsCount > 0 ? (
                     <p className="text-xs text-orange-800">
                         {t("calculator.step5.appraisalCount", {
-                            count: data.items.filter(item => item.forSelling && item.canSell).length
+                            count: sellingItemsCount
                         })}
                     </p>
-                )}
+                ) : null}
             </div>
         </div>
     );

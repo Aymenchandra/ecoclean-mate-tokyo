@@ -122,20 +122,32 @@ const DEFAULT_FORM_DATA: CalculatorFormData = {
 // localStorage helpers
 // ---------------------------------------------------------------------------
 
+let cachedStorage: { data: PersistedState | null; time: number } | null = null;
+
 function loadFromStorage(): PersistedState | null {
+    if (cachedStorage && Date.now() - cachedStorage.time < 50) {
+        return cachedStorage.data;
+    }
+
     try {
         const raw = localStorage.getItem(STORAGE_KEY);
-        if (!raw) return null;
+        if (!raw) {
+            cachedStorage = { data: null, time: Date.now() };
+            return null;
+        }
 
         const parsed: PersistedState = JSON.parse(raw);
 
         if (Date.now() - parsed.savedAt > STORAGE_TTL_MS) {
             localStorage.removeItem(STORAGE_KEY);
+            cachedStorage = { data: null, time: Date.now() };
             return null;
         }
 
+        cachedStorage = { data: parsed, time: Date.now() };
         return parsed;
     } catch {
+        cachedStorage = { data: null, time: Date.now() };
         return null;
     }
 }
@@ -143,6 +155,7 @@ function loadFromStorage(): PersistedState | null {
 function saveToStorage(state: PersistedState): void {
     try {
         localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+        cachedStorage = { data: state, time: Date.now() };
     } catch {
         // Fail silently
     }
@@ -150,6 +163,7 @@ function saveToStorage(state: PersistedState): void {
 
 function clearStorage(): void {
     localStorage.removeItem(STORAGE_KEY);
+    cachedStorage = null;
 }
 
 // ---------------------------------------------------------------------------
