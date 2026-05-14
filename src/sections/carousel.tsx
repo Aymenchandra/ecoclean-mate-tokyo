@@ -49,8 +49,6 @@ const Carousel = memo(function Carousel() {
   return (
     <>
       <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=DM+Sans:wght@300;400;500;600&display=swap');
-
         .carousel-root {
           font-family: 'DM Sans', sans-serif;
           background: linear-gradient(160deg, #0f0c1a 0%, #1a1230 50%, #0d1a2a 100%);
@@ -204,21 +202,34 @@ const Carousel = memo(function Carousel() {
         }
 
         .dot {
+          width: 48px;
+          height: 48px;
+          background: transparent;
+          border: none;
+          cursor: pointer;
+          padding: 0;
+          position: relative;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          transition: all 0.3s;
+        }
+
+        .dot::before {
+          content: '';
           width: 8px;
           height: 8px;
           border-radius: 50%;
           background: rgba(249,115,22,0.25);
           border: 1px solid rgba(249,115,22,0.15);
-          cursor: pointer;
-          padding: 0;
           transition: all 0.3s;
         }
 
-        .dot:hover {
+        .dot:hover::before {
           background: rgba(249,115,22,0.5);
         }
 
-        .dot.is-active {
+        .dot.is-active::before {
           width: 28px;
           border-radius: 4px;
           background: linear-gradient(90deg, #f97316, #ea580c);

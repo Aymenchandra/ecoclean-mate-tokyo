@@ -95,21 +95,21 @@ const Team = memo(function Team() {
 
                                 {/* Name and role - hidden on mobile (shown in image overlay) */}
                                 <div className="relative hidden lg:block">
-                                    <h3 className="text-2xl lg:text-3xl font-bold text-gray-900 group-hover:text-orange-600 transition-colors duration-300">
+                                    <h3 className="text-2xl lg:text-3xl font-bold text-gray-900 group-hover:text-orange-800 transition-colors duration-300">
                                         {t(`team.members.${member.key}.name`)}
                                     </h3>
                                     <div className="flex items-center gap-3 mt-2 mb-5">
                                         <span
                                             className={`inline-block h-1 w-8 rounded-full bg-gradient-to-r ${member.gradient}`}
                                         ></span>
-                                        <span className="text-lg text-orange-600 font-medium">
+                                        <span className="text-lg text-orange-800 font-medium">
                                             {t(`team.members.${member.key}.role`)}
                                         </span>
                                     </div>
                                 </div>
 
                                 {/* Mobile role display */}
-                                <p className="text-orange-600 font-medium lg:hidden mb-4">
+                                <p className="text-orange-800 font-medium lg:hidden mb-4">
                                     {t(`team.members.${member.key}.role`)}
                                 </p>
 
@@ -122,7 +122,7 @@ const Team = memo(function Team() {
                                 <div className="flex gap-6 mt-6 relative">
                                     <div className="flex items-center gap-2">
                                         <svg
-                                            className="w-5 h-5 text-orange-500"
+                                            className="w-5 h-5 text-orange-700"
                                             fill="currentColor"
                                             viewBox="0 0 20 20"
                                         >
@@ -134,7 +134,7 @@ const Team = memo(function Team() {
                                     </div>
                                     <div className="flex items-center gap-2">
                                         <svg
-                                            className="w-5 h-5 text-orange-500"
+                                            className="w-5 h-5 text-orange-700"
                                             fill="none"
                                             viewBox="0 0 24 24"
                                             stroke="currentColor"

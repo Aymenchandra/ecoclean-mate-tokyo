@@ -13,7 +13,7 @@ const LogoGrid = memo(function LogoGrid() {
             <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative">
                 {/* Section header */}
                 <div className="mb-16 text-center">
-                    <span className="text-orange-500 font-semibold text-sm tracking-widest uppercase">
+                    <span className="text-orange-700 font-semibold text-sm tracking-widest uppercase">
                         {t("logoGrid.subtitle")}
                     </span>
                     <h2 className="text-4xl xl:text-5xl capitalize text-center font-bold mt-3 mb-4">

@@ -73,7 +73,7 @@ const Hero = memo(function Hero() {
                     </button>
                     <button
                         onClick={() => handleCall("090-1432-7757")}
-                        className="group relative overflow-hidden border-2 border-orange-500 text-orange-600 px-6 py-3 rounded-full text-sm font-semibold hover:text-white transition-all duration-300"
+                        className="group relative overflow-hidden border-2 border-orange-500 text-orange-800 px-6 py-3 rounded-full text-sm font-semibold hover:text-white transition-all duration-300"
                         type="button"
                     >
                         <span className="absolute inset-0 bg-gradient-to-r from-orange-500 to-orange-600 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></span>
@@ -86,7 +86,7 @@ const Hero = memo(function Hero() {
                 {/* Stats */}
                 <div className="mt-12 flex items-center gap-8 sm:gap-12">
                     <div className="flex flex-col items-center sm:items-start">
-                        <span className="text-2xl sm:text-3xl font-bold text-orange-500">
+                        <span className="text-2xl sm:text-3xl font-bold text-orange-700">
                             {t("hero.stats.monthly.number")}
                         </span>
                         <span className="text-gray-600 text-sm">
@@ -94,7 +94,7 @@ const Hero = memo(function Hero() {
                         </span>
                     </div>
                     <div className="flex flex-col items-center sm:items-start">
-                        <span className="text-2xl sm:text-3xl font-bold text-orange-500">
+                        <span className="text-2xl sm:text-3xl font-bold text-orange-700">
                             {t("hero.stats.available.number")}
                         </span>
                         <span className="text-gray-600 text-sm">
@@ -103,11 +103,11 @@ const Hero = memo(function Hero() {
                     </div>
                     <div className="flex flex-col items-center sm:items-start">
                         <div className="flex items-center gap-1">
-                            <span className="text-2xl sm:text-3xl font-bold text-orange-500">
+                            <span className="text-2xl sm:text-3xl font-bold text-orange-700">
                                 {t("hero.stats.rating.number")}
                             </span>
                             <svg
-                                className="w-5 h-5 text-orange-500"
+                                className="w-5 h-5 text-orange-700"
                                 fill="currentColor"
                                 viewBox="0 0 20 20"
                             >
@@ -127,10 +127,10 @@ const Hero = memo(function Hero() {
                     <div className="absolute -inset-4 bg-gradient-to-r from-orange-400 to-orange-600 rounded-2xl blur-xl opacity-20"></div>
                     <img
                         src={heroImg}
-                        alt={t("hero.imageAlt")}
-                        className="relative w-80 h-96 sm:w-96 sm:h-[440px] md:w-[420px] md:h-[440px] rounded-2xl hover:scale-105 transition duration-500 object-cover shadow-2xl hover:shadow-orange-500/25"
-                        loading="eager"
-                        decoding="async"
+                        alt="Hero image"
+                        className="relative w-80 h-96 sm:w-96 sm:h-[440px] md:w-[420px] md:h-[440px] rounded-…"
+                        fetchPriority="high"
+                        decoding="sync"
                         width="420"
                         height="440"
                     />

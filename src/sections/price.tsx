@@ -66,7 +66,7 @@ const Pricing = memo(function Pricing() {
                 <div className="max-w-4xl mx-auto px-4 py-16 sm:py-20 text-center">
                     <h1 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
                         {t("pricing.hero.title.part1")}{" "}
-                        <span className="text-orange-500">{t("pricing.hero.title.part2")}</span>
+                        <span className="text-orange-700">{t("pricing.hero.title.part2")}</span>
                     </h1>
                     <p className="text-gray-500 max-w-xl mx-auto">
                         {t("pricing.hero.description")}
@@ -91,7 +91,7 @@ const Pricing = memo(function Pricing() {
                             <div className="w-14 h-14 rounded-2xl bg-orange-50 flex items-center justify-center mx-auto mb-4">
                                 <span className="text-2xl">{step.icon}</span>
                             </div>
-                            <div className="text-xs font-bold text-orange-500 mb-2">
+                            <div className="text-xs font-bold text-orange-700 mb-2">
                                 {t("pricing.howItWorks.step", { number: String(index + 1).padStart(2, "0") })}
                             </div>
                             <h3 className="text-sm font-bold text-gray-900 mb-2">

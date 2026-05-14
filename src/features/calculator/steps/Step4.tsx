@@ -105,7 +105,7 @@ const Step4 = memo(function Step4({ data, onAdd, onRemove }: Props) {
                         className={[
                             "px-4 py-2.5 text-sm font-medium rounded-t-lg transition-all flex items-center gap-1.5",
                             activeMainType === type.value
-                                ? "bg-white border border-gray-200 border-b-white text-orange-600 -mb-px relative z-10"
+                                ? "bg-white border border-gray-200 border-b-white text-orange-800 -mb-px relative z-10"
                                 : "text-gray-500 hover:text-gray-700 hover:bg-gray-50",
                         ].join(" ")}
                     >

@@ -59,7 +59,7 @@ const Stats = memo(function Stats() {
             <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                 {/* Section header */}
                 <div className="mb-16 text-center">
-                    <span className="inline-flex items-center gap-2 bg-orange-50 border border-orange-200 text-orange-600 text-xs rounded-full px-4 py-1.5 mb-6 font-semibold">
+                    <span className="inline-flex items-center gap-2 bg-orange-50 border border-orange-200 text-orange-800 text-xs rounded-full px-4 py-1.5 mb-6 font-semibold">
                         <span className="relative flex size-2">
                             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-orange-400 opacity-75"></span>
                             <span className="relative inline-flex rounded-full size-2 bg-orange-500"></span>
@@ -121,7 +121,7 @@ const Stats = memo(function Stats() {
                 {/* Bottom quote */}
                 <div className="mt-16 text-center">
                     <div className="inline-flex items-center gap-3 px-6 py-3 bg-orange-50 border border-orange-100 rounded-full">
-                        <svg className="w-5 h-5 text-orange-500" fill="currentColor" viewBox="0 0 20 20">
+                        <svg className="w-5 h-5 text-orange-700" fill="currentColor" viewBox="0 0 20 20">
                             <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                         </svg>
                         <span className="text-gray-700 text-sm font-medium">

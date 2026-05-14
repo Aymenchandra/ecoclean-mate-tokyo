@@ -46,7 +46,7 @@ const Step7 = memo(function Step7({ formData, totals }: Props) {
 
             <div className="space-y-3">
                 <h3 className="text-sm font-semibold text-gray-700 flex items-center gap-2">
-                    <svg className="w-4 h-4 text-orange-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                    <svg className="w-4 h-4 text-orange-700" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                         <path strokeLinecap="round" strokeLinejoin="round" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
                     </svg>
                     {t("calculator.step7.items")}
@@ -143,7 +143,7 @@ const Step7 = memo(function Step7({ formData, totals }: Props) {
                                                 <p className="text-sm font-medium text-gray-800 truncate">
                                                     {translatedName}
                                                 </p>
-                                                <p className="text-xs text-orange-600 font-medium">
+                                                <p className="text-xs text-orange-800 font-medium">
                                                     {t("calculator.step7.toBeAppraised")}
                                                 </p>
                                             </div>
@@ -153,7 +153,7 @@ const Step7 = memo(function Step7({ formData, totals }: Props) {
                                             <span className="text-sm text-gray-700">{item.quantity || 1}</span>
                                         </div>
                                         <div className="sm:col-span-2 sm:text-center">
-                                            <span className="text-xs text-orange-600 font-medium">{t("calculator.step7.tba")}</span>
+                                            <span className="text-xs text-orange-800 font-medium">{t("calculator.step7.tba")}</span>
                                         </div>
                                         <div className="sm:col-span-3 sm:text-right">
                                             <span className="text-xs text-gray-400">—</span>
@@ -173,7 +173,7 @@ const Step7 = memo(function Step7({ formData, totals }: Props) {
                                 </span>
                             </div>
                             {appraisalItems.length > 0 && (
-                                <p className="text-xs text-orange-600">
+                                <p className="text-xs text-orange-800">
                                     {t("calculator.step7.excludesAppraisal", { count: appraisalItems.length })}
                                 </p>
                             )}
@@ -184,7 +184,7 @@ const Step7 = memo(function Step7({ formData, totals }: Props) {
 
             <div className="space-y-3">
                 <h3 className="text-sm font-semibold text-gray-700 flex items-center gap-2">
-                    <svg className="w-4 h-4 text-orange-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                    <svg className="w-4 h-4 text-orange-700" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                         <path strokeLinecap="round" strokeLinejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                     </svg>
                     {t("calculator.step7.additionalCharges")}
@@ -194,7 +194,7 @@ const Step7 = memo(function Step7({ formData, totals }: Props) {
                     <div className="px-4 py-3 flex items-center justify-between">
                         <div>
                             <span className="text-sm text-gray-700">{t("calculator.step7.basicFee")}</span>
-                            <span className="ml-2 text-xs text-orange-600 font-medium">{t("calculator.step7.applied")}</span>
+                            <span className="ml-2 text-xs text-orange-800 font-medium">{t("calculator.step7.applied")}</span>
                         </div>
                         <span className="text-sm text-gray-700">{formatYen(totals.basicFee)}</span>
                     </div>
@@ -203,7 +203,7 @@ const Step7 = memo(function Step7({ formData, totals }: Props) {
                         <div>
                             <span className="text-sm text-gray-700">{t("calculator.step7.stairClimbing")}</span>
                             {totals.stairFee > 0 ? (
-                                <span className="ml-2 text-xs text-orange-600 font-medium">{t("calculator.step7.applied")}</span>
+                                <span className="ml-2 text-xs text-orange-800 font-medium">{t("calculator.step7.applied")}</span>
                             ) : (
                                 <span className="ml-2 text-xs text-gray-400">{t("calculator.step7.notApplicable")}</span>
                             )}

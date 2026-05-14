@@ -45,7 +45,7 @@ const WhyUs = memo(function WhyUs() {
             <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                 {/* Section header */}
                 <div className="mb-16 text-center">
-                    <span className="inline-flex items-center gap-2 bg-orange-50 border border-orange-200 text-orange-600 text-xs rounded-full px-4 py-1.5 mb-6 font-semibold">
+                    <span className="inline-flex items-center gap-2 bg-orange-50 border border-orange-200 text-orange-800 text-xs rounded-full px-4 py-1.5 mb-6 font-semibold">
                         <span className="relative flex size-2">
                             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-orange-400 opacity-75"></span>
                             <span className="relative inline-flex rounded-full size-2 bg-orange-500"></span>
@@ -88,7 +88,7 @@ const WhyUs = memo(function WhyUs() {
 
                             {/* Content */}
                             <div className="relative">
-                                <h3 className="mb-2 text-lg font-bold text-gray-900 group-hover:text-orange-600 transition-colors duration-300">
+                                <h3 className="mb-2 text-lg font-bold text-gray-900 group-hover:text-orange-800 transition-colors duration-300">
                                     {t(`whyUs.benefits.${benefit.key}.title`)}
                                 </h3>
                                 <p className="text-gray-500 leading-relaxed text-sm">

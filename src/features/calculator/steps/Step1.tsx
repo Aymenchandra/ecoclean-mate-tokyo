@@ -80,7 +80,7 @@ const Step1 = memo(function Step1({ data, onChange }: Props) {
             {/* Service Areas */}
             <div className="space-y-3">
                 <h3 className="text-sm font-semibold text-gray-700 flex items-center gap-2">
-                    <svg className="w-4 h-4 text-orange-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                    <svg className="w-4 h-4 text-orange-700" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                         <path strokeLinecap="round" strokeLinejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                         <path strokeLinecap="round" strokeLinejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                     </svg>
@@ -104,7 +104,7 @@ const Step1 = memo(function Step1({ data, onChange }: Props) {
             {/* Pricing Structure */}
             <div className="space-y-3">
                 <h3 className="text-sm font-semibold text-gray-700 flex items-center gap-2">
-                    <svg className="w-4 h-4 text-orange-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                    <svg className="w-4 h-4 text-orange-700" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                         <path strokeLinecap="round" strokeLinejoin="round" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                     </svg>
                     {t("calculator.step1.pricingStructure")}
@@ -123,7 +123,7 @@ const Step1 = memo(function Step1({ data, onChange }: Props) {
                             {t("calculator.step1.pricingOptional")}
                         </p>
                         <div className="mt-2 pt-2 border-t border-orange-100">
-                            <p className="text-sm font-bold text-orange-600 text-center">
+                            <p className="text-sm font-bold text-orange-800 text-center">
                                 = {t("calculator.step1.totalAmount")}
                             </p>
                         </div>

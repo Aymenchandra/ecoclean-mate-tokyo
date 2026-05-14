@@ -88,8 +88,8 @@ const Navbar = memo(function Navbar() {
                                 key={link.path}
                                 to={link.path}
                                 className={`relative px-4 py-2 text-sm font-medium capitalize transition-all duration-300 rounded-lg ${isActive
-                                    ? "text-orange-600 bg-orange-50"
-                                    : "text-gray-700 hover:text-orange-500 hover:bg-orange-50/50"
+                                    ? "text-orange-800 bg-orange-50"
+                                    : "text-gray-700 hover:text-orange-700 hover:bg-orange-50/50"
                                     }`}
                             >
                                 {t(`nav.${link.label}`, { defaultValue: link.label })}
@@ -121,7 +121,7 @@ const Navbar = memo(function Navbar() {
                         type="button"
                         onClick={handleMobileToggle}
                         className={`inline-flex items-center justify-center p-2 rounded-lg transition-all duration-300 ${mobileOpen
-                            ? "bg-orange-50 text-orange-600"
+                            ? "bg-orange-50 text-orange-800"
                             : "text-gray-700 hover:bg-gray-100"
                             }`}
                         aria-expanded={mobileOpen}
@@ -193,7 +193,7 @@ const Navbar = memo(function Navbar() {
                             <Link
                                 key={link.path}
                                 to={link.path}
-                                className="flex items-center gap-3 px-4 py-3 text-sm font-medium capitalize text-gray-700 hover:text-orange-500 hover:bg-orange-50 rounded-xl transition-all duration-300"
+                                className="flex items-center gap-3 px-4 py-3 text-sm font-medium capitalize text-gray-700 hover:text-orange-700 hover:bg-orange-50 rounded-xl transition-all duration-300"
                                 onClick={handleMobileClose}
                             >
                                 <span className="w-1.5 h-1.5 bg-orange-500 rounded-full" />

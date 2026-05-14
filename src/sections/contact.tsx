@@ -62,7 +62,7 @@ const ContactSection = memo(function ContactSection() {
             <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                 {/* Section header */}
                 <div className="mb-16 text-center">
-                    <span className="inline-flex items-center gap-2 bg-orange-50 border border-orange-200 text-orange-600 text-xs rounded-full px-4 py-1.5 mb-6 font-semibold">
+                    <span className="inline-flex items-center gap-2 bg-orange-50 border border-orange-200 text-orange-800 text-xs rounded-full px-4 py-1.5 mb-6 font-semibold">
                         <span className="relative flex size-2">
                             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-orange-400 opacity-75"></span>
                             <span className="relative inline-flex rounded-full size-2 bg-orange-500"></span>
@@ -103,7 +103,7 @@ const ContactSection = memo(function ContactSection() {
                                 <div className="space-y-2 pl-16">
                                     {(t(`contact.info.${item.key}.details`, { returnObjects: true }) as Array<{ label: string; value: string }>).map((detail, idx: number) => (
                                         <div key={idx}>
-                                            <span className="text-xs font-medium text-orange-500 uppercase tracking-wider">
+                                            <span className="text-xs font-medium text-orange-700 uppercase tracking-wider">
                                                 {detail.label}
                                             </span>
                                             <p className="text-gray-700 font-medium">{detail.value}</p>
@@ -116,7 +116,7 @@ const ContactSection = memo(function ContactSection() {
                         {/* Certifications */}
                         <div className="p-6 rounded-2xl bg-gradient-to-br from-orange-50 to-amber-50 border border-orange-100 shadow-md">
                             <h3 className="text-lg font-bold text-gray-900 mb-4 flex items-center gap-2">
-                                <svg className="w-5 h-5 text-orange-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <svg className="w-5 h-5 text-orange-700" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
                                 </svg>
                                 {t("contact.certifications.title")}
@@ -124,7 +124,7 @@ const ContactSection = memo(function ContactSection() {
                             <div className="space-y-4">
                                 {certifications.map((cert) => (
                                     <div key={cert.key} className="flex items-start gap-3">
-                                        <div className="flex-shrink-0 w-8 h-8 rounded-lg bg-orange-100 flex items-center justify-center text-orange-600 mt-0.5">
+                                        <div className="flex-shrink-0 w-8 h-8 rounded-lg bg-orange-100 flex items-center justify-center text-orange-800 mt-0.5">
                                             {cert.icon}
                                         </div>
                                         <div>
@@ -179,7 +179,7 @@ const ContactSection = memo(function ContactSection() {
                         {/* Service areas */}
                         <div className="rounded-2xl bg-white border border-gray-100 shadow-md p-6 lg:p-8">
                             <h3 className="text-lg font-bold text-gray-900 mb-4 flex items-center gap-2">
-                                <svg className="w-5 h-5 text-orange-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <svg className="w-5 h-5 text-orange-700" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                                 </svg>
                                 {t("contact.areas.title")}

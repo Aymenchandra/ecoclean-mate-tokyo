@@ -82,7 +82,7 @@ const HowItWorks = memo(function HowItWorks() {
                                     </div>
                                     {/* Number badge */}
                                     <div className="absolute -top-3 -right-3 w-8 h-8 bg-white rounded-full flex items-center justify-center shadow-lg border-2 border-orange-500">
-                                        <span className="text-xs font-bold text-orange-600">{step.number}</span>
+                                        <span className="text-xs font-bold text-orange-800">{step.number}</span>
                                     </div>
                                 </div>
 
@@ -98,7 +98,7 @@ const HowItWorks = memo(function HowItWorks() {
 
                                 {/* Arrow between steps (desktop only) */}
                                 {index < steps.length - 1 && (
-                                    <div className="hidden lg:flex absolute top-16 -right-6 xl:-right-10 text-orange-500/40 group-hover:text-orange-500/60 transition-colors duration-300">
+                                    <div className="hidden lg:flex absolute top-16 -right-6 xl:-right-10 text-orange-700/40 group-hover:text-orange-700/60 transition-colors duration-300">
                                         <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
                                         </svg>
@@ -117,7 +117,7 @@ const HowItWorks = memo(function HowItWorks() {
                         </span>
                         <Link
                             to="/contact"
-                            className="text-orange-500 font-semibold text-sm hover:text-orange-400 transition-colors duration-300 flex items-center gap-1"
+                            className="text-orange-700 font-semibold text-sm hover:text-orange-400 transition-colors duration-300 flex items-center gap-1"
                         >
                             {t("howItWorks.cta.action")}
                             <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">

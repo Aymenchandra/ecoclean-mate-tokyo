@@ -46,7 +46,7 @@ const Stepper = memo(function Stepper({ currentStep, onStepClick }: StepperProps
                                     isCompleted
                                         ? "bg-orange-500 border-orange-500 text-white cursor-pointer hover:bg-orange-600"
                                         : isActive
-                                            ? "bg-white border-orange-500 text-orange-500 cursor-default"
+                                            ? "bg-white border-orange-500 text-orange-700 cursor-default"
                                             : "bg-white border-gray-300 text-gray-400 cursor-default",
                                 ].join(" ")}
                                 aria-label={t("calculator.stepper.ariaLabel", { step: step.id, label: t(step.label) })}
@@ -76,7 +76,7 @@ const Stepper = memo(function Stepper({ currentStep, onStepClick }: StepperProps
                                     "hidden sm:block text-xs font-medium text-center mt-2 w-20 sm:w-24",
                                     "leading-tight break-words",
                                     isActive
-                                        ? "text-orange-500"
+                                        ? "text-orange-700"
                                         : isCompleted
                                             ? "text-gray-700"
                                             : "text-gray-400",

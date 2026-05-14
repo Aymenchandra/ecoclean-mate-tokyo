@@ -1,17 +1,18 @@
-import { memo } from "react";
+import { memo, lazy, Suspense } from "react";
 import { useTranslation } from "react-i18next";
 import Stepper from "./Stepper";
 import { useCalculator } from "../../hooks/useCalculator";
-import Step1 from "./steps/Step1";
-import Step2 from "./steps/Step2";
-import Step3 from "./steps/Step3";
-import Step4 from "./steps/Step4";
-import Step5 from "./steps/Step5";
-import Step6 from "./steps/Step6";
-import Step7 from "./steps/Step7";
-import Step8 from "./steps/Step8";
 import { Link } from "react-router-dom";
 import LanguageSwitcher from "../../components/ui/LanguageSwitcher";
+
+const Step1 = lazy(() => import("./steps/Step1"));
+const Step2 = lazy(() => import("./steps/Step2"));
+const Step3 = lazy(() => import("./steps/Step3"));
+const Step4 = lazy(() => import("./steps/Step4"));
+const Step5 = lazy(() => import("./steps/Step5"));
+const Step6 = lazy(() => import("./steps/Step6"));
+const Step7 = lazy(() => import("./steps/Step7"));
+const Step8 = lazy(() => import("./steps/Step8"));
 
 // Success screen
 const SuccessScreen: React.FC<{ onReset: () => void }> = ({ onReset }) => {
@@ -21,7 +22,7 @@ const SuccessScreen: React.FC<{ onReset: () => void }> = ({ onReset }) => {
         <div className="flex flex-col items-center justify-center text-center py-16 space-y-4">
             <div className="w-16 h-16 rounded-full bg-orange-100 flex items-center justify-center">
                 <svg
-                    className="w-8 h-8 text-orange-500"
+                    className="w-8 h-8 text-orange-700"
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke="currentColor"
@@ -142,7 +143,7 @@ const CalculatorPage = memo(function CalculatorPage() {
         <div className="min-h-screen bg-gray-50 flex flex-col">
             {/* Minimal top bar */}
             <header className="w-full border-b border-gray-200 bg-white px-6 py-4 flex items-center justify-between">
-                <Link to="/" className="font-bold text-orange-500 text-lg tracking-tight hover:text-orange-600 transition-colors">
+                <Link to="/" className="font-bold text-orange-700 text-lg tracking-tight hover:text-orange-800 transition-colors">
                     {t("brand.name")}
                 </Link>
                 <LanguageSwitcher />
@@ -165,7 +166,11 @@ const CalculatorPage = memo(function CalculatorPage() {
                     {/* Card */}
                     <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-5 sm:p-8">
                         {/* Step content */}
-                        <div className="min-h-[200px]">{renderStep()}</div>
+                        <div className="min-h-[200px]">
+                            <Suspense fallback={<div className="h-full flex items-center justify-center p-8"><div className="w-8 h-8 border-4 border-orange-500 border-t-transparent rounded-full animate-spin" /></div>}>
+                                {renderStep()}
+                            </Suspense>
+                        </div>
 
                         {/* Navigation */}
                         <div className="flex items-center justify-between mt-8 pt-6 border-t border-gray-100">

@@ -226,7 +226,7 @@ const Step5 = memo(function Step5({ data, onUpdateItem }: Props) {
                                                     type="checkbox"
                                                     checked={item.forSelling}
                                                     onChange={(e) => handleSellingToggle(item, e.target.checked)}
-                                                    className="h-3.5 w-3.5 text-orange-500 border-gray-300 rounded focus:ring-orange-500"
+                                                    className="h-3.5 w-3.5 text-orange-700 border-gray-300 rounded focus:ring-orange-500"
                                                 />
                                                 <span className="text-xs text-gray-600">
                                                     {t("calculator.step5.sellThisItem")}
@@ -238,7 +238,7 @@ const Step5 = memo(function Step5({ data, onUpdateItem }: Props) {
                                                     <button
                                                         type="button"
                                                         onClick={() => fileInputRefs.current.get(item.id)?.click()}
-                                                        className="w-full px-3 py-1.5 text-xs font-medium text-orange-600 bg-orange-50
+                                                        className="w-full px-3 py-1.5 text-xs font-medium text-orange-800 bg-orange-50
                               border border-orange-200 rounded-lg hover:bg-orange-100 transition-colors"
                                                     >
                                                         📷 {t("calculator.step5.addPhoto")}
@@ -289,7 +289,7 @@ const Step5 = memo(function Step5({ data, onUpdateItem }: Props) {
                                         <div className="space-y-1">
                                             <div className="flex items-center justify-between">
                                                 <span className="text-xs text-gray-500">{t("calculator.step5.unitPrice")}</span>
-                                                <span className="text-sm font-bold text-orange-500">
+                                                <span className="text-sm font-bold text-orange-700">
                                                     {t("calculator.step5.toBeAppraised")}
                                                 </span>
                                             </div>
@@ -301,7 +301,7 @@ const Step5 = memo(function Step5({ data, onUpdateItem }: Props) {
                                         <>
                                             <div className="flex items-center justify-between">
                                                 <span className="text-xs text-gray-500">{t("calculator.step5.unitPrice")}</span>
-                                                <span className="text-sm font-bold text-orange-600">
+                                                <span className="text-sm font-bold text-orange-800">
                                                     {formatYen(unitPrice)}
                                                 </span>
                                             </div>
@@ -337,7 +337,7 @@ const Step5 = memo(function Step5({ data, onUpdateItem }: Props) {
                     </span>
                 </div>
                 {data.items.filter(item => item.forSelling && item.canSell).length > 0 && (
-                    <p className="text-xs text-orange-600">
+                    <p className="text-xs text-orange-800">
                         {t("calculator.step5.appraisalCount", {
                             count: data.items.filter(item => item.forSelling && item.canSell).length
                         })}

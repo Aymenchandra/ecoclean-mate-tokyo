@@ -91,7 +91,7 @@ const Step6 = memo(function Step6({ data, onChange }: Props) {
                             </div>
 
                             {/* Price */}
-                            <span className="flex-shrink-0 text-sm font-bold text-orange-600">
+                            <span className="flex-shrink-0 text-sm font-bold text-orange-800">
                                 +¥{service.price.toLocaleString("de-DE")}
                             </span>
                         </label>

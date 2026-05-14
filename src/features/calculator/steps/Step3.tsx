@@ -74,7 +74,7 @@ const Step3 = memo(function Step3({ data, onChange, itemFloor }: Props) {
                     <div className="flex items-start gap-3">
                         <div className="flex-shrink-0 w-8 h-8 rounded-full bg-orange-100 flex items-center justify-center">
                             <svg
-                                className="w-4 h-4 text-orange-500"
+                                className="w-4 h-4 text-orange-700"
                                 fill="none"
                                 viewBox="0 0 24 24"
                                 stroke="currentColor"

@@ -85,7 +85,7 @@ const LanguageSwitcher = memo(function LanguageSwitcher() {
                         <span className="text-base leading-none" aria-hidden="true">
                             {current.flag}
                         </span>
-                        <span className="text-xs font-semibold text-gray-700 group-hover:text-orange-500 transition-colors duration-300 tabular-nums">
+                        <span className="text-xs font-semibold text-gray-700 group-hover:text-orange-700 transition-colors duration-300 tabular-nums">
                             {current.short}
                         </span>
                         {/* Chevron */}
@@ -141,8 +141,8 @@ const LanguageSwitcher = memo(function LanguageSwitcher() {
                   transition-all duration-200 text-sm font-medium
                   disabled:opacity-50
                   ${isActive
-                                        ? "bg-orange-50 text-orange-600"
-                                        : "text-gray-700 hover:bg-gray-50 hover:text-orange-500"
+                                        ? "bg-orange-50 text-orange-800"
+                                        : "text-gray-700 hover:bg-gray-50 hover:text-orange-700"
                                     }
                 `}
                             >
@@ -150,7 +150,7 @@ const LanguageSwitcher = memo(function LanguageSwitcher() {
                                 <span className="flex-1">{lang.label}</span>
                                 {isActive && (
                                     <svg
-                                        className="w-3.5 h-3.5 text-orange-500 shrink-0"
+                                        className="w-3.5 h-3.5 text-orange-700 shrink-0"
                                         fill="currentColor"
                                         viewBox="0 0 20 20"
                                         aria-hidden="true"

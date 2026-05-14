@@ -54,7 +54,7 @@ const CTA = memo(function CTA() {
                         {/* CTA button */}
                         <Link
                             to="/contact"
-                            className="group relative inline-flex items-center gap-2 bg-white text-orange-600 px-8 py-4 rounded-full text-base font-bold hover:bg-orange-50 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 mb-6"
+                            className="group relative inline-flex items-center gap-2 bg-white text-orange-800 px-8 py-4 rounded-full text-base font-bold hover:bg-orange-50 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 mb-6"
                         >
                             <span>{t("cta.button")}</span>
                             <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
