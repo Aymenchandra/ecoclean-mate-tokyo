@@ -19,7 +19,7 @@ const SuccessScreen: React.FC<{ onReset: () => void }> = ({ onReset }) => {
     const { t } = useTranslation();
 
     return (
-        <div className="flex flex-col items-center justify-center text-center py-16 space-y-4">
+        <div data-testid="success-screen" className="flex flex-col items-center justify-center text-center py-16 space-y-4">
             <div className="w-16 h-16 rounded-full bg-orange-100 flex items-center justify-center">
                 <svg
                     className="w-8 h-8 text-orange-700"
@@ -175,6 +175,7 @@ const CalculatorPage = memo(function CalculatorPage() {
                         {/* Navigation */}
                         <div className="flex items-center justify-between mt-8 pt-6 border-t border-gray-100">
                             <button
+                                data-testid="calculator-back-btn"
                                 type="button"
                                 onClick={calc.goPrev}
                                 disabled={calc.isFirstStep}
@@ -190,6 +191,7 @@ const CalculatorPage = memo(function CalculatorPage() {
 
                             {calc.isLastStep ? (
                                 <button
+                                    data-testid="generate-pdf-btn"
                                     type="button"
                                     onClick={calc.submit}
                                     disabled={calc.isGeneratingPDF}
@@ -206,6 +208,7 @@ const CalculatorPage = memo(function CalculatorPage() {
                                 </button>
                             ) : (
                                 <button
+                                    data-testid="calculator-next-btn"
                                     type="button"
                                     onClick={calc.goNext}
                                     className="px-6 py-2.5 bg-orange-500 hover:bg-orange-600 text-white text-sm font-semibold rounded-lg transition-colors"

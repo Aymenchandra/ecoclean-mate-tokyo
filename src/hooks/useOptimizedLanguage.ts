@@ -8,6 +8,7 @@ export function useOptimizedLanguage() {
     // Preload other languages after initial render
     useEffect(() => {
         if (ready) {
+            document.documentElement.lang = i18n.language;
             const otherLanguages = i18n.languages.filter(
                 (lang: string) => lang !== i18n.language
             );
@@ -25,6 +26,7 @@ export function useOptimizedLanguage() {
 
             try {
                 await i18n.changeLanguage(lang);
+                document.documentElement.lang = lang;
                 return true;
             } catch (error) {
                 console.error("Failed to change language:", error);

@@ -10,7 +10,7 @@ const Hero = memo(function Hero() {
     };
 
     return (
-        <section className="flex flex-col md:flex-row items-center max-md:text-center justify-between mt-16 pb-16 px-6 sm:px-10 md:px-24 max-w-7xl mx-auto w-full">
+        <section data-testid="hero-section" className="flex flex-col md:flex-row items-center max-md:text-center justify-between mt-16 pb-16 px-6 sm:px-10 md:px-24 max-w-7xl mx-auto w-full">
             <div className="flex flex-col items-center md:items-start">
                 {/* Badge */}
                 <div className="inline-flex items-center gap-2 bg-orange-50 border border-orange-200 text-orange-700 text-xs rounded-full px-4 py-1.5 mb-6 hover:bg-orange-100 transition-all duration-300 shadow-sm hover:shadow-md">

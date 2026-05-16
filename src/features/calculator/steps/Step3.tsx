@@ -35,6 +35,7 @@ const Step3 = memo(function Step3({ data, onChange, itemFloor }: Props) {
                 </label>
                 <div className="flex gap-3">
                     <button
+                        data-testid="step3-has-elevator-btn"
                         type="button"
                         onClick={() =>
                             onChange({
@@ -53,6 +54,7 @@ const Step3 = memo(function Step3({ data, onChange, itemFloor }: Props) {
                         {t("calculator.step3.hasElevator")}
                     </button>
                     <button
+                        data-testid="step3-no-elevator-btn"
                         type="button"
                         onClick={() => onChange({ hasElevator: false })}
                         className={[

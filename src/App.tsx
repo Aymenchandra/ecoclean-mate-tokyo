@@ -1,4 +1,4 @@
-import { lazy } from "react";
+import { lazy, Suspense } from "react";
 import { BrowserRouter } from "react-router-dom";
 import "./i18n/i18n";
 import TranslationLoader from "./components/ui/TranslationLoader";
@@ -7,12 +7,21 @@ import ScrollToTop from "./components/ui/ScrollToTop";
 // Lazy load your routes for additional performance
 const AppRoutes = lazy(() => import("./routes/AppRoutes"));
 
+// Fallback spinner while lazy chunks load
+const PageLoader = () => (
+  <div className="min-h-screen flex items-center justify-center bg-gray-50 dark:bg-gray-900">
+    <div className="w-12 h-12 border-4 border-orange-500 border-t-transparent rounded-full animate-spin" />
+  </div>
+);
+
 const App = () => {
   return (
     <BrowserRouter>
       <ScrollToTop />
       <TranslationLoader>
-        <AppRoutes />
+        <Suspense fallback={<PageLoader />}>
+          <AppRoutes />
+        </Suspense>
       </TranslationLoader>
     </BrowserRouter>
   );

@@ -66,6 +66,7 @@ const LanguageSwitcher = memo(function LanguageSwitcher() {
         <div ref={ref} className="relative z-50">
             {/* Trigger button */}
             <button
+                data-testid="lang-switcher"
                 ref={focusRef}
                 type="button"
                 onClick={toggleOpen}
@@ -130,6 +131,7 @@ const LanguageSwitcher = memo(function LanguageSwitcher() {
                         const isActive = current.code === lang.code;
                         return (
                             <button
+                                data-testid={`lang-option-${lang.code}`}
                                 key={lang.code}
                                 role="option"
                                 aria-selected={isActive}

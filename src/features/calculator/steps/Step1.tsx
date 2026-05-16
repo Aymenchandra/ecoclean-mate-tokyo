@@ -153,6 +153,7 @@ const Step1 = memo(function Step1({ data, onChange }: Props) {
 
             {/* Confirmation Button */}
             <button
+                data-testid="step1-confirm-btn"
                 type="button"
                 onClick={() => onChange({ confirmed: true })}
                 disabled={data.confirmed}

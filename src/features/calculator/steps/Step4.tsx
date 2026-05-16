@@ -151,12 +151,14 @@ const Step4 = memo(function Step4({ data, onAdd, onRemove }: Props) {
                     <h4 className="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-2">
                         {t("calculator.step4.items")}
                     </h4>
-                    <div className="grid grid-cols-2 gap-2 max-h-[400px] overflow-y-auto pr-1">
+                    <div data-testid="step4-items-grid" className="grid grid-cols-2 gap-2 max-h-[400px] overflow-y-auto pr-1">
                         {activeItems.map((item) => {
                             const added = isItemAdded(item.name);
                             return (
                                 <button
                                     key={item.name}
+                                    data-testid="step4-item-btn"
+                                    data-item-added={added ? "true" : "false"}
                                     type="button"
                                     onClick={() => !added && handleAddItem(item)}
                                     disabled={added}
